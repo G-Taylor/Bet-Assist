@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from data_retrieval.Main import get_fixture_over_2
 
 
