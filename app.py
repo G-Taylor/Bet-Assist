@@ -1,5 +1,6 @@
-from flask import Flask, jsonify
-from thesportsdb import leagues
+from flask import Flask
+from data_retrieval.Main import get_fixture_over_2
+
 
 app = Flask(__name__)
 
@@ -7,13 +8,8 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
 
-    league_table = leagues.leagueSeasonTable('4328', '2020-2021')
-
-    for key, value in league_table.items():
-        for k in value:
-            print(k['strTeam'], ' : ', k['strLeague'], ' : ', k['strForm'])
-
-    return league_table
+    # results = get_fixture_over_2()
+    return get_fixture_over_2()
 
 
 if __name__ == '__main__':
