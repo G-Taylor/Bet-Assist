@@ -3,11 +3,7 @@
 {% block content %}
 
 <h1>Welcome</h1>
-      <p> Welcome to SmartResearch, a large repository of ACL-Anthology papers, dating back 10 years. Explore features such as
-      keyword, topic and paper matching searches, along with the ability to extract relevant data from your chosen papers.</p>
-        <hr>
-    <div class="search text-center">
-        <h3>Explore</h3>
-            <p>Personalise your account with papers you like, to generate a feed based on your interests!</p>
-    </div>
+    {% for result in results %}
+        <p>{{ result }}</p>
+    {% endfor %}
 {% endblock %}
