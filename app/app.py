@@ -6,6 +6,7 @@ app = Flask(__name__)
 @app.route('/')
 def hello_world():
     results = get_fixture_over_2()
+
     return render_template('index.html', results=results)
 
 
