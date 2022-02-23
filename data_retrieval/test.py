@@ -1,11 +1,13 @@
 from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.runner import get_league
 
+
 CHOICE = get_league()
 
 get_games_played(CHOICE + 'results/')
 get_fixtures(CHOICE + 'fixtures/')
 convert_data()
+
 
 # merging dictionaries together so team name has goals scored/conceded/results beside for future use
 total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)

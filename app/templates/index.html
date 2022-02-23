@@ -4,29 +4,25 @@
 
 <h1>Welcome</h1>
     {% for result in results %}
-    <div style="justify-content: space-evenly">
-    <div style="display: inline-block">
-        <p>
-            {% for item in results[result]['home_results']  %}
-                {% for game in item %}
-                    {{ game }}
-                {% endfor %}
+    <div>
+    <div class="game-results">
+        {% for item in results[result]['home_results']  %}
+            {% for game in item %}
+                <p class="{{ game }}">{{ game }}</p>
             {% endfor %}
-        </p>
+        {% endfor %}
     </div>
-    <div style="display: inline-block">
+    <div class="fixture-teams">
         <p>
             {{ results[result]['home_team'] }} vs {{ results[result]['away_team'] }}
         </p>
     </div>
-    <div style="display: inline-block">
-        <p>
-            {% for item in results[result]['away_results']  %}
-                {% for game in item %}
-                    {{ game }}
-                {% endfor %}
+    <div class="game-results">
+        {% for item in results[result]['away_results']  %}
+            {% for game in item %}
+                <p class="{{ game }}">{{ game }}</p>
             {% endfor %}
-        </p>
+        {% endfor %}
     </div>
      </div>
     {% endfor %}
