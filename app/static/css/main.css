@@ -327,6 +327,8 @@ body {
 }
 
 .fixture-teams {
+  font-weight: bold;
+  font-size: larger;
   display: inline-block;
   padding-left: 20px;
   padding-right: 20px;
@@ -376,4 +378,14 @@ body {
   padding: 20px;
 }
 
+.goals {
+  margin: 0px;
+  font-weight: bold;
+}
+
+.goals-g {
+  margin: 0px;
+  color: green;
+  font-weight: bold;
+}
 

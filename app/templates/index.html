@@ -4,26 +4,41 @@
 
 <h1>Welcome</h1>
     {% for result in results %}
-    <div>
-    <div class="game-results">
-        {% for item in results[result]['home_results']  %}
-            {% for game in item %}
-                <p class="{{ game }}">{{ game }}</p>
-            {% endfor %}
-        {% endfor %}
-    </div>
-    <div class="fixture-teams">
-        <p>
-            {{ results[result]['home_team'] }} vs {{ results[result]['away_team'] }}
-        </p>
-    </div>
-    <div class="game-results">
-        {% for item in results[result]['away_results']  %}
-            {% for game in item %}
-                <p class="{{ game }}">{{ game }}</p>
-            {% endfor %}
-        {% endfor %}
-    </div>
-     </div>
+        <div class="fixture-teams">
+            <p class="goals">
+                {{ results[result]['home_team'] }} vs {{ results[result]['away_team'] }}
+            </p>
+            <br>
+        </div>
+        <div>
+            <div class="game-results">
+                <p>Average Goals: {{ results[result]['home_average_goals'] }}</p>
+                {% for item in results[result]['home_results']  %}
+                    {% for game in item %}
+                        <p class="{{ game }}">{{ game }}</p>
+                    {% endfor %}
+                {% endfor %}
+                <p class="goals{% if results[result]['home_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['home_goals_scored'] }}</p>
+                <p class="goals{% if results[result]['home_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['home_goals_conceded'] }}</p>
+            </div>
+            <div class="fixture-teams">
+                <p> vs </p>
+                <br>
+                <br>
+            </div>
+            <div class="game-results">
+                <p>Average Goals: {{ results[result]['away_average_goals'] }}</p>
+                {% for item in results[result]['away_results']  %}
+                    {% for game in item %}
+                        <p class="{{ game }}">{{ game }}</p>
+                    {% endfor %}
+                {% endfor %}
+                <p class="goals{% if results[result]['away_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['away_goals_scored'] }}</p>
+                <p class="goals{% if results[result]['away_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['away_goals_conceded'] }}</p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
     {% endfor %}
 {% endblock %}
