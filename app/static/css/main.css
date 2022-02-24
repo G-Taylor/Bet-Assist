@@ -389,3 +389,9 @@ body {
   font-weight: bold;
 }
 
+.leagues {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-around;
+}
+

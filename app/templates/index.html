@@ -1,8 +1,8 @@
-{% extends "base.html" %}
+{% extends "leagues.html" %}
 {% block title %}Bet Assist Home{% endblock %}
 {% block content %}
-
-<h1>Welcome</h1>
+    {{ super() }}
+<h1>Over 2.5 / BTTS</h1>
     {% for result in results %}
         <div class="fixture-teams">
             <p class="goals">
