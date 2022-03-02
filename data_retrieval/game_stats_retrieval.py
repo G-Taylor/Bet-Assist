@@ -23,7 +23,7 @@ def get_last_results(result):
 def get_total_goals(team_name, goal_dict):
     try:
         goals = sum(goal_dict[team_name][1])
-    except IndexError:
+    except:
         goals = sum(goal_dict[team_name])
         return goals
     else:
@@ -34,7 +34,7 @@ def get_total_goals(team_name, goal_dict):
 def get_dict_length(team_name, goal_dict):
     try:
         length = len(goal_dict[team_name][1])
-    except IndexError:
+    except:
         length = len(goal_dict[team_name])
         return length
     else:
