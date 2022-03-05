@@ -1,4 +1,4 @@
-from data_retrieval.game_stats_retrieval import get_total_goals, get_dict_length, get_last_results
+from data_retrieval.game_stats_retrieval import get_total_goals, get_dict_length
 # from data_retrieval.test import *
 from data_retrieval.game_fixtures_and_results import *
 
