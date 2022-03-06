@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for
 from data_retrieval.Main import get_fixture_over_2, teams_over_2_goals, teams_over_2_goals_scored, teams_over_2_goals_conceded
 from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *
@@ -8,10 +8,12 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    league = f"{WEBSITE_URL}{leagues['Premiership']}"
+    current_league = "Premiership"
+    league = f"{WEBSITE_URL}{leagues[current_league]}"
 
     if request.method == "POST":
-        league = f"{WEBSITE_URL}{leagues[request.form.get('league')]}"
+        current_league = request.form.get('league')
+        league = f"{WEBSITE_URL}{leagues[current_league]}"
 
     reset_all_value_stores()
     get_games_played(league + 'results/')
@@ -23,7 +25,7 @@ def index():
     all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
 
     results = get_fixture_over_2(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict)
-    return render_template('index.html', results=results)
+    return render_template('index.html', results=results, current_league=current_league)
 
 
 if __name__ == '__main__':

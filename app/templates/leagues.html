@@ -2,28 +2,44 @@
 {% block content %}
 <div class="leagues">
     <form action="" method="post">
-        <input type="submit" name="league" value="Premiership">
+        <button class="logo-button" type="submit" name="league" value="Premiership">
+            <img class="logo-button" src="{{ url_for('static', filename='premier-league.png') }}" >
+        </button>
     </form>
     <form action="" method="post">
-        <input type="submit" name="league" value="Championship">
+        <button class="logo-button" type="submit" name="league" value="Championship">
+            <img class="logo-button" src="{{ url_for('static', filename='championship.png') }}" >
+        </button>
     </form>
     <form action="" method="post">
-        <input type="submit" name="league" value="League 1">
+        <button class="logo-button"  name="league" value="League 1">
+            <img class="logo-button" src="{{ url_for('static', filename='league1.png') }}" >
+        </button>
     </form>
     <form action="" method="post">
-        <input type="submit" name="league" value="League 2">
+        <button class="logo-button"  name="league" value="League 2">
+            <img class="logo-button" src="{{ url_for('static', filename='league2.png') }}" >
+        </button>
     </form>
     <form action="" method="post">
-        <input type="submit" name="league" value="National League">
+        <button class="logo-button"  name="league" value="National League">
+            <img class="logo-button" src="{{ url_for('static', filename='national.png') }}" >
+        </button>
     </form>
     <form action="" method="post">
-        <input type="submit" name="league" value="La Liga">
+        <button class="logo-button"  name="league" value="La Liga">
+            <img class="logo-button" src="{{ url_for('static', filename='laliga.png') }}" >
+        </button>
     </form>
     <form action="" method="post">
-        <input type="submit" name="league" value="Bundesliga">
+        <button class="logo-button"  name="league" value="Bundesliga">
+            <img class="logo-button" src="{{ url_for('static', filename='bundesliga.png') }}" >
+        </button>
     </form>
     <form action="" method="post">
-        <input type="submit" name="league" value="Ligue 1">
+        <button class="logo-button"  name="league" value="Ligue 1">
+            <img class="logo-button" src="{{ url_for('static', filename='ligue1.png') }}" >
+        </button>
     </form>
 </div>
     <hr>

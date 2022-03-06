@@ -395,3 +395,10 @@ body {
   justify-content: space-around;
 }
 
+.logo-button {
+  padding-top: 0;
+  background: no-repeat center center;
+  height: 100px;
+  color: transparent;
+}
+
