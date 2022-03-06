@@ -2,7 +2,8 @@
 {% block title %}Bet Assist Home{% endblock %}
 {% block content %}
     {{ super() }}
-<h1>Over 2.5 / BTTS</h1>
+    <h1>{{ current_league }}</h1>
+    <h2>Over 2.5 / BTTS</h2>
     {% for result in results %}
         <div class="fixture-teams">
             <p class="goals">
