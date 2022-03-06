@@ -124,6 +124,9 @@ def get_fixture_over_2(total_goals_scored_dict, total_goals_conceded_dict, all_r
         except ValueError:
             pass
 
+    teams_over_2_goals.clear()
+    teams_over_2_goals_scored.clear()
+    teams_over_2_goals_conceded.clear()
     return suggested_matches
 # get_fixture_over_2()
 
