@@ -26,7 +26,11 @@ def index():
     all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
 
     results = get_fixture_over_2(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict)
-    return render_template('index.html', results=results, current_league=current_league)
+
+    return render_template('index.html',
+                           results=results,
+                           current_league=current_league
+                           )
 
 
 if __name__ == '__main__':
