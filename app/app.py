@@ -16,8 +16,9 @@ def index():
         league = f"{WEBSITE_URL}{leagues[current_league]}"
 
     reset_all_value_stores()
-    get_games_played(league + 'results/')
-    get_fixtures(league + 'fixtures/')
+    get_games_played(f"{league}results/")
+    get_fixtures(f"{league}fixtures/")
+    # get_standings(f"{league}standings/")
     convert_data()
 
     total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)
