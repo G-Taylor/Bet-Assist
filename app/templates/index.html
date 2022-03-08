@@ -7,7 +7,9 @@
     {% for result in results %}
         <div class="fixture-teams">
             <p class="goals">
+                ({{ current_standings.get( results[result]['home_team'] ) }})
                 {{ results[result]['home_team'] }} vs {{ results[result]['away_team'] }}
+                     ({{ current_standings.get( results[result]['away_team'] ) }})
             </p>
             <br>
         </div>

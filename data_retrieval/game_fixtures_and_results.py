@@ -27,6 +27,8 @@ total_goals_conceded = []
 home_fixture_list = []
 away_fixture_list = []
 
+# Dictionary for storing the current standings
+current_standings = {}
 
 # function to strip useless info and text, and add teams to list
 def strip_and_add_team(team, team_list):
@@ -135,6 +137,19 @@ def get_games_played(league):
         strip_and_add_team(away_team_win, away_team_list)
 
 
+def get_current_standings(league):
+    page = requests.get(league)
+    soup = BeautifulSoup(page.content, 'html.parser')
+    results = soup.find(id='standings_1a')
+    all_standings = results.find_all('tr', class_='sp-livetable__tableRow spm-dataRow')
+
+    for team in all_standings:
+        team_name = team.find('div', class_='sp-livetable__tableTeamName')
+        position = team.find('div', class_='sp-livetable__tablePosNum')
+
+        current_standings[team_name.text] = position.text
+
+
 def convert_data():
     convert_to_dict(home_team_list, home_goals_scored, home_goals_scored_dict)
     convert_to_dict(away_team_list, away_goals_scored, away_goals_scored_dict)
@@ -169,3 +184,4 @@ def reset_all_value_stores():
 
     total_goals_scored.clear()
     total_goals_conceded.clear()
+    current_standings.clear()

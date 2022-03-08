@@ -18,7 +18,7 @@ def index():
     reset_all_value_stores()
     get_games_played(f"{league}results/")
     get_fixtures(f"{league}fixtures/")
-    # get_standings(f"{league}standings/")
+    get_current_standings(f"{league}standings/")
     convert_data()
 
     total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)
@@ -29,7 +29,8 @@ def index():
 
     return render_template('index.html',
                            results=results,
-                           current_league=current_league
+                           current_league=current_league,
+                           current_standings=current_standings
                            )
 
 
