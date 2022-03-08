@@ -15,7 +15,7 @@
         </div>
         <div>
             <div class="game-results">
-                <p>Average Goals: {{ results[result]['home_average_goals'] }}</p>
+                <p class="goals{% if results[result]['home_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['home_average_goals'] }}</p>
                 {% for item in results[result]['home_results']  %}
                     {% for game in item %}
                         <p class="{{ game }}">{{ game }}</p>
@@ -30,7 +30,7 @@
                 <br>
             </div>
             <div class="game-results">
-                <p>Average Goals: {{ results[result]['away_average_goals'] }}</p>
+                <p class="goals{% if results[result]['away_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['away_average_goals'] }}</p>
                 {% for item in results[result]['away_results']  %}
                     {% for game in item %}
                         <p class="{{ game }}">{{ game }}</p>
