@@ -19,7 +19,7 @@ def get_teams_over_2_point_5_new(total_goals_scored_dict, total_goals_conceded_d
             teams_over_2_goals_scored[team] = avg_goals_scored
             teams_over_2_goals_conceded[team] = avg_goals_conceded
 
-
+# Returns the expected matches to be over 2.5 goals or btts
 def get_fixture_over_2(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict):
     suggested_matches = {}
     get_teams_over_2_point_5_new(total_goals_scored_dict, total_goals_conceded_dict)
