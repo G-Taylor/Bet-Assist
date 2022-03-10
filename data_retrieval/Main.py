@@ -6,6 +6,7 @@ teams_over_2_goals_scored = {}
 teams_over_2_goals_conceded = {}
 
 
+# currently finding teams that avergae over 2.5 total goals
 def get_teams_over_2_point_5_new(total_goals_scored_dict, total_goals_conceded_dict):
     for team in total_goals_scored_dict:
         total_goals = get_total_goals(team, total_goals_scored_dict) + get_total_goals(team, total_goals_conceded_dict)
