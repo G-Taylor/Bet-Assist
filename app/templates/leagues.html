@@ -41,6 +41,26 @@
             <img class="logo-button" src="{{ url_for('static', filename='ligue1.png') }}" >
         </button>
     </form>
+    <form action="" method="post">
+        <button class="logo-button"  name="league" value="Serie A">
+            <img class="logo-button" src="{{ url_for('static', filename='seriea.png') }}" >
+        </button>
+    </form>
+    <form action="" method="post">
+        <button class="logo-button"  name="league" value="Eredivisie">
+            <img class="logo-button" src="{{ url_for('static', filename='eredivisie.png') }}" >
+        </button>
+    </form>
+    <form action="" method="post">
+        <button class="logo-button"  name="league" value="Champions League">
+            <img class="logo-button" src="{{ url_for('static', filename='championsleague.png') }}" >
+        </button>
+    </form>
+    <form action="" method="post">
+        <button class="logo-button"  name="league" value="Europa League">
+            <img class="logo-button" src="{{ url_for('static', filename='europaleague.png') }}" >
+        </button>
+    </form>
 </div>
     <hr>
 {% endblock %}
