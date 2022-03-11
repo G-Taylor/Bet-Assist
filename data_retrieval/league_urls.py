@@ -9,9 +9,9 @@ leagues = {
     'SCOT': 'scotland/premiership/',
     'La Liga': 'spain/laliga/',
     'Bundesliga': 'germany/bundesliga/',
-    'ITALIAN': 'italy/serie-a/',
+    'Serie A': 'italy/serie-a/',
     'Ligue 1': 'france/ligue-1/',
-    'DUTCH': 'netherlands/eredivisie/',
-    'CL': 'uefa/champions-league/',
-    'EUROPA': 'uefa/europa-league/',
+    'Eredivisie': 'netherlands/eredivisie/',
+    'Champions League': 'uefa/champions-league/',
+    'Europa League': 'uefa/europa-league/',
 }
