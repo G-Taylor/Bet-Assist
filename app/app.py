@@ -3,6 +3,7 @@ from data_retrieval.Main import get_fixture_over_2, teams_over_2_goals, teams_ov
 from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *
 
+
 app = Flask(__name__)
 
 
