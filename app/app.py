@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, url_for
-from data_retrieval.Main import get_suggested_matches, teams_over_2_goals, teams_over_2_goals_scored, teams_over_2_goals_conceded
+from flask import Flask, render_template, request
+from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *
 

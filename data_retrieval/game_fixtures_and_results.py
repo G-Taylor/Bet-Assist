@@ -109,32 +109,25 @@ def get_games_played(league):
     odd_matches = results.find_all('tr', class_='odd')
 
     for match in even_matches:
-        home_team = match.find('td', class_='home uc')
-        home_team_win = match.find('td', class_='home uc winteam')
-        home_team_goals = match.find('a', class_='score_link')
-        away_team = match.find('td', class_='away uc')
-        away_team_win = match.find('td', class_='away uc winteam')
-
-        get_all_goals_and_wins(home_team_goals)
-
-        strip_and_add_team(home_team, home_team_list)
-        strip_and_add_team(home_team_win, home_team_list)
-        strip_and_add_team(away_team, away_team_list)
-        strip_and_add_team(away_team_win, away_team_list)
+        get_game_data(match)
 
     for match in odd_matches:
-        home_team = match.find('td', class_='home uc')
-        home_team_win = match.find('td', class_='home uc winteam')
-        home_team_goals = match.find('a', class_='score_link')
-        away_team = match.find('td', class_='away uc')
-        away_team_win = match.find('td', class_='away uc winteam')
+        get_game_data(match)
 
-        get_all_goals_and_wins(home_team_goals)
 
-        strip_and_add_team(home_team, home_team_list)
-        strip_and_add_team(home_team_win, home_team_list)
-        strip_and_add_team(away_team, away_team_list)
-        strip_and_add_team(away_team_win, away_team_list)
+def get_game_data(match):
+    home_team = match.find('td', class_='home uc')
+    home_team_win = match.find('td', class_='home uc winteam')
+    home_team_goals = match.find('a', class_='score_link')
+    away_team = match.find('td', class_='away uc')
+    away_team_win = match.find('td', class_='away uc winteam')
+
+    get_all_goals_and_wins(home_team_goals)
+
+    strip_and_add_team(home_team, home_team_list)
+    strip_and_add_team(home_team_win, home_team_list)
+    strip_and_add_team(away_team, away_team_list)
+    strip_and_add_team(away_team_win, away_team_list)
 
 
 def get_current_standings(league):
