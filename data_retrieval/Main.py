@@ -15,7 +15,7 @@ def get_teams_over_2_point_5_new(total_goals_scored_dict, total_goals_conceded_d
         avg_goals_scored = get_total_goals(team, total_goals_scored_dict) / games_played
         avg_goals_conceded = get_total_goals(team, total_goals_conceded_dict) / games_played
 
-        if avg_goals >= 2.5 or avg_goals_scored >= 3:
+        if avg_goals >= 3 or avg_goals_scored >= 3:
             teams_over_2_goals[team] = avg_goals
             teams_over_2_goals_scored[team] = avg_goals_scored
             teams_over_2_goals_conceded[team] = avg_goals_conceded
