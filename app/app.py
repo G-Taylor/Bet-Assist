@@ -6,6 +6,7 @@ from data_retrieval.league_urls import *
 app = Flask(__name__)
 
 
+# App Route for the index page of the application
 @app.route('/', methods=['GET', 'POST'])
 def index():
     current_league = "Premiership"
