@@ -6,8 +6,9 @@ body {
 
 /* Remove the navbar's default margin-bottom and rounded borders */
 .navbar{
-  margin-bottom: 0;
-  border-radius: 0;
+    margin-bottom: 0;
+    border-radius: 0;
+    position: sticky;
 }
 
 /*change colour of links on hover*/

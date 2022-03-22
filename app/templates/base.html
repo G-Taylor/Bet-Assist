@@ -11,19 +11,28 @@
     </head>
     <body>
 
-{#    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">#}
-{#        <a class="navbar-brand" href="/">Bet Assist</a>#}
-{#        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">#}
-{#            <span class="navbar-toggler-icon"></span>#}
-{#          </button>#}
-{#        <div class="collapse navbar-collapse" id="myNavbar">#}
-{#            <ul class="navbar-nav mr-auto">#}
-{#                <li {%  if request.path == '/' %}#}
-{#                    class="nav-item active" {% else %} class="nav-item" {% endif %}>#}
-{#                    <a class="nav-link" href="/">Home</a></li>#}
-{#            </ul>#}
-{#        </div>#}
-{#    </nav>#}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+        <a class="navbar-brand" href="/">Bet Assist</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="navbar-nav mr-auto">
+                <li {%  if request.path == '/' %}
+                    class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li {%  if request.path == '/allgames' %}
+                    class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                    <a class="nav-link" href="/allgames">All Games</a>
+                </li>
+                <li {%  if request.path == '/suggestedgames' %}
+                    class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                    <a class="nav-link" href="/suggestedgames">Suggested Games</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
     <div class="container-fluid ">
     <div class="row d-flex d-md-block flex-nowrap wrapper overflow-auto">
         <div class="col-md-3 float-left col-1 pl-0 pr-0 width show" id="sidebar-wrapper">
