@@ -20,7 +20,7 @@
             <ul class="navbar-nav mr-auto">
                 <li {%  if request.path == '/' %}
                     class="nav-item active" {% else %} class="nav-item" {% endif %}>
-                    <a class="nav-link" href="/">Home</a>
+                    <a class="nav-link" href="/index">Home</a>
                 </li>
                 <li {%  if request.path == '/all_games' %}
                     class="nav-item active" {% else %} class="nav-item" {% endif %}>
@@ -34,6 +34,7 @@
         </div>
     </nav>
     <div class="container-fluid ">
+    {% if request.path != '/' %}
     <div class="row d-flex d-md-block flex-nowrap wrapper overflow-auto">
         <div class="col-md-3 float-left col-1 pl-0 pr-0 width show" id="sidebar-wrapper">
             <div class="list-group border-0 text-md-left leagues">
@@ -100,6 +101,7 @@
             </div>
         </div>
     </div>
+    {% endif %}
     <br>
         <div class="container-fluid col-md-9 text-center" style="padding-left: 10%">
             {% block content %}{% endblock %}
