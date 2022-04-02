@@ -491,3 +491,7 @@ body {
   transition-timing-function: ease-out;
 }
 
+.modal-backdrop {
+  z-index: -1;
+}
+
