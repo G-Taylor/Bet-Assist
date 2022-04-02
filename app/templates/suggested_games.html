@@ -4,7 +4,7 @@
     <h1>{{ current_league }}</h1>
     <h2>Over 2.5 / BTTS</h2>
     {% for result in results %}
-        {% if results[result]['total_average_goals'] > '6'  %}
+        {% if results[result]['total_average_goals'] > '3'  %}
         <div class="fixture-teams">
             <p class="goals">
                 ({{ current_standings.get( results[result]['home_team'] ) }})

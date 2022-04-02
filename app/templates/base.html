@@ -11,7 +11,7 @@
     </head>
     <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" role="navigation">
         <a class="navbar-brand" href="/">Bet Assist</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,7 +20,7 @@
             <ul class="navbar-nav mr-auto">
                 <li {%  if request.path == '/' %}
                     class="nav-item active" {% else %} class="nav-item" {% endif %}>
-                    <a class="nav-link" href="/index">Home</a>
+                    <a class="nav-link" href="/">Home</a>
                 </li>
                 <li {%  if request.path == '/all_games' %}
                     class="nav-item active" {% else %} class="nav-item" {% endif %}>
