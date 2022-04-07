@@ -12,7 +12,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-
+# implement response caching
 # App Route for the index page of the application
 @app.route('/suggested_games', methods=['GET', 'POST'])
 def suggested_games():
