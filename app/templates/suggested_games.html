@@ -3,21 +3,6 @@
 {% block content %}
     <h1>{{ current_league }}</h1>
     <h2>Over 2.5 / BTTS</h2>
-    <div class="modal fade" id="myOutput" role="dialog">
-        <div class="modal-dialog modal-lg">
-
-          <!-- Modal content-->
-          <div class="modal-content">
-            <div class="modal-body">
-              <div id="fs-standings"></div> <script> (function (w,d,s,o,f,js,fjs) { w['fsStandingsEmbed']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) }; js = d.createElement(s), fjs = d.getElementsByTagName(s)[0]; js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs); }(window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js')); mw('params', { leagueID: {{ table_id }} }); </script>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-
-        </div>
-    </div>
     {% for result in results %}
         {% if results[result]['total_average_goals'] > '3'  %}
         <div class="fixture-teams">
@@ -61,6 +46,21 @@
         <br>
         {% endif %}
     {% endfor %}
+    <div class="modal fade" id="myOutput" role="dialog">
+        <div class="modal-dialog modal-lg">
+
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-body">
+              <div id="fs-standings"></div> <script> (function (w,d,s,o,f,js,fjs) { w['fsStandingsEmbed']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) }; js = d.createElement(s), fjs = d.getElementsByTagName(s)[0]; js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs); }(window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js')); mw('params', { leagueID: {{ table_id }} }); </script>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+    </div>
     {% if table_id != 0000 %}
     <button type="button" id="table_button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myOutput">Show Table</button>
     {% endif %}
