@@ -408,6 +408,8 @@ body {
   background: no-repeat center center;
   height: 2em;
   color: transparent;
+  float: left;
+  text-align: left;
 }
 
 /*#sidebar-wrapper {*/
@@ -531,7 +533,7 @@ body {
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 0; /* Behind the navbar */
+  z-index: 1; /* Behind the navbar */
   padding: 48px 0 0; /* Height of navbar */
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }
@@ -561,6 +563,7 @@ body {
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
+  background-color: transparent;
 }
 
 .sidebar .nav-link .feather {

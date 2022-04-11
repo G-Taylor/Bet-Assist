@@ -129,33 +129,34 @@
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div class="sidebar-sticky pt-3 accordion">
         <ul class="nav flex-column" id="nav_accordion">
+            <form action="" method="post">
             <li class="nav-item has-submenu">
                 <a class="nav-link dropdown-btn" href="#">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Premiership" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='premier-league.png') }}" >  Premier League
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">
-                            <img class="logo" src="{{ url_for('static', filename='championship.png') }}" >  Championship
-                        </a>
+                        <button name="league" value="Championship" class="nav-link">
+                            <img class="logo" src="{{ url_for('static', filename='championship.png') }}" > Championship
+                        </button>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="League 1" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='league1.png') }}" >  League 1
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="League 2" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='league2.png') }}" >  League 2
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="National League" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='national.png') }}" >  National League
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -163,9 +164,9 @@
                 <a class="nav-link dropdown-btn" href="#">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Scottish Premiership" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='scotprem.png') }}" > Premiership
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -173,9 +174,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇪🇸 Spain  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="La Liga" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='laliga.png') }}" > La Liga
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -183,9 +184,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇩🇪 Germany  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Bundesliga" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='bundesliga.png') }}" > Bundesliga
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -193,9 +194,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇫🇷 France  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Ligue 1" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='ligue1.png') }}" > Ligue 1
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -203,9 +204,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇮🇹 Italy  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Serie A" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='seriea.png') }}" > Serie A
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -213,9 +214,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇳🇱 Netherlands  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Eredivisie" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='eredivisie.png') }}" > Eredivisie
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -223,9 +224,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇺🇸 USA  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="MLS" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='mls.png') }}" > MLS
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -233,9 +234,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇧🇪 Belgium  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Jupiler Pro League" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='jupiler.png') }}" > Jupiler Pro League
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -243,9 +244,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇭🇺 Hungary  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Hungarian NB1" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='nb1.png') }}" > NB-1
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -253,9 +254,9 @@
                 <a class="nav-link dropdown-btn" href="#">🇦🇷 Argentina  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Argentina Superliga" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='superliga.png') }}" > Superliga
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
@@ -263,17 +264,18 @@
                 <a class="nav-link dropdown-btn" href="#">🇪🇺 Europe  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Champions League" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='championsleague.png') }}" > Champions League
-                        </a>
+                        </button>
                     </li>
                     <li>
-                        <a class="nav-link" href="#">
+                        <button name="league" value="Europa League" class="nav-link">
                             <img class="logo" src="{{ url_for('static', filename='europaleague.png') }}" > Europa League
-                        </a>
+                        </button>
                     </li>
                 </ul>
             </li>
+        </form>
         </ul>
       </div>
     </nav>
@@ -289,11 +291,11 @@
               <p class="text-center"><span>&#169; Bet Assist 2022</span></p>
           </div>
         </div>
-{#        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+{#        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
         {% block scripts %}
         {% endblock %}
         <script>
