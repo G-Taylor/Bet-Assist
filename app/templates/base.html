@@ -35,97 +35,180 @@
     </nav>
     <div class="container-fluid ">
     {% if request.path != '/' %}
-    <div class="row d-flex d-md-block flex-nowrap wrapper overflow-auto">
-        <div class="col-md-3 float-left col-1 pl-0 pr-0 width show" id="sidebar-wrapper">
-            <div class="list-group border-0 text-md-left leagues">
-                <form action="" method="post">
-                    <button class="logo-button" type="submit" name="league" value="Premiership">
-                        <img class="logo-button" src="{{ url_for('static', filename='premier-league.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button" type="submit" name="league" value="Championship">
-                        <img class="logo-button" src="{{ url_for('static', filename='championship.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="League 1">
-                        <img class="logo-button" src="{{ url_for('static', filename='league1.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="League 2">
-                        <img class="logo-button" src="{{ url_for('static', filename='league2.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="National League">
-                        <img class="logo-button" src="{{ url_for('static', filename='national.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Scottish Premiership">
-                        <img class="logo-button" src="{{ url_for('static', filename='scotprem.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="La Liga">
-                        <img class="logo-button" src="{{ url_for('static', filename='laliga.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Bundesliga">
-                        <img class="logo-button" src="{{ url_for('static', filename='bundesliga.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Ligue 1">
-                        <img class="logo-button" src="{{ url_for('static', filename='ligue1.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Serie A">
-                        <img class="logo-button" src="{{ url_for('static', filename='seriea.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Eredivisie">
-                        <img class="logo-button" src="{{ url_for('static', filename='eredivisie.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="MLS">
-                        <img class="logo-button" src="{{ url_for('static', filename='mls.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Jupiler Pro League">
-                        <img class="logo-button" src="{{ url_for('static', filename='jupiler.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Hungarian NB1">
-                        <img class="logo-button" src="{{ url_for('static', filename='nb1.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Argentina Superliga">
-                        <img class="logo-button" src="{{ url_for('static', filename='superliga.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Champions League">
-                        <img class="logo-button" src="{{ url_for('static', filename='championsleague.png') }}" >
-                    </button>
-                </form>
-                <form action="" method="post">
-                    <button class="logo-button"  name="league" value="Europa League">
-                        <img class="logo-button" src="{{ url_for('static', filename='europaleague.png') }}" >
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
+{#    <div class="row d-flex d-md-block flex-nowrap wrapper overflow-auto">#}
+{#        <div class="col-md-3 float-left col-1 pl-0 pr-0 width show" id="sidebar-wrapper">#}
+{#            <div class="list-group border-0 text-md-left leagues">#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button" type="submit" name="league" value="Premiership">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='premier-league.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button" type="submit" name="league" value="Championship">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='championship.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="League 1">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='league1.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="League 2">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='league2.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="National League">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='national.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Scottish Premiership">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='scotprem.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="La Liga">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='laliga.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Bundesliga">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='bundesliga.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Ligue 1">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='ligue1.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Serie A">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='seriea.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Eredivisie">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='eredivisie.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="MLS">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='mls.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Jupiler Pro League">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='jupiler.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Hungarian NB1">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='nb1.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Argentina Superliga">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='superliga.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Champions League">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='championsleague.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#                <form action="" method="post">#}
+{#                    <button class="logo-button"  name="league" value="Europa League">#}
+{#                        <img class="logo-button" src="{{ url_for('static', filename='europaleague.png') }}" >#}
+{#                    </button>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <div class="sidebar-sticky pt-3 accordion">
+        <ul class="nav flex-column" id="nav_accordion">
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> England </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Premier League </a></li>
+                    <li><a class="nav-link" href="#">Championship </a></li>
+                    <li><a class="nav-link" href="#">League 1 </a> </li>
+                    <li><a class="nav-link" href="#">League 2 </a> </li>
+                    <li><a class="nav-link" href="#">National League </a> </li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Scotland  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Scottish Premiership </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Spain  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">La Liga </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Germany  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Bundesliga </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> France  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Ligue 1 </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Italy  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Serie A </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Netherlands  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Eredivisie </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> USA  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">MLS </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Belgium  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Jupiler Pro League </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Hungary  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">NB-1 </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#"> Argentina  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Superliga </a></li>
+                </ul>
+            </li>
+            <li class="nav-item has-submenu">
+                <a class="nav-link dropdown-btn" href="#">🇪🇺 Europe  </a>
+                <ul class="submenu collapse dropdown-container">
+                    <li><a class="nav-link" href="#">Champions League </a></li>
+                    <li><a class="nav-link" href="#">Europa League </a></li>
+                </ul>
+            </li>
+        </ul>
+      </div>
+    </nav>
     {% endif %}
     <br>
         <div class="container-fluid col-md-9 text-center" style="padding-left: 10%">
@@ -138,10 +221,28 @@
               <p class="text-center"><span>&#169; Bet Assist 2022</span></p>
           </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+{#        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         {% block scripts %}
         {% endblock %}
+        <script>
+            var dropdown = document.getElementsByClassName("dropdown-btn");
+            var i;
+
+            for (i = 0; i < dropdown.length; i++) {
+              dropdown[i].addEventListener("click", function() {
+              this.classList.toggle("active");
+              var dropdownContent = this.nextElementSibling;
+              if (dropdownContent.style.display === "block") {
+              dropdownContent.style.display = "none";
+              } else {
+              dropdownContent.style.display = "block";
+              }
+              });
+            }
+        </script>
     </body>
 </html>
