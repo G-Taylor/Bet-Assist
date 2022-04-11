@@ -403,6 +403,13 @@ body {
   color: transparent;
 }
 
+.logo {
+  padding-top: 0;
+  background: no-repeat center center;
+  height: 2em;
+  color: transparent;
+}
+
 /*#sidebar-wrapper {*/
 /*    min-height: 100vh;*/
 /*    height: 100vh; !* Add height *!*/
