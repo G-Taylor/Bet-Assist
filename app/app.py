@@ -3,6 +3,7 @@ from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *
 from data_retrieval.league_ids import *
+from data_retrieval.league_logos import *
 
 app = Flask(__name__)
 
@@ -17,11 +18,11 @@ def index():
 @app.route('/suggested_games', methods=['GET', 'POST'])
 def suggested_games():
     current_league = "Premiership"
-    league, table_id = set_league_info(current_league)
+    league, table_id, logo = set_league_info(current_league)
 
     if request.method == "POST":
         current_league = request.form.get('league')
-        league, table_id = set_league_info(current_league)
+        league, table_id, logo = set_league_info(current_league)
 
     reset_all_value_stores()
     get_games_played(f"{league}results/")
@@ -39,7 +40,8 @@ def suggested_games():
                            results=results,
                            current_league=current_league,
                            current_standings=current_standings,
-                           table_id=table_id
+                           table_id=table_id,
+                           logo=logo
                            )
 
 
@@ -47,11 +49,11 @@ def suggested_games():
 @app.route('/all_games', methods=['GET', 'POST'])
 def all_games():
     current_league = "Premiership"
-    league, table_id = set_league_info(current_league)
+    league, table_id, logo = set_league_info(current_league)
 
     if request.method == "POST":
         current_league = request.form.get('league')
-        league, table_id = set_league_info(current_league)
+        league, table_id, logo = set_league_info(current_league)
 
     reset_all_value_stores()
     get_games_played(f"{league}results/")
@@ -69,15 +71,17 @@ def all_games():
                            results=results,
                            current_league=current_league,
                            current_standings=current_standings,
-                           table_id=table_id
+                           table_id=table_id,
+                           logo=logo
                            )
 
 
 def set_league_info(current_league):
     league = f"{WEBSITE_URL}{leagues[current_league]}"
     table_id = league_ids[current_league]
+    logo = league_logos[current_league]
 
-    return league, table_id
+    return league, table_id, logo
 
 
 if __name__ == '__main__':

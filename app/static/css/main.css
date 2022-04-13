@@ -412,6 +412,13 @@ body {
   text-align: left;
 }
 
+.main_logo {
+  padding-top: 0;
+  background: no-repeat center center;
+  height: 4em;
+  color: transparent;
+}
+
 /*#sidebar-wrapper {*/
 /*    min-height: 100vh;*/
 /*    height: 100vh; !* Add height *!*/
@@ -564,6 +571,7 @@ body {
   font-weight: 500;
   color: #333;
   background-color: transparent;
+  transition: all 1s ease;
 }
 
 .sidebar .nav-link .feather {
@@ -573,6 +581,8 @@ body {
 
 .sidebar .nav-link.active {
   color: #007bff;
+  background-color: lightgray;
+  transition: all 1s ease;
 }
 
 .sidebar .nav-link:hover .feather,
@@ -592,10 +602,12 @@ body {
 }
 
 .sidebar li .submenu{
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	padding-left: .5rem;
-	padding-right: .5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding-left: .5rem;
+  padding-right: .5rem;
+  border-bottom: solid 1px darkgrey;
+  transition: all 1.5s ease;
 }
 
