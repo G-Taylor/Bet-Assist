@@ -5,45 +5,46 @@
     <h2>Over 2.5 / BTTS</h2>
     {% for result in results %}
         {% if results[result]['total_average_goals'] > '3'  %}
-        <div class="fixture-teams">
-            <p class="goals">
-                ({{ current_standings.get( results[result]['home_team'] ) }})
-                {{ results[result]['home_team'] }} vs {{ results[result]['away_team'] }}
-                     ({{ current_standings.get( results[result]['away_team'] ) }})
-            </p>
-            <p>Total Goal Average: {{ results[result]['total_average_goals'] }} </p>
-            <br>
+        <div class="card">
+            <div class="card-body">
+                <div class="fixture-teams">
+                    <p class="goals">
+                        ({{ current_standings.get( results[result]['home_team'] ) }})
+                        {{ results[result]['home_team'] }} vs {{ results[result]['away_team'] }}
+                             ({{ current_standings.get( results[result]['away_team'] ) }})
+                    </p>
+                    <p>Total Goal Average: {{ results[result]['total_average_goals'] }} </p>
+                    <br>
+                </div>
+                <div>
+                    <div class="game-results">
+                        <p class="goals{% if results[result]['home_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['home_average_goals'] }}</p>
+                        {% for item in results[result]['home_results']  %}
+                            {% for game in item %}
+                                <p class="{{ game }}">{{ game }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                        <p class="goals{% if results[result]['home_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['home_goals_scored'] }}</p>
+                        <p class="goals{% if results[result]['home_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['home_goals_conceded'] }}</p>
+                    </div>
+                    <div class="fixture-teams">
+                        <p> vs </p>
+                        <br>
+                        <br>
+                    </div>
+                    <div class="game-results">
+                        <p class="goals{% if results[result]['away_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['away_average_goals'] }}</p>
+                        {% for item in results[result]['away_results']  %}
+                            {% for game in item %}
+                                <p class="{{ game }}">{{ game }}</p>
+                            {% endfor %}
+                        {% endfor %}
+                        <p class="goals{% if results[result]['away_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['away_goals_scored'] }}</p>
+                        <p class="goals{% if results[result]['away_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['away_goals_conceded'] }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div>
-            <div class="game-results">
-                <p class="goals{% if results[result]['home_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['home_average_goals'] }}</p>
-                {% for item in results[result]['home_results']  %}
-                    {% for game in item %}
-                        <p class="{{ game }}">{{ game }}</p>
-                    {% endfor %}
-                {% endfor %}
-                <p class="goals{% if results[result]['home_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['home_goals_scored'] }}</p>
-                <p class="goals{% if results[result]['home_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['home_goals_conceded'] }}</p>
-            </div>
-            <div class="fixture-teams">
-                <p> vs </p>
-                <br>
-                <br>
-            </div>
-            <div class="game-results">
-                <p class="goals{% if results[result]['away_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['away_average_goals'] }}</p>
-                {% for item in results[result]['away_results']  %}
-                    {% for game in item %}
-                        <p class="{{ game }}">{{ game }}</p>
-                    {% endfor %}
-                {% endfor %}
-                <p class="goals{% if results[result]['away_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['away_goals_scored'] }}</p>
-                <p class="goals{% if results[result]['away_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['away_goals_conceded'] }}</p>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
         {% endif %}
     {% endfor %}
     <div class="modal fade" id="myOutput" role="dialog">
