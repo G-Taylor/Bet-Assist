@@ -13,8 +13,8 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# implement response caching
-# App Route for the index page of the application
+
+# App Route for the suggested games page of the application
 @app.route('/suggested_games', methods=['GET', 'POST'])
 def suggested_games():
     current_league = "Premiership"
@@ -24,17 +24,7 @@ def suggested_games():
         current_league = request.form.get('league')
         league, table_id, logo = set_league_info(current_league)
 
-    reset_all_value_stores()
-    get_games_played(f"{league}results/")
-    get_fixtures(f"{league}fixtures/")
-    get_current_standings(f"{league}standings/")
-    convert_data()
-
-    total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)
-    total_goals_conceded_dict = merge_dict(home_goals_conceded_dict, away_goals_conceded_dict)
-    all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
-
-    results = get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict)
+    results = reset_and_get_new_league_values(league)
 
     return render_template('suggested_games.html',
                            results=results,
@@ -45,7 +35,7 @@ def suggested_games():
                            )
 
 
-# App Route for the index page of the application
+# App Route for the all games page of the application
 @app.route('/all_games', methods=['GET', 'POST'])
 def all_games():
     current_league = "Premiership"
@@ -55,17 +45,7 @@ def all_games():
         current_league = request.form.get('league')
         league, table_id, logo = set_league_info(current_league)
 
-    reset_all_value_stores()
-    get_games_played(f"{league}results/")
-    get_fixtures(f"{league}fixtures/")
-    get_current_standings(f"{league}standings/")
-    convert_data()
-
-    total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)
-    total_goals_conceded_dict = merge_dict(home_goals_conceded_dict, away_goals_conceded_dict)
-    all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
-
-    results = get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict)
+    results = reset_and_get_new_league_values(league)
 
     return render_template('all_games.html',
                            results=results,
@@ -82,6 +62,22 @@ def set_league_info(current_league):
     logo = league_logos[current_league]
 
     return league, table_id, logo
+
+
+def reset_and_get_new_league_values(league):
+    reset_all_value_stores()
+    get_games_played(f"{league}results/")
+    get_fixtures(f"{league}fixtures/")
+    get_current_standings(f"{league}standings/")
+    convert_data()
+
+    total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)
+    total_goals_conceded_dict = merge_dict(home_goals_conceded_dict, away_goals_conceded_dict)
+    all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
+
+    results = get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict)
+
+    return results
 
 
 if __name__ == '__main__':
