@@ -30,6 +30,7 @@ away_fixture_list = []
 # Dictionary for storing the current standings
 current_standings = {}
 
+
 # function to strip useless info and text, and add teams to list
 def strip_and_add_team(team, team_list):
     if team is not None:
@@ -41,8 +42,7 @@ def strip_and_add_team(team, team_list):
 def convert_to_dict(team_list, goal_list, results_dict):
     res = [(team_list[i], goal_list[i]) for i in range(0, len(team_list))]
 
-    for team, goals in res:
-        results_dict.setdefault(team, []).append(goals)
+    [results_dict.setdefault(team, []).append(goals) for team, goals in res]
 
 
 # function to merge dictionaries together
@@ -63,11 +63,8 @@ def get_fixtures(league):
     all_home_matches = results.find_all('td', class_='home uc')
     all_away_matches = results.find_all('td', class_='away uc')
 
-    for match in all_home_matches:
-        strip_and_add_team(match, home_fixture_list)
-
-    for match in all_away_matches:
-        strip_and_add_team(match, away_fixture_list)
+    [strip_and_add_team(match, home_fixture_list) for match in all_home_matches]
+    [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
 
 
 # function to gather goals scored/conceded, and the result
@@ -108,11 +105,8 @@ def get_games_played(league):
     even_matches = results.find_all('tr', class_='even')
     odd_matches = results.find_all('tr', class_='odd')
 
-    for match in even_matches:
-        get_game_data(match)
-
-    for match in odd_matches:
-        get_game_data(match)
+    [get_game_data(match) for match in even_matches]
+    [get_game_data(match) for match in odd_matches]
 
 
 def get_game_data(match):
