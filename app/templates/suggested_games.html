@@ -2,9 +2,9 @@
 {% block title %}Bet Assist Suggested Games{% endblock %}
 {% block content %}
     <h1><img class="main_logo" src="{{ url_for('static', filename=logo) }}" ></h1>
-    <h2>Over 2.5 / BTTS</h2>
+    <h2>Over 2.5</h2>
     {% for result in results %}
-        {% if results[result]['total_average_goals'] > '3'  %}
+        {% if results[result]['total_average_goals'] > '3' %}
         <div class="card">
             <div class="card-body">
                 <div class="fixture-teams">

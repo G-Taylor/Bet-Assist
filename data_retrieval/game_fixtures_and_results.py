@@ -134,7 +134,7 @@ def get_current_standings(league):
         team_name = team.find('div', class_='sp-livetable__tableTeamName')
         position = team.find('div', class_='sp-livetable__tablePosNum')
 
-        current_standings[team_name.text] = position.text
+        current_standings[team_name.text] = int(position.text)
 
 
 def convert_data():
