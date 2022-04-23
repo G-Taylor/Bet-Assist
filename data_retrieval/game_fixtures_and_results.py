@@ -32,10 +32,10 @@ current_standings = {}
 
 
 # function to strip useless info and text, and add teams to list
-def strip_and_add_team(team, team_list):
+def strip_and_add_team(team, team_list, match_date):
     if team is not None:
         team = team.text.strip(" * ()1234567890").split(' (')
-        team_list.append(team[0])
+        team_list.append(team[0], match_date.text)
 
 
 # function to convert any two lists into a dictionary
@@ -62,9 +62,10 @@ def get_fixtures(league):
 
     all_home_matches = results.find_all('td', class_='home uc')
     all_away_matches = results.find_all('td', class_='away uc')
+    match_date = results.find_all('span', class_='kick_t_dt')
 
-    [strip_and_add_team(match, home_fixture_list) for match in all_home_matches]
-    [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
+    [strip_and_add_team(match, home_fixture_list, match_date) for match in all_home_matches]
+    [strip_and_add_team(match, away_fixture_list, match_date) for match in all_away_matches]
 
 
 # function to gather goals scored/conceded, and the result
