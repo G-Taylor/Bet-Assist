@@ -21,8 +21,14 @@ def get_teams_over_2_point_5_new(total_goals_scored_dict, total_goals_conceded_d
             teams_over_2_goals_conceded[team] = avg_goals_conceded
 
 
-# currently finding teams that average over 2.5 total goals
 def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict):
+    """
+    Gets all of the goal info for the upcoming fixtures
+
+    :param total_goals_scored_dict:
+    :param total_goals_conceded_dict:
+    :return:
+    """
     for team in total_goals_scored_dict:
         total_goals = get_total_goals(team, total_goals_scored_dict) + get_total_goals(team, total_goals_conceded_dict)
         games_played = get_dict_length(team, total_goals_scored_dict)
