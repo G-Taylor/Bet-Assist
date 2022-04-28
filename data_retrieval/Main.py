@@ -6,8 +6,15 @@ teams_over_2_goals_scored = {}
 teams_over_2_goals_conceded = {}
 
 
-# currently finding teams that average over 2.5 total goals
 def get_teams_over_2_point_5_new(total_goals_scored_dict, total_goals_conceded_dict):
+    """
+    Old function to get the teams that have an average goal count >= 2.5
+    or have an average goals scored total >= 3 from their last matches
+
+    :param total_goals_scored_dict:
+    :param total_goals_conceded_dict:
+    :return:
+    """
     for team in total_goals_scored_dict:
         total_goals = get_total_goals(team, total_goals_scored_dict) + get_total_goals(team, total_goals_conceded_dict)
         games_played = get_dict_length(team, total_goals_scored_dict)
@@ -41,8 +48,15 @@ def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict):
         teams_over_2_goals_conceded[team] = avg_goals_conceded
 
 
-# Returns the expected matches to be over 2.5 goals or btts
 def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict):
+    """
+    Function that gets key details for each team and adds it to a dictionary 'suggested_matches'
+
+    :param total_goals_scored_dict: dict
+    :param total_goals_conceded_dict: dict
+    :param all_results_dict: dict
+    :return suggested_matches: dict
+    """
     suggested_matches = {}
     get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict)
 
