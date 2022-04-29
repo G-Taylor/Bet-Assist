@@ -52,10 +52,10 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
     """
     Function that gets key details for each team and adds it to a dictionary 'suggested_matches'
 
-    :param total_goals_scored_dict: dict
-    :param total_goals_conceded_dict: dict
-    :param all_results_dict: dict
-    :return suggested_matches: dict
+    :param total_goals_scored_dict: a dictionary containing all of the goals a team has scored in each match
+    :param total_goals_conceded_dict: a dictionary containing all of the goals a team has conceded in each match
+    :param all_results_dict: a dictionary containing win/lost/draw results for each team
+    :return suggested_matches: a dictionary containing upcoming matches and the important information associated with them
     """
     suggested_matches = {}
     get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict)
