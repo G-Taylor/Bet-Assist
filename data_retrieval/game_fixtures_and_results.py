@@ -34,8 +34,8 @@ current_standings = {}
 # function to strip useless info and text, and add teams to list
 def strip_and_add_team(team, team_list):
     if team is not None:
-        team = team.text.strip(" * ()1234567890").split(' (')
-        team_list.append(team[0])
+        team_name = team.find('a')
+        team_list.append(team_name.text)
 
 
 # function to convert any two lists into a dictionary
