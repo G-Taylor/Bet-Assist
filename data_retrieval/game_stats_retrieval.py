@@ -10,6 +10,13 @@ def get_total_goals(team_name, goal_dict):
 
 
 def get_dict_length(team_name, goal_dict):
+    """
+    Gets the length of the dictionary. Each dictionary can possibly contain tuples, so try catch block accounts for that
+
+    :param team_name:
+    :param goal_dict:
+    :return:
+    """
     try:
         length = len(goal_dict[team_name][1])
     except:
