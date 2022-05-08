@@ -14,9 +14,9 @@ def index():
     return render_template('index.html')
 
 
-# App Route for the suggested games page of the application
-@app.route('/suggested_games', methods=['GET', 'POST'])
-def suggested_games():
+# App Route for the Over 2.5 goals games page of the application
+@app.route('/over2', methods=['GET', 'POST'])
+def over2():
     current_league = "Premiership"
     league, table_id, logo = set_league_info(current_league)
 
@@ -26,7 +26,28 @@ def suggested_games():
 
     results = reset_and_get_new_league_values(league)
 
-    return render_template('suggested_games.html',
+    return render_template('over2.html',
+                           results=results,
+                           current_league=current_league,
+                           current_standings=current_standings,
+                           table_id=table_id,
+                           logo=logo
+                           )
+
+
+# App Route for the BTTS games page of the application
+@app.route('/btts', methods=['GET', 'POST'])
+def btts():
+    current_league = "Premiership"
+    league, table_id, logo = set_league_info(current_league)
+
+    if request.method == "POST":
+        current_league = request.form.get('league')
+        league, table_id, logo = set_league_info(current_league)
+
+    results = reset_and_get_new_league_values(league)
+
+    return render_template('btts.html',
                            results=results,
                            current_league=current_league,
                            current_standings=current_standings,
