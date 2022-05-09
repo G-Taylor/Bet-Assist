@@ -31,22 +31,44 @@ away_fixture_list = []
 current_standings = {}
 
 
-# function to strip useless info and text, and add teams to list
 def strip_and_add_team(team, team_list):
+    """
+    function to scrape the team name from the website, and add it to the team_list
+
+    :param team:
+    :param team_list:
+    :return:
+    """
+
     if team is not None:
         team_name = team.find('a')
         team_list.append(team_name.text)
 
 
-# function to convert any two lists into a dictionary
 def convert_to_dict(team_list, goal_list, results_dict):
+    """
+    function to convert any two lists into a dictionary
+
+    :param team_list:
+    :param goal_list:
+    :param results_dict:
+    :return:
+    """
+
     res = [(team_list[i], goal_list[i]) for i in range(0, len(team_list))]
 
     [results_dict.setdefault(team, []).append(goals) for team, goals in res]
 
 
-# function to merge dictionaries together
 def merge_dict(dict1, dict2):
+    """
+    function to merge dictionaries together
+
+    :param dict1:
+    :param dict2:
+    :return:
+    """
+
     dict3 = {**dict1, **dict2}
     for key, value in dict3.items():
         if key in dict1 and key in dict2:
@@ -54,8 +76,14 @@ def merge_dict(dict1, dict2):
     return dict3
 
 
-# function used to get upcoming fixtures
 def get_fixtures(league):
+    """
+    function to scrape upcoming fixtures from source website
+
+    :param league:
+    :return:
+    """
+
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find(id='national')
@@ -67,8 +95,14 @@ def get_fixtures(league):
     [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
 
 
-# function to gather goals scored/conceded, and the result
 def get_all_goals_and_wins(home_team_goals):
+    """
+    function to determine goals scored/conceded, and the result for each game
+
+    :param home_team_goals:
+    :return:
+    """
+
     if home_team_goals.text != ' - ':
         goals_scored = int(home_team_goals.text[:1])
         goals_conceded = int(home_team_goals.text[-1:])
@@ -95,8 +129,14 @@ def get_all_goals_and_wins(home_team_goals):
         away_team_results.append('D')
 
 
-# function used to scrape all previous results for each team from the web, and store them in lists
 def get_games_played(league):
+    """
+    function used to scrape all previous results for each team from the web, and store them in lists
+
+    :param league:
+    :return:
+    """
+
     # because of the website that info is scraped from, even rows of tables are done first, then odd rows
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
@@ -110,6 +150,13 @@ def get_games_played(league):
 
 
 def get_game_data(match):
+    """
+    function to get all of the goals for teams in the selected league. The data is added to lists for manipulation
+
+    :param match:
+    :return:
+    """
+
     home_team = match.find('td', class_='home uc')
     home_team_win = match.find('td', class_='home uc winteam')
     home_team_goals = match.find('a', class_='score_link')
@@ -125,6 +172,13 @@ def get_game_data(match):
 
 
 def get_current_standings(league):
+    """
+    function to scrape the current league positions for the currently selected league
+
+    :param league:
+    :return:
+    """
+
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find(id='standings_1a')
@@ -151,6 +205,12 @@ def convert_data():
 
 
 def reset_all_value_stores():
+    """
+    function to reset all dictionary and list values
+
+    :return:
+    """
+
     home_team_list.clear()
     away_team_list.clear()
 
