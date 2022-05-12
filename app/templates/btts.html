@@ -4,7 +4,7 @@
     <h1><img class="main_logo" src="{{ url_for('static', filename=logo) }}" ></h1>
     <h2>Both Teams To Score</h2>
     {% for result in results %}
-        {% if (results[result]['home_goals_scored'] > '1.5' and results[result]['away_goals_scored'] > '1.5') %}
+        {% if (results[result]['home_goals_scored'] > '1.5' and results[result]['home_goals_conceded'] > '0.8') and (results[result]['away_goals_scored'] > '1.5' and results[result]['away_goals_conceded'] > '0.8') %}
         <div class="card">
             <div class="card-body">
                 <div class="fixture-teams">
