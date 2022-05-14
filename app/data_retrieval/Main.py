@@ -1,5 +1,5 @@
-from data_retrieval.game_fixtures_and_results import *
-from data_retrieval.game_stats_retrieval import get_total_goals, get_dict_length
+from .game_fixtures_and_results import *
+from .game_stats_retrieval import get_total_goals, get_dict_length
 
 teams_over_2_goals = {}
 teams_over_2_goals_scored = {}
