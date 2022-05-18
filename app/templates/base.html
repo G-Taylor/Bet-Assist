@@ -47,27 +47,27 @@
                 <a class="nav-link dropdown-btn" href="#">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Premiership" class="nav-link" onclick="buttonClicked(this)" >
+                        <button name="league" value="Premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='premier-league.png') }}" >  Premier League
                         </button>
                     </li>
                     <li>
-                        <button name="league" value="Championship" class="nav-link">
+                        <button role="button" name="league" value="Championship" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='championship.png') }}" > Championship
                         </button>
                     </li>
                     <li>
-                        <button name="league" value="League 1" class="nav-link">
+                        <button name="league" value="League 1" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='league1.png') }}" >  League 1
                         </button>
                     </li>
                     <li>
-                        <button name="league" value="League 2" class="nav-link">
+                        <button name="league" value="League 2" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='league2.png') }}" >  League 2
                         </button>
                     </li>
                     <li>
-                        <button name="league" value="National League" class="nav-link">
+                        <button name="league" value="National League" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='national.png') }}" >  National League
                         </button>
                     </li>
@@ -77,12 +77,12 @@
                 <a class="nav-link dropdown-btn" href="#">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Scottish Premiership" class="nav-link">
+                        <button name="league" value="Scottish Premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='scotprem.png') }}" > Premiership
                         </button>
                     </li>
                     <li>
-                        <button name="league" value="Scottish Championship" class="nav-link">
+                        <button name="league" value="Scottish Championship" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='scotchamp.png') }}" > Championship
                         </button>
                     </li>
@@ -92,7 +92,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇪🇸 Spain  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="La Liga" class="nav-link">
+                        <button name="league" value="La Liga" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='laliga.png') }}" > La Liga
                         </button>
                     </li>
@@ -102,7 +102,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇩🇪 Germany  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Bundesliga" class="nav-link">
+                        <button name="league" value="Bundesliga" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='bundesliga.png') }}" > Bundesliga
                         </button>
                     </li>
@@ -112,7 +112,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇫🇷 France  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Ligue 1" class="nav-link">
+                        <button name="league" value="Ligue 1" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='ligue1.png') }}" > Ligue 1
                         </button>
                     </li>
@@ -122,12 +122,12 @@
                 <a class="nav-link dropdown-btn" href="#">🇮🇹 Italy  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Serie A" class="nav-link">
+                        <button name="league" value="Serie A" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='seriea.png') }}" > Serie A
                         </button>
                     </li>
                     <li>
-                        <button name="league" value="Serie B" class="nav-link">
+                        <button name="league" value="Serie B" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='serieb.png') }}" > Serie B
                         </button>
                     </li>
@@ -137,7 +137,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇳🇱 Netherlands  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Eredivisie" class="nav-link">
+                        <button name="league" value="Eredivisie" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='eredivisie.png') }}" > Eredivisie
                         </button>
                     </li>
@@ -147,7 +147,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇺🇸 USA  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="MLS" class="nav-link">
+                        <button name="league" value="MLS" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='mls.png') }}" > MLS
                         </button>
                     </li>
@@ -157,7 +157,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇧🇪 Belgium  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Jupiler Pro League" class="nav-link">
+                        <button name="league" value="Jupiler Pro League" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='jupiler.png') }}" > Jupiler Pro League
                         </button>
                     </li>
@@ -167,7 +167,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇭🇺 Hungary  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Hungarian NB1" class="nav-link">
+                        <button name="league" value="Hungarian NB1" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='nb1.png') }}" > NB-1
                         </button>
                     </li>
@@ -177,7 +177,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇦🇷 Argentina  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Argentina Superliga" class="nav-link">
+                        <button name="league" value="Argentina Superliga" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='superliga.png') }}" > Superliga
                         </button>
                     </li>
@@ -187,12 +187,12 @@
                 <a class="nav-link dropdown-btn" href="#">🇪🇺 Europe  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="Champions League" class="nav-link">
+                        <button name="league" value="Champions League" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='championsleague.png') }}" > Champions League
                         </button>
                     </li>
                     <li>
-                        <button name="league" value="Europa League" class="nav-link">
+                        <button name="league" value="Europa League" class="nav-link" data-toggle="modal" data-target="#searchingModal">
                             <img class="logo" src="{{ url_for('static', filename='europaleague.png') }}" > Europa League
                         </button>
                     </li>
@@ -214,12 +214,26 @@
               <p class="text-center"><span>&#169; Bet Assist 2022</span></p>
           </div>
         </div>
+        <div class="modal fade" id="searchingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body text-center">
+                <h3 class="text-center">Fetching Matches...</h3>
+                  <div class="d-flex justify-content-center">
+                      <div class="spinner-border" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
-{#        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>#}
-        {% block scripts %}
+
+    {% block scripts %}
         {% endblock %}
         <script>
             var dropdown = document.getElementsByClassName("dropdown-btn");
@@ -238,18 +252,21 @@
             }
         </script>
         <script>
-            var clicked = false;
-
-            function buttonClicked(e) {
-                if (!clicked) {
-                    setTimeout(e, 500);
-                    e.setAttribute("disabled", true)
-                    console.log(e.value);
-                    clicked = true;
-                    e.setAttribute("disabled", false)
-                    clicked = false;
+            $(document).ready(function() {
+              $("form > button").on("submit", function(e) {
+                $("#searchingModal").modal(
+                    {
+                    backdrop: "static", //remove ability to close modal with click
+                    keyboard: false, //remove option to close with keyboard#}
+                    show: true, //Display loader!
+                    zIndex: 1000
                 }
-            }
+                );
+                setTimeout(function() {
+                  $("#searchingModal").modal("hide");
+                }, $(document).ready());
+              });
+            });
         </script>
     </body>
 </html>
