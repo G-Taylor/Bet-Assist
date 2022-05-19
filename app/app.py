@@ -86,6 +86,12 @@ def set_league_info(current_league):
 
 
 def reset_and_get_new_league_values(league):
+    """
+    Function to reset all of the lists and dictionary values in preparation for new league values being populated
+
+    :param league:
+    :return:
+    """
     reset_all_value_stores()
     get_games_played(f"{league}results/")
     get_fixtures(f"{league}fixtures/")
