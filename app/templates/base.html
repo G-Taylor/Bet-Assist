@@ -204,7 +204,7 @@
     </nav>
     {% endif %}
     <br>
-        <div class="container-fluid col-md-9 text-center" style="padding-left: 10%">
+        <div class="container-fluid col-md-{% if request.path != '/' %}9 text-center" style="padding-left: 10%{% else %}12 text-center{% endif %}">
             {% block content %}{% endblock %}
         </div>
     </div>

@@ -611,3 +611,12 @@ body {
   transition: all 1.5s ease;
 }
 
+.jumbotron-fluid {
+  border: 2px solid white;
+  background-color: rgba(10,193,193, .2);
+}
+
+.jumbotron-fluid .container {
+  color: #222222;
+}
+
