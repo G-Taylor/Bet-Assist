@@ -1,7 +1,7 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300,400);
+@import url(https://fonts.googleapis.com/css?family=Nunito:wght@300&Roboto:300,400);
 body {
     margin:0;
-    font-family: sans-serif;
+    font-family: 'Nunito', sans-serif;
 }
 
 /* Remove the navbar's default margin-bottom and rounded borders */
@@ -613,10 +613,23 @@ body {
 
 .jumbotron-fluid {
   border: 2px solid white;
-  background-color: rgba(10,193,193, .2);
+  background-color: #363945;
 }
 
 .jumbotron-fluid .container {
-  color: #222222;
+  color: white;
+}
+
+.jumbotron-fluid:hover {
+  opacity: .7;
+}
+
+#top\ jumbo {
+  background-color: darkseagreen;
+  color: white;
+}
+
+.jumbotron .my-4 {
+  border-color: white;
 }
 
