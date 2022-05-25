@@ -1,5 +1,5 @@
 # fixture URLS
-WEBSITE_URL = 'https://www.scorespro.com/soccer/'
+WEBSITE_URL = 'https://www.flashscore.com/football/'
 leagues = {
     'Premiership': 'england/premier-league/',
     'Championship': 'england/championship/',
