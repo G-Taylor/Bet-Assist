@@ -42,7 +42,7 @@ def strip_and_add_team(team, team_list):
 
     if team is not None:
         # team_name = team.find('a')
-        team_name = team.text
+        team_name = team.find(class_='swap-text__target')
         team_list.append(team_name.text)
 
 
@@ -141,15 +141,14 @@ def get_games_played(league):
     # because of the website that info is scraped from, even rows of tables are done first, then odd rows
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    results = soup.find(class_='sportName soccer')
+    results = soup.find_all('div', class_='fixres__item')
 
     # even_matches = results.find_all('tr', class_='even')
     # odd_matches = results.find_all('tr', class_='odd')
-    matches = results.find_all('div', class_='event__match')
 
     # [get_game_data(match) for match in even_matches]
     # [get_game_data(match) for match in odd_matches]
-    [get_game_data(match) for match in matches]
+    [get_game_data(match) for match in results[:40]]
 
 
 def get_game_data(match):
@@ -166,8 +165,8 @@ def get_game_data(match):
     # away_team = match.find('td', class_='away uc')
     # away_team_win = match.find('td', class_='away uc winteam')
 
-    home_team = match.find('div', class_='event__participant--home')
-    away_team = match.find('div', class_='event__participant--away')
+    home_team = match.find(class_='matches__item-col matches__participant matches__participant--side1')
+    away_team = match.find(class_='matches__item-col matches__participant matches__participant--side2')
     # get_all_goals_and_wins(home_team_goals)
 
     strip_and_add_team(home_team, home_team_list)
