@@ -93,9 +93,9 @@ def reset_and_get_new_league_values(league):
     :return:
     """
     reset_all_value_stores()
-    get_games_played(f"{league}results/")
-    get_fixtures(f"{league}fixtures/")
-    get_current_standings(f"{league}standings/")
+    get_games_played(f"{league}-results/")
+    get_fixtures(f"{league}-fixtures/")
+    get_current_standings(f"{league}-table/")
     convert_data()
 
     total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)

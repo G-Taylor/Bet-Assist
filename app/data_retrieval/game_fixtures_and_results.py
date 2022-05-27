@@ -84,7 +84,7 @@ def get_fixtures(league):
     :param league:
     :return:
     """
-
+    # TODO: Fix fixture retrieval for sky sports
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find(id='national')
@@ -104,9 +104,9 @@ def get_all_goals_and_wins(home_team_goals):
     :return:
     """
 
-    if home_team_goals.text != ' - ':
-        goals_scored = int(home_team_goals.text[:1])
-        goals_conceded = int(home_team_goals.text[-1:])
+    if home_team_goals != ' - ':
+        goals_scored = int(home_team_goals[:1])
+        goals_conceded = int(home_team_goals[-1:])
         home_goals_scored.append(goals_scored)
         away_goals_conceded.append(goals_scored)
         home_goals_conceded.append(goals_conceded)
@@ -167,7 +167,11 @@ def get_game_data(match):
 
     home_team = match.find(class_='matches__item-col matches__participant matches__participant--side1')
     away_team = match.find(class_='matches__item-col matches__participant matches__participant--side2')
-    # get_all_goals_and_wins(home_team_goals)
+    scores = match.find_all(class_='matches__teamscores-side')
+    home_score = scores[0].text.strip()
+    away_score = scores[1].text.strip()
+    match_score = f'{home_score}:{away_score}'
+    get_all_goals_and_wins(match_score)
 
     strip_and_add_team(home_team, home_team_list)
     # strip_and_add_team(home_team_win, home_team_list)
@@ -185,14 +189,17 @@ def get_current_standings(league):
 
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    results = soup.find(id='standings_1a')
-    all_standings = results.find_all('tr', class_='sp-livetable__tableRow spm-dataRow')
+    results = soup.find_all(class_='standing-table__row')
+    # all_standings = results.find_all('tr', class_='sp-livetable__tableRow spm-dataRow')
 
-    for team in all_standings:
-        team_name = team.find('div', class_='sp-livetable__tableTeamName')
-        position = team.find('div', class_='sp-livetable__tablePosNum')
+    for team in results[1:]:
+        # team_name = team.find('div', class_='sp-livetable__tableTeamName')
+        # position = team.find('div', class_='sp-livetable__tablePosNum')
+        position = team.find('td', class_='standing-table__cell')
+        team_name = team.find('td', class_='standing-table__cell--name')
 
-        current_standings[team_name.text] = int(position.text)
+        if team_name.text is not None:
+            current_standings[team_name.text] = int(position.text)
 
 
 def convert_data():
