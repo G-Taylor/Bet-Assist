@@ -85,6 +85,8 @@ def get_fixtures(league):
     :return:
     """
     # TODO: Fix fixture retrieval for sky sports
+
+
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find(id='national')
