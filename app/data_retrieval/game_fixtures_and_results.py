@@ -89,11 +89,20 @@ def get_fixtures(league):
 
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    results = soup.find(id='national')
-
-    all_home_matches = results.find_all('td', class_='home uc')
-    all_away_matches = results.find_all('td', class_='away uc')
-
+    # results = soup.find(id='national')
+    results = soup.find_all('div', class_='fixres__item')
+    all_home_matches = []
+    all_away_matches = []
+    print(results)
+    for match in results:
+        print(match)
+        home_match = match.find(class_='matches__item-col matches__participant matches__participant--side1')
+        away_match = match.find(class_='matches__item-col matches__participant matches__participant--side2')
+        all_home_matches.append(home_match.text)
+        all_away_matches.append(away_match.text)
+    # all_home_matches = results.find_all('td', class_='home uc')
+    # all_away_matches = results.find_all('td', class_='away uc')
+    print(all_home_matches)
     [strip_and_add_team(match, home_fixture_list) for match in all_home_matches]
     [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
 
@@ -144,7 +153,7 @@ def get_games_played(league):
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('div', class_='fixres__item')
-
+    print(results)
     # even_matches = results.find_all('tr', class_='even')
     # odd_matches = results.find_all('tr', class_='odd')
 
