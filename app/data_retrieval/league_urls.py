@@ -13,7 +13,7 @@ leagues = {
     'Serie A': 'italy/serie-a/',
     'Serie B': 'italy/serie-b/',
     'Ligue 1': 'france/ligue-1/',
-    'MLS': 'mls/',
+    'MLS': 'mls',
     'Eredivisie': 'netherlands/eredivisie/',
     'Jupiler Pro League': 'belgium/division-1/',
     'Hungarian NB1': 'hungary/nb-i/',
