@@ -39,9 +39,8 @@ def strip_and_add_team(team, team_list):
     :param team_list:
     :return:
     """
-    # TODO: get this sorted for new fixtures
+
     if team is not None:
-        # team_name = team.find('a')
         team_name = team.find(class_='swap-text__target')
         team_list.append(team_name.text)
 
@@ -57,7 +56,6 @@ def convert_to_dict(team_list, goal_list, results_dict):
     """
 
     res = [(team_list[i], goal_list[i]) for i in range(0, len(team_list))]
-
     [results_dict.setdefault(team, []).append(goals) for team, goals in res]
 
 
@@ -142,8 +140,6 @@ def get_games_played(league):
     :param league:
     :return:
     """
-
-    # because of the website that info is scraped from, even rows of tables are done first, then odd rows
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('div', class_='fixres__item')
@@ -158,13 +154,6 @@ def get_game_data(match):
     :param match:
     :return:
     """
-
-    # home_team = match.find('td', class_='home uc')
-    # home_team_win = match.find('td', class_='home uc winteam')
-    # home_team_goals = match.find('a', class_='score_link')
-    # away_team = match.find('td', class_='away uc')
-    # away_team_win = match.find('td', class_='away uc winteam')
-
     home_team = match.find(class_='matches__item-col matches__participant matches__participant--side1')
     away_team = match.find(class_='matches__item-col matches__participant matches__participant--side2')
     scores = match.find_all(class_='matches__teamscores-side')
@@ -174,9 +163,7 @@ def get_game_data(match):
     get_all_goals_and_wins(match_score)
 
     strip_and_add_team(home_team, home_team_list)
-    # strip_and_add_team(home_team_win, home_team_list)
     strip_and_add_team(away_team, away_team_list)
-    # strip_and_add_team(away_team_win, away_team_list)
 
 
 def get_current_standings(league):
@@ -190,11 +177,8 @@ def get_current_standings(league):
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all(class_='standing-table__row')
-    # all_standings = results.find_all('tr', class_='sp-livetable__tableRow spm-dataRow')
 
     for team in results[1:]:
-        # team_name = team.find('div', class_='sp-livetable__tableTeamName')
-        # position = team.find('div', class_='sp-livetable__tablePosNum')
         position = team.find('td', class_='standing-table__cell')
         team_name = team.find('td', class_='standing-table__cell--name')
 
@@ -203,8 +187,6 @@ def get_current_standings(league):
                 current_standings[team_name.text] = int(position.text)
         except AttributeError as e:
             print(f'Error: {e}')
-        except:
-            pass
 
 
 def convert_data():

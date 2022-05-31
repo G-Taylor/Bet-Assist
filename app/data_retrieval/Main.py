@@ -64,7 +64,7 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
         try:
             home_index = home_fixture_list.index(team)
             for team2 in teams_over_2_goals:
-                if team2 in away_fixture_list:
+                if team2 in away_fixture_list[::-1]:
                     away_index = away_fixture_list.index(team2)
                     if home_index == away_index:
                         suggested_matches[home_index] = {}
