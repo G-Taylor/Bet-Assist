@@ -39,7 +39,7 @@ def strip_and_add_team(team, team_list):
     :param team_list:
     :return:
     """
-
+    # TODO: get this sorted for new fixtures
     if team is not None:
         # team_name = team.find('a')
         team_name = team.find(class_='swap-text__target')
@@ -84,25 +84,19 @@ def get_fixtures(league):
     :param league:
     :return:
     """
-    # TODO: Fix fixture retrieval for sky sports
-
+    all_home_matches = []
+    all_away_matches = []
 
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    # results = soup.find(id='national')
     results = soup.find_all('div', class_='fixres__item')
-    all_home_matches = []
-    all_away_matches = []
-    for match in results[:30]:
+
+    for match in results[:10]:
         home = match.find(class_='matches__item-col matches__participant matches__participant--side1')
-        home_team = home.find(class_='swap-text__target')
         away = match.find(class_='matches__item-col matches__participant matches__participant--side2')
-        away_team = away.find(class_='swap-text__target')
-        print(f'{home_team.text} : {away_team.text}')
-        all_home_matches.append(home_team.text)
-        all_away_matches.append(away_team.text)
-    # all_home_matches = results.find_all('td', class_='home uc')
-    # all_away_matches = results.find_all('td', class_='away uc')
+        all_home_matches.append(home)
+        all_away_matches.append(away)
+
     [strip_and_add_team(match, home_fixture_list) for match in all_home_matches]
     [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
 
@@ -153,12 +147,8 @@ def get_games_played(league):
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('div', class_='fixres__item')
-    # even_matches = results.find_all('tr', class_='even')
-    # odd_matches = results.find_all('tr', class_='odd')
 
-    # [get_game_data(match) for match in even_matches]
-    # [get_game_data(match) for match in odd_matches]
-    [get_game_data(match) for match in results[:40]]
+    [get_game_data(match) for match in results[:60]]
 
 
 def get_game_data(match):
@@ -208,8 +198,13 @@ def get_current_standings(league):
         position = team.find('td', class_='standing-table__cell')
         team_name = team.find('td', class_='standing-table__cell--name')
 
-        if team_name.text is not None:
-            current_standings[team_name.text] = int(position.text)
+        try:
+            if team_name.text is not None:
+                current_standings[team_name.text] = int(position.text)
+        except AttributeError as e:
+            print(f'Error: {e}')
+        except:
+            pass
 
 
 def convert_data():
