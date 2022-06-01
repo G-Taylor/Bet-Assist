@@ -184,7 +184,7 @@ def get_current_standings(league):
 
         try:
             if team_name.text is not None:
-                current_standings[team_name.text] = int(position.text)
+                current_standings[team_name.text.strip()] = int(position.text.strip())
         except AttributeError as e:
             print(f'Error: {e}')
 
