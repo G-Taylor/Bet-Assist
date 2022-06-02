@@ -90,8 +90,8 @@ def get_fixtures(league):
     results = soup.find_all('div', class_='fixres__item')
 
     for match in results[:10]:
-        home = match.find(class_='matches__item-col matches__participant matches__participant--side1')
-        away = match.find(class_='matches__item-col matches__participant matches__participant--side2')
+        home = match.find(class_='matches__participant--side1')
+        away = match.find(class_='matches__participant--side2')
         all_home_matches.append(home)
         all_away_matches.append(away)
 
@@ -135,7 +135,7 @@ def get_all_goals_and_wins(home_team_goals):
 
 def get_games_played(league):
     """
-    function used to scrape all previous results for each team from the web, and store them in lists
+    function used to scrape all previous results for each team from the sky sports website, and store them in lists
 
     :param league:
     :return:
@@ -154,8 +154,8 @@ def get_game_data(match):
     :param match:
     :return:
     """
-    home_team = match.find(class_='matches__item-col matches__participant matches__participant--side1')
-    away_team = match.find(class_='matches__item-col matches__participant matches__participant--side2')
+    home_team = match.find(class_='matches__participant--side1')
+    away_team = match.find(class_='matches__participant--side2')
     scores = match.find_all(class_='matches__teamscores-side')
     home_score = scores[0].text.strip()
     away_score = scores[1].text.strip()
