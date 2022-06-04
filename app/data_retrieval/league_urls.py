@@ -1,4 +1,4 @@
-# fixture URLS
+# fixture URLS that are used in the various view calls
 WEBSITE_URL = 'https://www.skysports.com/'
 leagues = {
     'Premiership': 'premier-league',
