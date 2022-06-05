@@ -513,7 +513,7 @@ body {
 
 #table_button {
     width: 10%;
-    height: 2.5rem;
+    height: fit-content;
     position: fixed;
     z-index: 1;
     bottom: 10px;
