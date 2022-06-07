@@ -27,9 +27,9 @@ def over2():
     results = reset_and_get_new_league_values(league)
 
     return render_template('over2.html',
-                           results=results,
-                           current_league=current_league,
-                           current_standings=current_standings,
+                           res=results,
+                           league=current_league,
+                           standings=current_standings,
                            table_id=table_id,
                            logo=logo
                            )
