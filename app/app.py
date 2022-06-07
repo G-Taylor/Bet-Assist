@@ -48,9 +48,9 @@ def btts():
     results = reset_and_get_new_league_values(league)
 
     return render_template('btts.html',
-                           results=results,
-                           current_league=current_league,
-                           current_standings=current_standings,
+                           res=results,
+                           league=current_league,
+                           standings=current_standings,
                            table_id=table_id,
                            logo=logo
                            )

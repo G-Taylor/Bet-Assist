@@ -1,46 +1,66 @@
 {% extends "base.html" %}
 {% block title %}Bet Assist BTTS{% endblock %}
 {% block content %}
-    <h1><img class="main_logo" src="{{ url_for('static', filename=logo) }}" ></h1>
+    <h1>
+        <img class="main_logo" src="{{ url_for('static', filename=logo) }}" >
+    </h1>
     <h2>Both Teams To Score</h2>
-    {% for result in results %}
-        {% if (results[result]['home_goals_scored'] > '1.5' and results[result]['home_goals_conceded'] > '0.8') and (results[result]['away_goals_scored'] > '1.5' and results[result]['away_goals_conceded'] > '0.8') %}
+    {% for result in res %}
+        <!-- Filter results to only show qualifying games for btts -->
+        {% if (res[result]['home_goals_scored'] > '1.5' and res[result]['home_goals_conceded'] > '0.8') and
+            (res[result]['away_goals_scored'] > '1.5' and res[result]['away_goals_conceded'] > '0.8') %}
         <div class="card">
             <div class="card-body">
+                <!-- Team standings, names and total goal average -->
                 <div class="fixture-teams">
                     <p class="goals">
-                        ({{ current_standings.get( results[result]['home_team'] ) }})
-                        {{ results[result]['home_team'] }} vs {{ results[result]['away_team'] }}
-                             ({{ current_standings.get( results[result]['away_team'] ) }})
+                        {% if standings.get(res[result]['home_team']) != None %}
+                            ({{ standings.get( res[result]['home_team'] ) }})
+                        {% endif %}
+                            {{ res[result]['home_team'] }} vs {{ res[result]['away_team'] }}
+                        {% if standings.get(res[result]['home_team']) != None %}
+                            ({{ standings.get( res[result]['away_team'] ) }})
+                        {% endif %}
                     </p>
-                    <p>Total Goal Average: {{ results[result]['total_average_goals'] }} </p>
-                    <br>
+                    <p>Total Goal Average: {{ res[result]['total_average_goals'] }} </p><br>
                 </div>
+                <!-- Goals scored, conceded and results for the home team-->
                 <div>
                     <div class="game-results">
-                        <p class="goals{% if results[result]['home_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['home_average_goals'] }}</p>
-                        {% for item in results[result]['home_results']  %}
+                        <p class="goals{% if res[result]['home_average_goals'] > '3' %}-g{% endif %}">
+                            Average Goals: {{ res[result]['home_average_goals'] }}
+                        </p>
+                        {% for item in res[result]['home_results']  %}
                             {% for game in item %}
                                 <p class="{{ game }}">{{ game }}</p>
                             {% endfor %}
                         {% endfor %}
-                        <p class="goals{% if results[result]['home_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['home_goals_scored'] }}</p>
-                        <p class="goals{% if results[result]['home_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['home_goals_conceded'] }}</p>
+                        <p class="goals{% if res[result]['home_goals_scored'] > '1.5' %}-g{% endif %}">
+                            Scored: {{ res[result]['home_goals_scored'] }}
+                        </p>
+                        <p class="goals{% if res[result]['home_goals_conceded'] > '1.5' %}-g{% endif %}">
+                            Conceded: {{ res[result]['home_goals_conceded'] }}
+                        </p>
                     </div>
                     <div class="fixture-teams">
-                        <p> vs </p>
-                        <br>
-                        <br>
+                        <p> vs </p><br><br>
                     </div>
+                    <!-- Goals scored, conceded and results for the away team-->
                     <div class="game-results">
-                        <p class="goals{% if results[result]['away_average_goals'] > '3' %}-g{% endif %}">Average Goals: {{ results[result]['away_average_goals'] }}</p>
-                        {% for item in results[result]['away_results']  %}
+                        <p class="goals{% if res[result]['away_average_goals'] > '3' %}-g{% endif %}">
+                            Average Goals: {{ res[result]['away_average_goals'] }}
+                        </p>
+                        {% for item in res[result]['away_results']  %}
                             {% for game in item %}
                                 <p class="{{ game }}">{{ game }}</p>
                             {% endfor %}
                         {% endfor %}
-                        <p class="goals{% if results[result]['away_goals_scored'] > '1.5' %}-g{% endif %}">Scored: {{results[result]['away_goals_scored'] }}</p>
-                        <p class="goals{% if results[result]['away_goals_conceded'] > '1.5' %}-g{% endif %}">Conceded: {{results[result]['away_goals_conceded'] }}</p>
+                        <p class="goals{% if res[result]['away_goals_scored'] > '1.5' %}-g{% endif %}">
+                            Scored: {{res[result]['away_goals_scored'] }}
+                        </p>
+                        <p class="goals{% if res[result]['away_goals_conceded'] > '1.5' %}-g{% endif %}">
+                            Conceded: {{res[result]['away_goals_conceded'] }}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -49,20 +69,30 @@
     {% endfor %}
     <div class="modal fade" id="myOutput" role="dialog">
         <div class="modal-dialog modal-lg">
-
           <!-- Modal content-->
           <div class="modal-content">
             <div class="modal-body">
-              <div id="fs-standings"></div> <script> (function (w,d,s,o,f,js,fjs) { w['fsStandingsEmbed']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) }; js = d.createElement(s), fjs = d.getElementsByTagName(s)[0]; js.id = o; js.src = f; js.async = 1; fjs.parentNode.insertBefore(js, fjs); }(window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js')); mw('params', { leagueID: {{ table_id }} }); </script>
+              <div id="fs-standings">
+              </div>
+                <script>
+                    (function (w,d,s,o,f,js,fjs)
+                    { w['fsStandingsEmbed']=o;w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments) };
+                        js = d.createElement(s), fjs = d.getElementsByTagName(s)[0];
+                        js.id = o;
+                        js.src = f;
+                        js.async = 1;
+                        fjs.parentNode.insertBefore(js, fjs);
+                    }(window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js'));
+                    mw('params', { leagueID: {{ table_id }} });
+                </script>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
           </div>
-
         </div>
     </div>
     {% if table_id != 0000 %}
-    <button type="button" id="table_button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myOutput">League Table</button>
+        <button type="button" id="table_button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myOutput">League Table</button>
     {% endif %}
 {% endblock %}
