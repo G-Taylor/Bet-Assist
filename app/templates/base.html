@@ -10,28 +10,31 @@
     <style></style>
     </head>
     <body>
-
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark" role="navigation">
         <a class="navbar-brand" href="/">Bet Assist</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-          </button>
+        </button>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="navbar-nav mr-auto">
-                <li {%  if request.path == '/' %}
-                    class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                <li {% if request.path == '/' %} class="nav-item active"
+                    {% else %} class="nav-item"
+                    {% endif %}>
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                <li {%  if request.path == '/all_games' %}
-                    class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                <li {% if request.path == '/all_games' %} class="nav-item active"
+                    {% else %} class="nav-item"
+                    {% endif %}>
                     <a class="nav-link" href="/all_games">All Games</a>
                 </li>
-                <li {%  if request.path == '/over2' %}
-                    class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                <li {% if request.path == '/over2' %} class="nav-item active"
+                    {% else %} class="nav-item"
+                    {% endif %}>
                     <a class="nav-link" href="/over2">Over 2.5 Goals</a>
                 </li>
-                <li {%  if request.path == '/btts' %}
-                    class="nav-item active" {% else %} class="nav-item" {% endif %}>
+                <li {% if request.path == '/btts' %} class="nav-item active"
+                    {% else %} class="nav-item"
+                    {% endif %}>
                     <a class="nav-link" href="/btts">BTTS</a>
                 </li>
             </ul>
@@ -48,22 +51,22 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="Premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='premier-league.png') }}" >  Premier League
+                            <img class="logo" src="{{ url_for('static', filename='premier-league.png') }}">  Premier League
                         </button>
                     </li>
                     <li>
                         <button role="button" name="league" value="Championship" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='championship.png') }}" > Championship
+                            <img class="logo" src="{{ url_for('static', filename='championship.png') }}"> Championship
                         </button>
                     </li>
                     <li>
                         <button name="league" value="League 1" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='league1.png') }}" >  League 1
+                            <img class="logo" src="{{ url_for('static', filename='league1.png') }}">  League 1
                         </button>
                     </li>
                     <li>
                         <button name="league" value="League 2" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='league2.png') }}" >  League 2
+                            <img class="logo" src="{{ url_for('static', filename='league2.png') }}">  League 2
                         </button>
                     </li>
 {#                    <li>#}
@@ -78,12 +81,12 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="Scottish Premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='scotprem.png') }}" > Premiership
+                            <img class="logo" src="{{ url_for('static', filename='scotprem.png') }}"> Premiership
                         </button>
                     </li>
                     <li>
                         <button name="league" value="Scottish Championship" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='scotchamp.png') }}" > Championship
+                            <img class="logo" src="{{ url_for('static', filename='scotchamp.png') }}"> Championship
                         </button>
                     </li>
                 </ul>
@@ -93,7 +96,7 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="La Liga" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='laliga.png') }}" > La Liga
+                            <img class="logo" src="{{ url_for('static', filename='laliga.png') }}"> La Liga
                         </button>
                     </li>
                 </ul>
@@ -103,7 +106,7 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="Bundesliga" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='bundesliga.png') }}" > Bundesliga
+                            <img class="logo" src="{{ url_for('static', filename='bundesliga.png') }}"> Bundesliga
                         </button>
                     </li>
                 </ul>
@@ -113,7 +116,7 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="Ligue 1" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='ligue1.png') }}" > Ligue 1
+                            <img class="logo" src="{{ url_for('static', filename='ligue1.png') }}"> Ligue 1
                         </button>
                     </li>
                 </ul>
@@ -123,7 +126,7 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="Serie A" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='seriea.png') }}" > Serie A
+                            <img class="logo" src="{{ url_for('static', filename='seriea.png') }}"> Serie A
                         </button>
                     </li>
 {#                    <li>#}
@@ -138,7 +141,7 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="Eredivisie" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='eredivisie.png') }}" > Eredivisie
+                            <img class="logo" src="{{ url_for('static', filename='eredivisie.png') }}"> Eredivisie
                         </button>
                     </li>
                 </ul>
@@ -148,7 +151,7 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="MLS" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='mls.png') }}" > MLS
+                            <img class="logo" src="{{ url_for('static', filename='mls.png') }}"> MLS
                         </button>
                     </li>
                 </ul>
@@ -188,12 +191,12 @@
                 <ul class="submenu collapse dropdown-container">
                     <li>
                         <button name="league" value="Champions League" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='championsleague.png') }}" > Champions League
+                            <img class="logo" src="{{ url_for('static', filename='championsleague.png') }}"> Champions League
                         </button>
                     </li>
                     <li>
                         <button name="league" value="Europa League" class="nav-link" data-toggle="modal" data-target="#searchingModal">
-                            <img class="logo" src="{{ url_for('static', filename='europaleague.png') }}" > Europa League
+                            <img class="logo" src="{{ url_for('static', filename='europaleague.png') }}"> Europa League
                         </button>
                     </li>
                 </ul>
@@ -233,8 +236,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
 
-    {% block scripts %}
-        {% endblock %}
+    {% block scripts %}{% endblock %}
         <script>
             var dropdown = document.getElementsByClassName("dropdown-btn");
             var i;
@@ -244,9 +246,9 @@
               this.classList.toggle("active");
               var dropdownContent = this.nextElementSibling;
               if (dropdownContent.style.display === "block") {
-              dropdownContent.style.display = "none";
+                dropdownContent.style.display = "none";
               } else {
-              dropdownContent.style.display = "block";
+                dropdownContent.style.display = "block";
               }
               });
             }
@@ -260,7 +262,7 @@
                     keyboard: false, //remove option to close with keyboard#}
                     show: true, //Display loader!
                     zIndex: 1000
-                }
+                    }
                 );
                 setTimeout(function() {
                   $("#searchingModal").modal("hide");
