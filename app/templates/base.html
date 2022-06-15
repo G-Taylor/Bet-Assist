@@ -37,6 +37,11 @@
                     {% endif %}>
                     <a class="nav-link" href="/btts">BTTS</a>
                 </li>
+                <li {% if request.path == '/teamstowin' %} class="nav-item active"
+                    {% else %} class="nav-item"
+                    {% endif %}>
+                    <a class="nav-link" href="/teamstowin">Teams to Win</a>
+                </li>
             </ul>
         </div>
     </nav>
