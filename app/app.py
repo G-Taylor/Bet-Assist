@@ -46,7 +46,7 @@ def btts():
         league, table_id, logo = set_league_info(current_league)
 
     basic_results = reset_and_get_new_league_values(league)
-    results = filter(basic_results)
+    results = filter(basic_results, put code here)
 
     return render_template('btts.html',
                            res=results,
