@@ -71,7 +71,7 @@ def all_games():
     # prints out the index number for each game
     print([result for result in results])
 
-    # prints out the actual game
+    # prints out the actual game, working on new feature
     print([results[result] for result in results])
 
     return render_template('all_games.html',
