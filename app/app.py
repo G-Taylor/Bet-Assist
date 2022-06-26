@@ -72,7 +72,7 @@ def all_games():
     print([result for result in results])
 
     # prints out the actual game, working on new feature
-    print([results[result] for result in results])
+    print([results[result]['btts'] for result in results])
 
     return render_template('all_games.html',
                            res=results,

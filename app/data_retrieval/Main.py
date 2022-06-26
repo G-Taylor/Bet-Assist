@@ -80,6 +80,8 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
                         suggested_matches[home_index]['away_goals_scored'] = f'{teams_over_2_goals_scored[team2]:.2f}'
                         suggested_matches[home_index]['away_goals_conceded'] = f'{teams_over_2_goals_conceded[team2]:.2f}'
                         suggested_matches[home_index]['total_average_goals'] = f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
+                        suggested_matches[home_index]['btts'] = False
+                        suggested_matches[home_index]['over2.5'] = False
         except ValueError:
             pass
 
