@@ -88,6 +88,19 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
     teams_over_2_goals.clear()
     teams_over_2_goals_scored.clear()
     teams_over_2_goals_conceded.clear()
+
+    check_btts(suggested_matches)
+    # check_over2.5(suggested_matches)
+
     return suggested_matches
+
+
+def check_btts(matches):
+    for match in matches:
+        if (matches[match]['home_goals_scored'] > '1.5' and matches[match]['home_goals_conceded'] > '0.8') \
+                and (matches[match]['away_goals_scored'] > '1.5' and matches[match]['away_goals_conceded'] > '0.8'):
+            matches[match]['btts'] = True
+
+    return matches
 
 
