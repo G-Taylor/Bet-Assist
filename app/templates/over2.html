@@ -7,7 +7,7 @@
     <h2>Over 2.5</h2>
     {% for result in res %}
         <!-- Filter results to only show qualifying games for over 2.5 goals -->
-        {% if res[result]['total_average_goals'] > '3' %}
+        {% if res[result]['over2.5'] == True %}
         <div class="card">
             <div class="card-body">
                 <!-- Team standings, names and total goal average -->

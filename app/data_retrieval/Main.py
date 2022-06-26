@@ -90,7 +90,7 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
     teams_over_2_goals_conceded.clear()
 
     check_btts(suggested_matches)
-    # check_over2.5(suggested_matches)
+    check_over2(suggested_matches)
 
     return suggested_matches
 
@@ -104,3 +104,9 @@ def check_btts(matches):
     return matches
 
 
+def check_over2(matches):
+    for match in matches:
+        if matches[match]['total_average_goals'] > '3':
+            matches[match]['over2.5'] = True
+
+    return matches

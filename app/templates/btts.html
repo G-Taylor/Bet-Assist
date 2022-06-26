@@ -7,8 +7,7 @@
     <h2>Both Teams To Score</h2>
     {% for result in res %}
         <!-- Filter results to only show qualifying games for btts -->
-        {% if (res[result]['home_goals_scored'] > '1.5' and res[result]['home_goals_conceded'] > '0.8') and
-            (res[result]['away_goals_scored'] > '1.5' and res[result]['away_goals_conceded'] > '0.8') %}
+        {% if res[result]['btts'] == True %}
         <div class="card">
             <div class="card-body">
                 <!-- Team standings, names and total goal average -->
