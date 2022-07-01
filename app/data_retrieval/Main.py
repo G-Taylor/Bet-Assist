@@ -100,7 +100,6 @@ def check_btts(matches):
         if (matches[match]['home_goals_scored'] > '1.5' and matches[match]['home_goals_conceded'] > '0.8') \
                 and (matches[match]['away_goals_scored'] > '1.5' and matches[match]['away_goals_conceded'] > '0.8'):
             matches[match]['btts'] = True
-
     return matches
 
 
@@ -108,5 +107,4 @@ def check_over2(matches):
     for match in matches:
         if matches[match]['total_average_goals'] > '3':
             matches[match]['over2.5'] = True
-
     return matches
