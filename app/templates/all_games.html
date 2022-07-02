@@ -4,8 +4,20 @@
     <h1>
         <img class="main_logo" src="{{ url_for('static', filename=logo) }}">
     </h1>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" role="switch" id="checkBTTS">
+      <label class="form-check-label" for="checkBTTS">BTTS</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="checkbox" id="checkOver2">
+      <label class="form-check-label" for="checkOver2">Over 2.5</label>
+    </div>
     {% for result in res %}
-    <div class="card">
+    <div class="card" id={%
+                    if res[result]['btts'] and res[result]['over2.5'] %}0{%
+                    elif res[result]['over2.5']%}1{%
+                    elif res[result]['btts']%}2{%
+                    else %}9{% endif %}>
         <div class="card-body">
             <!-- Team standings, names and total goal average -->
             <div class="fixture-teams">
@@ -61,8 +73,8 @@
                     </p>
                 </div>
                 <div>
-                    <div>BTTS: {{ res[result]['btts'] }}</div>
-                    <div>Over 2.5: {{ res[result]['over2.5'] }}</div>
+                    <div style="display: inline; float: left">BTTS: {{ res[result]['btts'] }}</div>
+                    <div style="display: inline; float: right">Over 2.5: {{ res[result]['over2.5'] }}</div>
                 </div>
             </div>
         </div>
@@ -85,6 +97,45 @@
                             fjs.parentNode.insertBefore(js, fjs);
                         } (window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js'));
                     mw('params', { leagueID: {{ table_id }} });
+                </script>
+                  <script>
+                    const btts = document.querySelector('#checkBTTS');
+                    const over2 = document.querySelector('#checkOver2')
+                    const card = document.getElementsByClassName("card");
+
+                    btts.addEventListener("click", function() {
+                        checkBoth();
+                    });
+
+                    over2.addEventListener("click", function () {
+                        checkBoth();
+                    });
+
+                    function checkBoth() {
+                        for(i = 0; i < card.length; i++) {
+                            if (btts.checked && over2.checked) {
+                                if(card[i].id === "0"){
+                                    card[i].style.display = ""
+                                } else {
+                                    card[i].style.display = "none";
+                                }
+                            } else if(btts.checked){
+                                if(card[i].id === "2"){
+                                    card[i].style.display = ""
+                                } else {
+                                    card[i].style.display = "none";
+                                }
+                            } else if(over2.checked) {
+                                if(card[i].id === "1"){
+                                    card[i].style.display = ""
+                                } else {
+                                    card[i].style.display = "none";
+                                }
+                            } else {
+                                card[i].style.display = "";
+                            }
+                        }
+                    }
                 </script>
             </div>
             <div class="modal-footer">
