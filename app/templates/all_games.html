@@ -72,11 +72,11 @@
                         Conceded: {{res[result]['away_goals_conceded'] }}
                     </p>
                 </div>
-                <div>
-                    <div style="display: inline; float: left">BTTS: {{ res[result]['btts'] }}</div>
-                    <div style="display: inline; float: right">Over 2.5: {{ res[result]['over2.5'] }}</div>
-                </div>
             </div>
+        </div>
+        <div class="outcome-outer">
+            <div class="outcome{% if res[result]['btts'] %}-g{% endif %}" style="padding-right: 15%">BTTS</div>
+            <div class="outcome{% if res[result]['over2.5'] %}-g{% endif %}" style="padding-left: 15%">Over 2.5</div>
         </div>
     </div>
     {% endfor %}

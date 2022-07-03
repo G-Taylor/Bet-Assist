@@ -633,3 +633,22 @@ body {
   border-color: white;
 }
 
+.outcome-outer {
+  padding-bottom: 1.5rem;
+}
+
+.outcome {
+  margin: 0px;
+  color: red;
+  font-weight: bold;
+  display: inline;
+  font-size: large;
+}
+
+.outcome-g {
+  margin: 0px;
+  color: green;
+  font-weight: bold;
+  display: inline;
+  font-size: large;
+}
