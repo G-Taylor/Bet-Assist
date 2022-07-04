@@ -96,6 +96,12 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
 
 
 def check_btts(matches):
+    """
+    Function to set the BTTS boolean value for each match, based on predefined rules
+
+    :param matches:
+    :return:
+    """
     for match in matches:
         if (matches[match]['home_goals_scored'] > '1.5' and matches[match]['home_goals_conceded'] > '0.8') \
                 and (matches[match]['away_goals_scored'] > '1.5' and matches[match]['away_goals_conceded'] > '0.8'):
@@ -104,6 +110,12 @@ def check_btts(matches):
 
 
 def check_over2(matches):
+    """
+    Function to set the Over 2.5 boolean value for each match, based on predefined rules
+
+    :param matches:
+    :return:
+    """
     for match in matches:
         if matches[match]['total_average_goals'] > '3':
             matches[match]['over2.5'] = True
