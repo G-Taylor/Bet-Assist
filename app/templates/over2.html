@@ -6,7 +6,7 @@
     </h1>
     <h2>Over 2.5</h2>
     {% for result in res %}
-        <!-- Filter results to only show qualifying games for over 2.5 goals -->
+        <!-- Filter results to only show qualifying games for over 2.5 goals using over 2.5 bool value-->
         {% if res[result]['over2.5'] == True %}
         <div class="card">
             <div class="card-body">
