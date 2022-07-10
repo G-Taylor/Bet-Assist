@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito:wght@300&Roboto:300,400);
+@import url(https://fonts.googleapis.com/css?family=Nunito:wght@300&Roboto:300,400&family=Orbitron:wght@700);
 body {
     margin:0;
     font-family: 'Nunito', sans-serif;
@@ -635,20 +635,19 @@ body {
 
 .outcome-outer {
   padding-bottom: 1.5rem;
+  font-family: 'Orbitron', sans-serif;
+  font-size: large;
+  font-weight: 700;
 }
 
 .outcome {
   margin: 0px;
   color: red;
-  font-weight: bold;
   display: inline;
-  font-size: large;
 }
 
 .outcome-g {
   margin: 0px;
   color: green;
-  font-weight: bold;
   display: inline;
-  font-size: large;
 }
