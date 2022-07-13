@@ -62,9 +62,9 @@ def all_games(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
-    if request.method == "POST":
-        current_league = cl
-        league, table_id, logo = set_league_info(current_league)
+    # if request.method == "POST":
+    #     current_league = cl
+    #     league, table_id, logo = set_league_info(current_league)
 
     results = reset_and_get_new_league_values(league)
 
