@@ -57,13 +57,13 @@ def btts():
 
 
 # App Route for the all games page of the application
-@app.route('/all_games', methods=['GET', 'POST'])
-def all_games():
-    current_league = "Premiership"
+@app.route('/all_games/<cl>', methods=['GET', 'POST'])
+def all_games(cl):
+    current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
     if request.method == "POST":
-        current_league = request.form.get('league')
+        current_league = cl
         league, table_id, logo = set_league_info(current_league)
 
     results = reset_and_get_new_league_values(league)

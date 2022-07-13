@@ -25,7 +25,7 @@
                 <li {% if request.path == '/all_games' %} class="nav-item active"
                     {% else %} class="nav-item"
                     {% endif %}>
-                    <a class="nav-link" href="/all_games">All Games</a>
+                    <a class="nav-link" onclick="window.location.href='{{ url_for( 'all_games', cl='Premiership') }}';">All Games</a>
                 </li>
                 <li {% if request.path == '/over2' %} class="nav-item active"
                     {% else %} class="nav-item"
@@ -155,7 +155,7 @@
                 <a class="nav-link dropdown-btn" href="#">🇺🇸 USA  </a>
                 <ul class="submenu collapse dropdown-container">
                     <li>
-                        <button name="league" value="MLS" class="nav-link" data-toggle="modal" data-target="#searchingModal">
+                        <button type="button" name="league" value="MLS" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( 'all_games', cl='MLS') }}';">
                             <img class="logo" src="{{ url_for('static', filename='mls.png') }}"> MLS
                         </button>
                     </li>
