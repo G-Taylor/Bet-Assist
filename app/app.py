@@ -15,14 +15,14 @@ def index():
 
 
 # App Route for the Over 2.5 goals games page of the application
-@app.route('/over2', methods=['GET', 'POST'])
-def over2():
-    current_league = "premiership"
+@app.route('/over2/<cl>', methods=['GET', 'POST'])
+def over2(cl):
+    current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
-    if request.method == "POST":
-        current_league = request.form.get('league')
-        league, table_id, logo = set_league_info(current_league)
+    # if request.method == "POST":
+    #     current_league = request.form.get('league')
+    #     league, table_id, logo = set_league_info(current_league)
 
     results = reset_and_get_new_league_values(league)
 
@@ -31,19 +31,20 @@ def over2():
                            league=current_league,
                            standings=current_standings,
                            table_id=table_id,
-                           logo=logo
+                           logo=logo,
+                           page='over2'
                            )
 
 
 # App Route for the BTTS games page of the application
-@app.route('/btts', methods=['GET', 'POST'])
-def btts():
-    current_league = "premiership"
+@app.route('/btts/<cl>', methods=['GET', 'POST'])
+def btts(cl):
+    current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
-    if request.method == "POST":
-        current_league = request.form.get('league')
-        league, table_id, logo = set_league_info(current_league)
+    # if request.method == "POST":
+    #     current_league = request.form.get('league')
+    #     league, table_id, logo = set_league_info(current_league)
 
     results = reset_and_get_new_league_values(league)
 
@@ -52,7 +53,8 @@ def btts():
                            league=current_league,
                            standings=current_standings,
                            table_id=table_id,
-                           logo=logo
+                           logo=logo,
+                           page='btts'
                            )
 
 
@@ -62,9 +64,9 @@ def all_games(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
-    if request.method == "POST":
-        current_league = cl
-        league, table_id, logo = set_league_info(current_league)
+    # if request.method == "POST":
+    #     current_league = cl
+    #     league, table_id, logo = set_league_info(current_league)
 
     results = reset_and_get_new_league_values(league)
 
@@ -73,7 +75,8 @@ def all_games(cl):
                            league=current_league.title(),
                            standings=current_standings,
                            table_id=table_id,
-                           logo=logo
+                           logo=logo,
+                           page='all_games'
                            )
 
 
