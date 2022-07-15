@@ -20,10 +20,6 @@ def over2(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
-    # if request.method == "POST":
-    #     current_league = request.form.get('league')
-    #     league, table_id, logo = set_league_info(current_league)
-
     results = reset_and_get_new_league_values(league)
 
     return render_template('over2.html',
@@ -42,10 +38,6 @@ def btts(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
-    # if request.method == "POST":
-    #     current_league = request.form.get('league')
-    #     league, table_id, logo = set_league_info(current_league)
-
     results = reset_and_get_new_league_values(league)
 
     return render_template('btts.html',
@@ -57,16 +49,12 @@ def btts(cl):
                            page='btts'
                            )
 
-
+# TODO: implement and test caching
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
 def all_games(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
-
-    # if request.method == "POST":
-    #     current_league = cl
-    #     league, table_id, logo = set_league_info(current_league)
 
     results = reset_and_get_new_league_values(league)
 
