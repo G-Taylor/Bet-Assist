@@ -17,7 +17,7 @@ def index():
 # App Route for the Over 2.5 goals games page of the application
 @app.route('/over2', methods=['GET', 'POST'])
 def over2():
-    current_league = "Premiership"
+    current_league = "premiership"
     league, table_id, logo = set_league_info(current_league)
 
     if request.method == "POST":
@@ -38,7 +38,7 @@ def over2():
 # App Route for the BTTS games page of the application
 @app.route('/btts', methods=['GET', 'POST'])
 def btts():
-    current_league = "Premiership"
+    current_league = "premiership"
     league, table_id, logo = set_league_info(current_league)
 
     if request.method == "POST":
@@ -62,15 +62,15 @@ def all_games(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
 
-    # if request.method == "POST":
-    #     current_league = cl
-    #     league, table_id, logo = set_league_info(current_league)
+    if request.method == "POST":
+        current_league = cl
+        league, table_id, logo = set_league_info(current_league)
 
     results = reset_and_get_new_league_values(league)
 
     return render_template('all_games.html',
                            res=results,
-                           league=current_league,
+                           league=current_league.title(),
                            standings=current_standings,
                            table_id=table_id,
                            logo=logo
