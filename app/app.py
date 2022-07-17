@@ -49,7 +49,7 @@ def btts(cl):
                            page='btts'
                            )
 
-# TODO: implement and test caching
+# TODO: implement and test caching. Check to make sure each league/route caches
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
 def all_games(cl):
