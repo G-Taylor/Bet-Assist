@@ -4,18 +4,29 @@ from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *
 from data_retrieval.league_ids import *
 from data_retrieval.league_logos import *
+from flask_caching import Cache
+
+config = {
+    "DEBUG": True,          # some Flask specific configs
+    "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
+    "CACHE_DEFAULT_TIMEOUT": 300
+}
 
 app = Flask(__name__)
-
+# tell Flask to use the above defined config
+app.config.from_mapping(config)
+cache = Cache(app)
 
 # App Route for the index page of the application
 @app.route('/', methods=['GET', 'POST'])
+@cache.cached(timeout=50)
 def index():
     return render_template('index.html')
 
 
 # App Route for the Over 2.5 goals games page of the application
 @app.route('/over2/<cl>', methods=['GET', 'POST'])
+@cache.cached(timeout=50)
 def over2(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
@@ -34,6 +45,7 @@ def over2(cl):
 
 # App Route for the BTTS games page of the application
 @app.route('/btts/<cl>', methods=['GET', 'POST'])
+@cache.cached(timeout=50)
 def btts(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
@@ -49,9 +61,10 @@ def btts(cl):
                            page='btts'
                            )
 
-# TODO: implement and test caching. Check to make sure each league/route caches
+
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
+@cache.cached(timeout=50)
 def all_games(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
