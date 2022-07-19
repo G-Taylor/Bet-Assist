@@ -17,6 +17,7 @@ app = Flask(__name__)
 app.config.from_mapping(config)
 cache = Cache(app)
 
+
 # App Route for the index page of the application
 @app.route('/', methods=['GET', 'POST'])
 @cache.cached(timeout=50)
