@@ -4,27 +4,21 @@
     <h1>
         <img class="main_logo" src="{{ url_for('static', filename=logo) }}">
     </h1>
-{#    <div class="form-check form-check-inline">#}
-{#      <input class="form-check-input" type="checkbox" id="checkOver2">#}
-{#      <label class="form-check-label" for="checkOver2">Over 2.5</label>#}
-{#    </div>#}
-{#    <div class="form-check form-check-inline">#}
-{#      <input class="form-check-input" type="checkbox" role="switch" id="checkBTTS">#}
-{#      <label class="form-check-label" for="checkBTTS">BTTS</label>#}
-{#    </div>#}
-    <div class="form-check form-check-inline">
-        <label class="switch">
-            <input type="checkbox" role="switch" id="checkOver2">
-            <span class="slider round"></span>
-        </label>
-        <label class="form-check-label" for="checkBTTS">Over 2.5</label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="switch">
-            <input type="checkbox" role="switch" id="checkBTTS">
-            <span class="slider round"></span>
-        </label>
-        <label class="form-check-label" for="checkBTTS">BTTS</label>
+    <div>
+        <div class="form-check form-check-inline" style="padding-right: 10%">
+            <label class="switch">
+                <input type="checkbox" role="switch" id="checkOver2">
+                <span class="slider round"></span>
+            </label>
+            <label class="form-check-label" for="checkBTTS">Over 2.5</label>
+        </div>
+        <div class="form-check form-check-inline" style="padding-left: 10%">
+            <label class="switch">
+                <input type="checkbox" role="switch" id="checkBTTS">
+                <span class="slider round"></span>
+            </label>
+            <label class="form-check-label" for="checkBTTS">BTTS</label>
+        </div>
     </div>
     {% for result in res %}
     <div class="card" id={%
