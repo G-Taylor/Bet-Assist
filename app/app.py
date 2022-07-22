@@ -44,7 +44,7 @@ def over2(cl):
                            )
 
 
-# App Route for the BTTS games page of the application
+# App Route for the Both Teams To Score games page of the application
 @app.route('/btts/<cl>', methods=['GET', 'POST'])
 @cache.cached(timeout=50)
 def btts(cl):
