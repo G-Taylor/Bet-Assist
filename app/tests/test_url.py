@@ -1,9 +1,15 @@
 import unittest
 
+import requests
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)
+
+class UrlTestCase(unittest.TestCase):
+
+    # Test base url for scraping data returns a 200 response
+    def test_base_web_url(self):
+        url = 'https://www.skysports.com/'
+        page = requests.get(url)
+        self.assertEqual(page.status_code, 200)
 
 
 if __name__ == '__main__':
