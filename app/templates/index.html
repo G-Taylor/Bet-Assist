@@ -10,21 +10,21 @@
 </div>
 <div class="row">
     <div class="jumbotron jumbotron-fluid col-md-4">
-      <a class="container" href="/all_games" role="button">
+      <a class="container" onclick="window.location.href='{{ url_for( 'all_games', cl='premiership') }}';" role="button">
         <h2 class="display-6">All Games</h2>
           <hr class="my-4">
         <p class="lead">Show all the upcoming fixtures from your chosen league, with the ability to filter games with data toggles</p>
       </a>
     </div>
     <div class="jumbotron jumbotron-fluid col-md-4">
-      <a class="container" href="/over2" role="button">
+      <a class="container" onclick="window.location.href='{{ url_for( 'over2', cl='premiership') }}';" role="button">
         <h2 class="display-6">Over 2.5 Goals</h2>
           <hr class="my-4">
         <p class="lead">Show the fixtures that have a greater chance of having 3 or more goals</p>
       </a>
     </div>
     <div class="jumbotron jumbotron-fluid col-md-4" >
-      <a class="container" href="/btts" role="button">
+      <a class="container" onclick="window.location.href='{{ url_for( 'btts', cl='premiership') }}';" role="button">
         <h2 class="display-6">Both Teams To Score</h2>
           <hr class="my-4">
         <p class="lead">Show the fixtures that have a greater chance of both teams scoring</p>

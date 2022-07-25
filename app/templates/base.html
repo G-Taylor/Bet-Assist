@@ -47,167 +47,169 @@
     </nav>
     <div class="container-fluid ">
     {% if request.path != '/' %}
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3 accordion">
-        <ul class="nav flex-column" id="nav_accordion">
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='premiership') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='premier-league.png') }}">  Premier League
-                        </button>
-                    </li>
-                    <li>
-                        <button role="button" name="league" value="championship" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='championship') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='championship.png') }}"> Championship
-                        </button>
-                    </li>
-                    <li>
-                        <button name="league" value="league 1" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='league 1') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='league1.png') }}">  League 1
-                        </button>
-                    </li>
-                    <li>
-                        <button name="league" value="league 2" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='league 2') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='league2.png') }}">  League 2
-                        </button>
-                    </li>
-{#                    <li>#}
-{#                        <button name="league" value="National League" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
-{#                            <img class="logo" src="{{ url_for('static', filename='national.png') }}" >  National League#}
-{#                        </button>#}
-{#                    </li>#}
-                </ul>
-            </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="scottish premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='scottish premiership') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='scotprem.png') }}"> Premiership
-                        </button>
-                    </li>
-                    <li>
-                        <button name="league" value="Scottish Championship" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='scottish championship') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='scotchamp.png') }}"> Championship
-                        </button>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🇪🇸 Spain  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="la liga" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='la liga') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='laliga.png') }}"> La Liga
-                        </button>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🇩🇪 Germany  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="bundesliga" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='bundesliga') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='bundesliga.png') }}"> Bundesliga
-                        </button>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🇫🇷 France  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="ligue 1" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='ligue 1') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='ligue1.png') }}"> Ligue 1
-                        </button>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🇮🇹 Italy  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="serie a" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='serie a') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='seriea.png') }}"> Serie A
-                        </button>
-                    </li>
-{#                    <li>#}
-{#                        <button name="league" value="Serie B" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
-{#                            <img class="logo" src="{{ url_for('static', filename='serieb.png') }}" > Serie B#}
-{#                        </button>#}
-{#                    </li>#}
-                </ul>
-            </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🇳🇱 Netherlands  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="eredivisie" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='eredivisie') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='eredivisie.png') }}"> Eredivisie
-                        </button>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🇺🇸 USA  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button type="button" name="league" value="mls" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='mls') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='mls.png') }}"> MLS
-                        </button>
-                    </li>
-                </ul>
-            </li>
-{#            <li class="nav-item has-submenu">#}
-{#                <a class="nav-link dropdown-btn" href="#">🇧🇪 Belgium  </a>#}
-{#                <ul class="submenu collapse dropdown-container">#}
-{#                    <li>#}
-{#                        <button name="league" value="Jupiler Pro League" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
-{#                            <img class="logo" src="{{ url_for('static', filename='jupiler.png') }}" > Jupiler Pro League#}
-{#                        </button>#}
-{#                    </li>#}
-{#                </ul>#}
-{#            </li>#}
-{#            <li class="nav-item has-submenu">#}
-{#                <a class="nav-link dropdown-btn" href="#">🇭🇺 Hungary  </a>#}
-{#                <ul class="submenu collapse dropdown-container">#}
-{#                    <li>#}
-{#                        <button name="league" value="Hungarian NB1" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
-{#                            <img class="logo" src="{{ url_for('static', filename='nb1.png') }}" > NB-1#}
-{#                        </button>#}
-{#                    </li>#}
-{#                </ul>#}
-{#            </li>#}
-{#            <li class="nav-item has-submenu">#}
-{#                <a class="nav-link dropdown-btn" href="#">🇦🇷 Argentina  </a>#}
-{#                <ul class="submenu collapse dropdown-container">#}
-{#                    <li>#}
-{#                        <button name="league" value="Argentina Superliga" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
-{#                            <img class="logo" src="{{ url_for('static', filename='superliga.png') }}" > Superliga#}
-{#                        </button>#}
-{#                    </li>#}
-{#                </ul>#}
-{#            </li>#}
-            <li class="nav-item has-submenu">
-                <a class="nav-link dropdown-btn">🇪🇺 Europe  </a>
-                <ul class="submenu collapse dropdown-container">
-                    <li>
-                        <button name="league" value="champions league" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='champions league') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='championsleague.png') }}"> Champions League
-                        </button>
-                    </li>
-                    <li>
-                        <button name="league" value="europa league" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='europa league') }}';">
-                            <img class="logo" src="{{ url_for('static', filename='europaleague.png') }}"> Europa League
-                        </button>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-      </div>
-    </nav>
+    <div class="container-fluid ">
+        <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+          <div class="sidebar-sticky pt-3 accordion">
+            <ul class="nav flex-column" id="nav_accordion">
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🏴󠁧󠁢󠁥󠁮󠁧󠁿 England </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='premiership') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='premier-league.png') }}">  Premier League
+                            </button>
+                        </li>
+                        <li>
+                            <button role="button" name="league" value="championship" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='championship') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='championship.png') }}"> Championship
+                            </button>
+                        </li>
+                        <li>
+                            <button name="league" value="league 1" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='league 1') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='league1.png') }}">  League 1
+                            </button>
+                        </li>
+                        <li>
+                            <button name="league" value="league 2" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='league 2') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='league2.png') }}">  League 2
+                            </button>
+                        </li>
+    {#                    <li>#}
+    {#                        <button name="league" value="National League" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
+    {#                            <img class="logo" src="{{ url_for('static', filename='national.png') }}" >  National League#}
+    {#                        </button>#}
+    {#                    </li>#}
+                    </ul>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🏴󠁧󠁢󠁳󠁣󠁴󠁿 Scotland  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="scottish premiership" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='scottish premiership') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='scotprem.png') }}"> Premiership
+                            </button>
+                        </li>
+                        <li>
+                            <button name="league" value="Scottish Championship" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='scottish championship') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='scotchamp.png') }}"> Championship
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🇪🇸 Spain  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="la liga" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='la liga') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='laliga.png') }}"> La Liga
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🇩🇪 Germany  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="bundesliga" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='bundesliga') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='bundesliga.png') }}"> Bundesliga
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🇫🇷 France  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="ligue 1" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='ligue 1') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='ligue1.png') }}"> Ligue 1
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🇮🇹 Italy  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="serie a" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='serie a') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='seriea.png') }}"> Serie A
+                            </button>
+                        </li>
+    {#                    <li>#}
+    {#                        <button name="league" value="Serie B" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
+    {#                            <img class="logo" src="{{ url_for('static', filename='serieb.png') }}" > Serie B#}
+    {#                        </button>#}
+    {#                    </li>#}
+                    </ul>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🇳🇱 Netherlands  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="eredivisie" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='eredivisie') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='eredivisie.png') }}"> Eredivisie
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🇺🇸 USA  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button type="button" name="league" value="mls" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='mls') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='mls.png') }}"> MLS
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+    {#            <li class="nav-item has-submenu">#}
+    {#                <a class="nav-link dropdown-btn" href="#">🇧🇪 Belgium  </a>#}
+    {#                <ul class="submenu collapse dropdown-container">#}
+    {#                    <li>#}
+    {#                        <button name="league" value="Jupiler Pro League" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
+    {#                            <img class="logo" src="{{ url_for('static', filename='jupiler.png') }}" > Jupiler Pro League#}
+    {#                        </button>#}
+    {#                    </li>#}
+    {#                </ul>#}
+    {#            </li>#}
+    {#            <li class="nav-item has-submenu">#}
+    {#                <a class="nav-link dropdown-btn" href="#">🇭🇺 Hungary  </a>#}
+    {#                <ul class="submenu collapse dropdown-container">#}
+    {#                    <li>#}
+    {#                        <button name="league" value="Hungarian NB1" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
+    {#                            <img class="logo" src="{{ url_for('static', filename='nb1.png') }}" > NB-1#}
+    {#                        </button>#}
+    {#                    </li>#}
+    {#                </ul>#}
+    {#            </li>#}
+    {#            <li class="nav-item has-submenu">#}
+    {#                <a class="nav-link dropdown-btn" href="#">🇦🇷 Argentina  </a>#}
+    {#                <ul class="submenu collapse dropdown-container">#}
+    {#                    <li>#}
+    {#                        <button name="league" value="Argentina Superliga" class="nav-link" data-toggle="modal" data-target="#searchingModal">#}
+    {#                            <img class="logo" src="{{ url_for('static', filename='superliga.png') }}" > Superliga#}
+    {#                        </button>#}
+    {#                    </li>#}
+    {#                </ul>#}
+    {#            </li>#}
+                <li class="nav-item has-submenu">
+                    <a class="nav-link dropdown-btn">🇪🇺 Europe  </a>
+                    <ul class="submenu collapse dropdown-container">
+                        <li>
+                            <button name="league" value="champions league" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='champions league') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='championsleague.png') }}"> Champions League
+                            </button>
+                        </li>
+                        <li>
+                            <button name="league" value="europa league" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='europa league') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='europaleague.png') }}"> Europa League
+                            </button>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+          </div>
+        </nav>
+    </div>
     {% endif %}
     <br>
         <div class="container-fluid col-md-{% if request.path != '/' %}9 text-center" style="padding-left: 10%{% else %}12 text-center{% endif %}">
