@@ -117,6 +117,6 @@ def check_over2(matches):
     :return:
     """
     for match in matches:
-        if matches[match]['total_average_goals'] > '3':
+        if matches[match]['total_average_goals'] > '3.25':
             matches[match]['over2.5'] = True
     return matches
