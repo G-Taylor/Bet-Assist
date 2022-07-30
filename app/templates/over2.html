@@ -11,6 +11,12 @@
         <div class="card">
             <div class="card-body">
                 <!-- Team standings, names and total goal average -->
+                <div class="date-time">
+                    <p>
+                        <span class="date">📅 {{ res[result]['date'] }}</span>
+                        <span class="time">⏰ {{ res[result]['time'] }}</span>
+                    </p>
+                </div>
                 <div class="fixture-teams">
                     <p class="goals">
                         {% if standings.get(res[result]['home_team']) != None %}
@@ -21,10 +27,12 @@
                             ({{ standings.get( res[result]['away_team'] ) }})
                         {% endif %}
                     </p>
-                    <p>Total Goal Average: {{ res[result]['total_average_goals'] }}</p>
                     <br>
                 </div>
                 <!-- Goals scored, conceded and results for the home team-->
+                <p class="goals{% if res[result]['total_average_goals'] > '3.25' %}-g{% endif %}">
+                    Combined Goal Average: {{ res[result]['total_average_goals'] }}
+                </p>
                 <div>
                     <div class="game-results">
                         <p class="goals{% if res[result]['home_average_goals'] > '3' %}-g{% endif %}">

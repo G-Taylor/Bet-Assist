@@ -48,7 +48,7 @@ def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict):
         teams_over_2_goals_conceded[team] = avg_goals_conceded
 
 
-def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict):
+def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_dict, all_results_dict):
     """
     Function that gets key details for each team and adds it to a dictionary 'suggested_matches'
 
@@ -67,7 +67,10 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
                 if team2 in away_fixture_list[::-1]:
                     away_index = away_fixture_list.index(team2)
                     if home_index == away_index:
+                        date, time = get_date_and_time(league, team, team2)
                         suggested_matches[home_index] = {}
+                        suggested_matches[home_index]['date'] = date
+                        suggested_matches[home_index]['time'] = time
                         suggested_matches[home_index]['home_team'] = team
                         suggested_matches[home_index]['home_results'] = all_results_dict[team]
                         suggested_matches[home_index]['home_average_goals'] = f'{teams_over_2_goals[team]:.2f}'
@@ -91,7 +94,6 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
 
     check_btts(suggested_matches)
     check_over2(suggested_matches)
-
     return suggested_matches
 
 

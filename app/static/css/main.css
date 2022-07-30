@@ -327,6 +327,24 @@ body {
   transform: rotate(45deg);
 }
 
+.date-time {
+  font-weight: bold;
+  font-size: larger;
+  display: inline;
+  /*padding-left: 20px;*/
+  /*padding-right: 20px;*/
+}
+
+.date-time .date {
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+
+.date-time .time {
+  padding-left: 40px;
+
+}
+
 .fixture-teams {
   font-weight: bold;
   font-size: larger;

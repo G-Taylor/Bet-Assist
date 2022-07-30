@@ -89,14 +89,31 @@ def get_fixtures(league):
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('div', class_='fixres__item')
 
-    for match in results[:10]:
+    for match in results[:12]:
         home = match.find(class_='matches__participant--side1')
         away = match.find(class_='matches__participant--side2')
+        # date = home.find_previous('h4').text
         all_home_matches.append(home)
         all_away_matches.append(away)
 
     [strip_and_add_team(match, home_fixture_list) for match in all_home_matches]
     [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
+
+
+def get_date_and_time(league, team1, team2):
+    page = requests.get(f'{league}-fixtures')
+    soup = BeautifulSoup(page.content, 'html.parser')
+    results = soup.find_all('div', class_='fixres__item')
+
+    for match in results[:12]:
+        home = match.find(class_='matches__participant--side1')
+        away = match.find(class_='matches__participant--side2')
+
+        if home.text.strip() == team1 and away.text.strip() == team2:
+            date = home.find_previous('h4').text
+            time = match.find(class_='matches__date').text.strip()
+
+            return date, time
 
 
 def get_all_goals_and_wins(home_team_goals):
