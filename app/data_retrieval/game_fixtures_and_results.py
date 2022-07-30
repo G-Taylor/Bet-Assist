@@ -30,6 +30,8 @@ away_fixture_list = []
 # Dictionary for storing the current standings
 current_standings = {}
 
+# Fixture scrape results stored here to prevent constantly querying url
+fixture_scrape_results = []
 
 def strip_and_add_team(team, team_list):
     """
@@ -112,7 +114,6 @@ def get_date_and_time(league, team1, team2):
         if home.text.strip() == team1 and away.text.strip() == team2:
             date = home.find_previous('h4').text
             time = match.find(class_='matches__date').text.strip()
-
             return date, time
 
 
@@ -247,3 +248,4 @@ def reset_all_value_stores():
     total_goals_scored.clear()
     total_goals_conceded.clear()
     current_standings.clear()
+    fixture_scrape_results.clear()
