@@ -30,8 +30,6 @@ away_fixture_list = []
 # Dictionary for storing the current standings
 current_standings = {}
 
-# Fixture scrape results stored here to prevent constantly querying url
-fixture_scrape_results = []
 
 def strip_and_add_team(team, team_list):
     """
@@ -97,7 +95,6 @@ def get_fixtures(league):
 
         home = match.find(class_='matches__participant--side1')
         away = match.find(class_='matches__participant--side2')
-        # date = home.find_previous('h4').text
         all_home_matches.append(home)
         all_away_matches.append(away)
 
@@ -251,4 +248,3 @@ def reset_all_value_stores():
     total_goals_scored.clear()
     total_goals_conceded.clear()
     current_standings.clear()
-    fixture_scrape_results.clear()
