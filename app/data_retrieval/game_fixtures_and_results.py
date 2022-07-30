@@ -92,6 +92,9 @@ def get_fixtures(league):
     results = soup.find_all('div', class_='fixres__item')
 
     for match in results[:12]:
+        if match.find(class_='matches__item-col matches__info').text.strip() != '':
+            continue
+
         home = match.find(class_='matches__participant--side1')
         away = match.find(class_='matches__participant--side2')
         # date = home.find_previous('h4').text
