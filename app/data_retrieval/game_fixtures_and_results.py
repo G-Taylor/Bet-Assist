@@ -101,13 +101,11 @@ def get_fixtures(league):
     [strip_and_add_team(match, home_fixture_list) for match in all_home_matches]
     [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
 
+    return results
 
-def get_date_and_time(league, team1, team2):
-    page = requests.get(f'{league}-fixtures')
-    soup = BeautifulSoup(page.content, 'html.parser')
-    results = soup.find_all('div', class_='fixres__item')
 
-    for match in results[:12]:
+def get_date_and_time(fixture_scrape_data, team1, team2):
+    for match in fixture_scrape_data[:12]:
         home = match.find(class_='matches__participant--side1')
         away = match.find(class_='matches__participant--side2')
 

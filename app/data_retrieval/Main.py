@@ -48,10 +48,12 @@ def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict):
         teams_over_2_goals_conceded[team] = avg_goals_conceded
 
 
-def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_dict, all_results_dict):
+def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_dict, all_results_dict, fixture_scrape_data):
     """
     Function that gets key details for each team and adds it to a dictionary 'suggested_matches'
 
+    :param fixture_scrape_data:
+    :param league:
     :param total_goals_scored_dict: a dictionary containing all of the goals a team has scored in each match
     :param total_goals_conceded_dict: a dictionary containing all of the goals a team has conceded in each match
     :param all_results_dict: a dictionary containing win/lost/draw results for each team
@@ -67,7 +69,7 @@ def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_
                 if team2 in away_fixture_list[::-1]:
                     away_index = away_fixture_list.index(team2)
                     if home_index == away_index:
-                        date, time = get_date_and_time(league, team, team2)
+                        date, time = get_date_and_time(fixture_scrape_data, team, team2)
                         suggested_matches[home_index] = {}
                         suggested_matches[home_index]['date'] = date
                         suggested_matches[home_index]['time'] = time

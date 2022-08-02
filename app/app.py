@@ -99,7 +99,7 @@ def reset_and_get_new_league_values(league):
     """
     reset_all_value_stores()
     get_games_played(f"{league}-results/")
-    get_fixtures(f"{league}-fixtures/")
+    fixture_scrape_data = get_fixtures(f"{league}-fixtures/")
     get_current_standings(f"{league}-table/")
     convert_data()
 
@@ -107,7 +107,12 @@ def reset_and_get_new_league_values(league):
     total_goals_conceded_dict = merge_dict(home_goals_conceded_dict, away_goals_conceded_dict)
     all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
 
-    results = get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_dict, all_results_dict)
+    results = get_suggested_matches(league,
+                                    total_goals_scored_dict,
+                                    total_goals_conceded_dict,
+                                    all_results_dict,
+                                    fixture_scrape_data
+                                    )
 
     return results
 
