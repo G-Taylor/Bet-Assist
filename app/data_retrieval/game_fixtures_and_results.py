@@ -105,14 +105,17 @@ def get_fixtures(league):
 
 
 def get_date_and_time(fixture_scrape_data, team1, team2):
-    for match in fixture_scrape_data[:12]:
-        home = match.find(class_='matches__participant--side1')
-        away = match.find(class_='matches__participant--side2')
+    try:
+        for match in fixture_scrape_data[:12]:
+            home = match.find(class_='matches__participant--side1')
+            away = match.find(class_='matches__participant--side2')
 
-        if home.text.strip() == team1 and away.text.strip() == team2:
-            date = home.find_previous('h4').text
-            time = match.find(class_='matches__date').text.strip()
-            return date, time
+            if home.text.strip() == team1 and away.text.strip() == team2:
+                date = home.find_previous('h4').text
+                time = match.find(class_='matches__date').text.strip()
+                return date, time
+    except:
+        print(f'Error getting date/time')
 
 
 def get_all_goals_and_wins(home_team_goals):
@@ -194,7 +197,7 @@ def get_current_standings(league):
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all(class_='standing-table__row')
 
-    for team in results[1:]:
+    for team in results[:12]:
         position = team.find('td', class_='standing-table__cell')
         team_name = team.find('td', class_='standing-table__cell--name')
 

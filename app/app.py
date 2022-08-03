@@ -100,7 +100,7 @@ def reset_and_get_new_league_values(league):
     reset_all_value_stores()
     get_games_played(f"{league}-results/")
     fixture_scrape_data = get_fixtures(f"{league}-fixtures/")
-    get_current_standings(f"{league}-table/")
+    # get_current_standings(f"{league}-table/")
     convert_data()
 
     total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)
@@ -118,4 +118,4 @@ def reset_and_get_new_league_values(league):
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')

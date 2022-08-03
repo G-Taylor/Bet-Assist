@@ -69,10 +69,16 @@ def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_
                 if team2 in away_fixture_list[::-1]:
                     away_index = away_fixture_list.index(team2)
                     if home_index == away_index:
-                        date, time = get_date_and_time(fixture_scrape_data, team, team2)
                         suggested_matches[home_index] = {}
-                        suggested_matches[home_index]['date'] = date
-                        suggested_matches[home_index]['time'] = time
+
+                        try:
+                            date, time = get_date_and_time(fixture_scrape_data, team, team2)
+                            suggested_matches[home_index]['date'] = date
+                            suggested_matches[home_index]['time'] = time
+                        except TypeError as e:
+                            suggested_matches[home_index]['date'] = ''
+                            suggested_matches[home_index]['time'] = ''
+
                         suggested_matches[home_index]['home_team'] = team
                         suggested_matches[home_index]['home_results'] = all_results_dict[team]
                         suggested_matches[home_index]['home_average_goals'] = f'{teams_over_2_goals[team]:.2f}'
