@@ -20,4 +20,5 @@ leagues = {
     # 'Argentina Superliga': 'argentina/superliga/', not currently supported
     'champions league': 'champions-league',
     'europa league': 'europa-league',
+    'europa conference league': 'europa-conference-league',
 }

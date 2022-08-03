@@ -18,4 +18,5 @@ league_logos = {
     'argentina superliga': 'superliga.png',
     'champions league': 'championsleague.png',
     'europa league': 'europaleague.png',
+    'europa conference league': 'europaconferenceleague.png',
 }

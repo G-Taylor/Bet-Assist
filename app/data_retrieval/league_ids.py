@@ -18,4 +18,5 @@ league_ids = {
     'argentina superliga': 7172,
     'champions league': 7455,
     'europa league': 7985,
+    'europa conference league': 7480,
 }
