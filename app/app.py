@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *
@@ -72,14 +72,34 @@ def all_games(cl):
 
     results = reset_and_get_new_league_values(league)
 
-    return render_template('all_games.html',
-                           res=results,
-                           league=current_league.title(),
-                           standings=current_standings,
-                           table_id=table_id,
-                           logo=logo,
-                           page='all_games'
-                           )
+    return render_template(
+        'all_games.html',
+        res=results,
+        league=current_league.title(),
+        standings=current_standings,
+        table_id=table_id,
+        logo=logo,
+        page='all_games'
+    )
+
+
+# API endpoint for all games
+@app.route('/api/all_games/<cl>', methods=['GET'])
+@cache.cached(timeout=50)
+def all_games_api(cl):
+    current_league = cl
+    league, table_id, logo = set_league_info(current_league)
+
+    results = reset_and_get_new_league_values(league)
+
+    return jsonify(
+        results=results,
+        league=current_league.title(),
+        standings=current_standings,
+        table_id=table_id,
+        logo=logo,
+        page='all_games',
+    )
 
 
 def set_league_info(current_league):

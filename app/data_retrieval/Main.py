@@ -69,30 +69,32 @@ def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_
                 if team2 in away_fixture_list[::-1]:
                     away_index = away_fixture_list.index(team2)
                     if home_index == away_index:
-                        suggested_matches[home_index] = {}
+                        fixture = f'{team} vs {team2}'
+                        suggested_matches[fixture] = {}
 
                         try:
                             date, time = get_date_and_time(fixture_scrape_data, team, team2)
-                            suggested_matches[home_index]['date'] = date
-                            suggested_matches[home_index]['time'] = time
+                            suggested_matches[fixture]['date'] = date
+                            suggested_matches[fixture]['time'] = time
                         except TypeError as e:
-                            suggested_matches[home_index]['date'] = ''
-                            suggested_matches[home_index]['time'] = ''
+                            print(f'Error getting date/time - {e}')
+                            suggested_matches[fixture]['date'] = ''
+                            suggested_matches[fixture]['time'] = ''
 
-                        suggested_matches[home_index]['home_team'] = team
-                        suggested_matches[home_index]['home_results'] = all_results_dict[team]
-                        suggested_matches[home_index]['home_average_goals'] = f'{teams_over_2_goals[team]:.2f}'
-                        suggested_matches[home_index]['home_goals_scored'] = f'{teams_over_2_goals_scored[team]:.2f}'
-                        suggested_matches[home_index]['home_goals_conceded'] = f'{teams_over_2_goals_conceded[team]:.2f}'
+                        suggested_matches[fixture]['home_team'] = team
+                        suggested_matches[fixture]['home_results'] = all_results_dict[team]
+                        suggested_matches[fixture]['home_average_goals'] = f'{teams_over_2_goals[team]:.2f}'
+                        suggested_matches[fixture]['home_goals_scored'] = f'{teams_over_2_goals_scored[team]:.2f}'
+                        suggested_matches[fixture]['home_goals_conceded'] = f'{teams_over_2_goals_conceded[team]:.2f}'
 
-                        suggested_matches[home_index]['away_team'] = team2
-                        suggested_matches[home_index]['away_results'] = all_results_dict[team2]
-                        suggested_matches[home_index]['away_average_goals'] = f'{teams_over_2_goals[team2]:.2f}'
-                        suggested_matches[home_index]['away_goals_scored'] = f'{teams_over_2_goals_scored[team2]:.2f}'
-                        suggested_matches[home_index]['away_goals_conceded'] = f'{teams_over_2_goals_conceded[team2]:.2f}'
-                        suggested_matches[home_index]['total_average_goals'] = f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
-                        suggested_matches[home_index]['btts'] = False
-                        suggested_matches[home_index]['over2.5'] = False
+                        suggested_matches[fixture]['away_team'] = team2
+                        suggested_matches[fixture]['away_results'] = all_results_dict[team2]
+                        suggested_matches[fixture]['away_average_goals'] = f'{teams_over_2_goals[team2]:.2f}'
+                        suggested_matches[fixture]['away_goals_scored'] = f'{teams_over_2_goals_scored[team2]:.2f}'
+                        suggested_matches[fixture]['away_goals_conceded'] = f'{teams_over_2_goals_conceded[team2]:.2f}'
+                        suggested_matches[fixture]['total_average_goals'] = f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
+                        suggested_matches[fixture]['btts'] = False
+                        suggested_matches[fixture]['over2.5'] = False
         except ValueError:
             pass
 
