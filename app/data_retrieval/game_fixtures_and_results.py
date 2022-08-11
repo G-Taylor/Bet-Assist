@@ -1,4 +1,7 @@
+import re
+
 import requests
+from dateutil.parser import parse
 from bs4 import BeautifulSoup
 
 # lists and dictionaries used for storing results
@@ -89,7 +92,7 @@ def get_fixtures(league):
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('div', class_='fixres__item')
 
-    for match in results[:12]:
+    for match in results[:16]:
         if match.find(class_='matches__item-col matches__info').text.strip() != '':
             continue
 
@@ -106,14 +109,16 @@ def get_fixtures(league):
 
 def get_date_and_time(fixture_scrape_data, team1, team2):
     try:
-        for match in fixture_scrape_data[:12]:
+        for match in fixture_scrape_data[:16]:
             home = match.find(class_='matches__participant--side1')
             away = match.find(class_='matches__participant--side2')
 
             if home.text.strip() == team1 and away.text.strip() == team2:
                 date = home.find_previous('h4').text
+                parsed_date = parse(date).date()
+                print(parsed_date)
                 time = match.find(class_='matches__date').text.strip()
-                return date, time
+                return date, time, parsed_date
     except:
         print(f'Error getting date/time')
 
@@ -197,7 +202,7 @@ def get_current_standings(league):
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all(class_='standing-table__row')
 
-    for team in results[:12]:
+    for team in results[:16]:
         position = team.find('td', class_='standing-table__cell')
         team_name = team.find('td', class_='standing-table__cell--name')
 

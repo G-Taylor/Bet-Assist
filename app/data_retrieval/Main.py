@@ -1,5 +1,7 @@
 from .game_fixtures_and_results import *
 from .game_stats_retrieval import get_total_goals, get_dict_length
+from collections import OrderedDict
+from datetime import datetime
 
 teams_over_2_goals = {}
 teams_over_2_goals_scored = {}
@@ -73,13 +75,15 @@ def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_
                         suggested_matches[fixture] = {}
 
                         try:
-                            date, time = get_date_and_time(fixture_scrape_data, team, team2)
+                            date, time, parsed_date = get_date_and_time(fixture_scrape_data, team, team2)
                             suggested_matches[fixture]['date'] = date
                             suggested_matches[fixture]['time'] = time
+                            suggested_matches[fixture]['parsed_date'] = parsed_date
                         except TypeError as e:
                             print(f'Error getting date/time - {e}')
                             suggested_matches[fixture]['date'] = ''
                             suggested_matches[fixture]['time'] = ''
+                            suggested_matches[fixture]['parsed_date'] = ''
 
                         suggested_matches[fixture]['home_team'] = team
                         suggested_matches[fixture]['home_results'] = all_results_dict[team]
@@ -104,6 +108,7 @@ def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_
 
     check_btts(suggested_matches)
     check_over2(suggested_matches)
+    suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: x[1]['parsed_date']))
     return suggested_matches
 
 

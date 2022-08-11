@@ -5,6 +5,7 @@ from data_retrieval.league_urls import *
 from data_retrieval.league_ids import *
 from data_retrieval.league_logos import *
 from flask_caching import Cache
+from operator import attrgetter
 
 config = {
     "DEBUG": True,          # some Flask specific configs
@@ -138,4 +139,4 @@ def reset_and_get_new_league_values(league):
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')
