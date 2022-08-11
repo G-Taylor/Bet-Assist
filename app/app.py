@@ -5,7 +5,6 @@ from data_retrieval.league_urls import *
 from data_retrieval.league_ids import *
 from data_retrieval.league_logos import *
 from flask_caching import Cache
-from operator import attrgetter
 
 config = {
     "DEBUG": True,          # some Flask specific configs

@@ -1,5 +1,3 @@
-import re
-
 import requests
 from dateutil.parser import parse
 from bs4 import BeautifulSoup

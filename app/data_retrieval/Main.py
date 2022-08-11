@@ -1,7 +1,6 @@
 from .game_fixtures_and_results import *
 from .game_stats_retrieval import get_total_goals, get_dict_length
 from collections import OrderedDict
-from datetime import datetime
 
 teams_over_2_goals = {}
 teams_over_2_goals_scored = {}
