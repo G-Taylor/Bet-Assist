@@ -49,7 +49,7 @@ def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict):
         teams_over_2_goals_conceded[team] = avg_goals_conceded
 
 
-def get_suggested_matches(league, total_goals_scored_dict, total_goals_conceded_dict, all_results_dict, fixture_scrape_data):
+def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict, fixture_scrape_data):
     """
     Function that gets key details for each team and adds it to a dictionary 'suggested_matches'
 

@@ -83,7 +83,7 @@ def all_games(cl):
     )
 
 
-# API endpoint for all games
+# API endpoint for all games function
 @app.route('/api/all_games/<cl>', methods=['GET'])
 @cache.cached(timeout=50)
 def all_games_api(cl):
@@ -127,12 +127,10 @@ def reset_and_get_new_league_values(league):
     total_goals_conceded_dict = merge_dict(home_goals_conceded_dict, away_goals_conceded_dict)
     all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
 
-    results = get_suggested_matches(league,
-                                    total_goals_scored_dict,
+    results = get_suggested_matches(total_goals_scored_dict,
                                     total_goals_conceded_dict,
                                     all_results_dict,
-                                    fixture_scrape_data
-                                    )
+                                    fixture_scrape_data)
 
     return results
 
