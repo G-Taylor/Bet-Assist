@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, jsonify
 from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *

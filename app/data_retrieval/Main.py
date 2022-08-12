@@ -54,11 +54,11 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
     Function that gets key details for each team and adds it to a dictionary 'suggested_matches'
 
     :param fixture_scrape_data:
-    :param league:
     :param total_goals_scored_dict: a dictionary containing all of the goals a team has scored in each match
     :param total_goals_conceded_dict: a dictionary containing all of the goals a team has conceded in each match
     :param all_results_dict: a dictionary containing win/lost/draw results for each team
-    :return suggested_matches: a dictionary containing upcoming matches and the important information associated with them
+    :return suggested_matches: a dictionary containing upcoming matches and
+            the important information associated with them
     """
     suggested_matches = {}
     get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict)
@@ -95,7 +95,8 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
                         suggested_matches[fixture]['away_average_goals'] = f'{teams_over_2_goals[team2]:.2f}'
                         suggested_matches[fixture]['away_goals_scored'] = f'{teams_over_2_goals_scored[team2]:.2f}'
                         suggested_matches[fixture]['away_goals_conceded'] = f'{teams_over_2_goals_conceded[team2]:.2f}'
-                        suggested_matches[fixture]['total_average_goals'] = f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
+                        suggested_matches[fixture]['total_average_goals'] = \
+                            f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
                         suggested_matches[fixture]['btts'] = False
                         suggested_matches[fixture]['over2.5'] = False
         except ValueError:

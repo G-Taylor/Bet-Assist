@@ -117,8 +117,8 @@ def get_date_and_time(fixture_scrape_data, team1, team2):
                 print(parsed_date)
                 time = match.find(class_='matches__date').text.strip()
                 return date, time, parsed_date
-    except:
-        print(f'Error getting date/time')
+    except TypeError as e:
+        print(f'Error getting date/time from scrape - {e}')
 
 
 def get_all_goals_and_wins(home_team_goals):

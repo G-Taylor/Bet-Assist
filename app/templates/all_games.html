@@ -2,7 +2,7 @@
 {% block title %}Bet Assist All Games{% endblock %}
 {% block content %}
     <h1>
-        <img class="main_logo" src="{{ url_for('static', filename=logo) }}">
+        <img class="main_logo" src="{{ url_for('static', filename=logo) }}" alt="">
     </h1>
     <div>
         <div class="form-check form-check-inline" style="padding-right: 10%">
@@ -129,7 +129,7 @@
 
                     //TODO:  work on algorithm to check card[i] and card[i + 1] to give better results
                     function checkBoth() {
-                        for(i = 0; i < card.length; i++) {
+                        for(let i = 0; i < card.length; i++) {
                             if (btts.checked && over2.checked) {
                                 if(card[i].id === "0"){
                                     card[i].style.display = ""
