@@ -4,12 +4,13 @@ from data_retrieval.game_fixtures_and_results import *
 from data_retrieval.league_urls import *
 from data_retrieval.league_ids import *
 from data_retrieval.league_logos import *
+# from data_retrieval.league_metadata import leagues, WEBSITE_URL
 from flask_caching import Cache
 
 config = {
     "DEBUG": True,          # some Flask specific configs
     "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
-    "CACHE_DEFAULT_TIMEOUT": 300
+    "CACHE_DEFAULT_TIMEOUT": 900
 }
 
 app = Flask(__name__)
@@ -104,9 +105,13 @@ def all_games_api(cl):
 
 def set_league_info(current_league):
     league = f"{WEBSITE_URL}{leagues[current_league]}"
+    # league = f"{WEBSITE_URL}{leagues[current_league]['url']}"
     table_id = league_ids[current_league]
+    # table_id = leagues[current_league]['id']
     logo = league_logos[current_league]
+    # logo = leagues[current_league]['logo']
 
+    # print(f'League Name: {leagues[current_league]["name"]}')
     return league, table_id, logo
 
 
