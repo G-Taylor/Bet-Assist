@@ -1,16 +1,13 @@
 from flask import Flask, render_template, jsonify
 from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
-from data_retrieval.league_urls import *
-from data_retrieval.league_ids import *
-from data_retrieval.league_logos import *
-# from data_retrieval.league_metadata import leagues, WEBSITE_URL
+from data_retrieval.league_metadata import leagues, WEBSITE_URL
 from flask_caching import Cache
 
 config = {
     "DEBUG": True,          # some Flask specific configs
     "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
-    "CACHE_DEFAULT_TIMEOUT": 900
+    "CACHE_DEFAULT_TIMEOUT": 300
 }
 
 app = Flask(__name__)
@@ -66,7 +63,7 @@ def btts(cl):
 
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
-@cache.cached(timeout=50)
+@cache.cached(timeout=900)
 def all_games(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
@@ -104,14 +101,9 @@ def all_games_api(cl):
 
 
 def set_league_info(current_league):
-    league = f"{WEBSITE_URL}{leagues[current_league]}"
-    # league = f"{WEBSITE_URL}{leagues[current_league]['url']}"
-    table_id = league_ids[current_league]
-    # table_id = leagues[current_league]['id']
-    logo = league_logos[current_league]
-    # logo = leagues[current_league]['logo']
-
-    # print(f'League Name: {leagues[current_league]["name"]}')
+    league = f"{WEBSITE_URL}{leagues[current_league]['url']}"
+    table_id = leagues[current_league]['id']
+    logo = leagues[current_league]['logo']
     return league, table_id, logo
 
 

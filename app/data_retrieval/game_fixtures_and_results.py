@@ -114,7 +114,6 @@ def get_date_and_time(fixture_scrape_data, team1, team2):
             if home.text.strip() == team1 and away.text.strip() == team2:
                 date = home.find_previous('h4').text
                 parsed_date = parse(date).date()
-                print(parsed_date)
                 time = match.find(class_='matches__date').text.strip()
                 return date, time, parsed_date
     except TypeError as e:

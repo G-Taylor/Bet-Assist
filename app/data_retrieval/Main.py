@@ -108,7 +108,7 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
 
     check_btts(suggested_matches)
     check_over2(suggested_matches)
-    suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: x[1]['parsed_date']))
+    suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: str(x[1]['parsed_date'])))
     return suggested_matches
 
 
