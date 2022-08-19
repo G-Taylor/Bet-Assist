@@ -1,7 +1,8 @@
 from flask import Flask, render_template, jsonify
+from utilities.merge_two_dicts import MergeDict
 from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
-from data_retrieval.league_metadata import leagues, WEBSITE_URL
+from league_info.league_metadata import leagues, WEBSITE_URL
 from flask_caching import Cache
 
 config = {
@@ -63,7 +64,7 @@ def btts(cl):
 
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
-@cache.cached(timeout=900)
+# @cache.cached(timeout=900)
 def all_games(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
@@ -117,12 +118,11 @@ def reset_and_get_new_league_values(league):
     reset_all_value_stores()
     get_games_played(f"{league}-results/")
     fixture_scrape_data = get_fixtures(f"{league}-fixtures/")
-    # get_current_standings(f"{league}-table/")
     convert_data()
 
-    total_goals_scored_dict = merge_dict(home_goals_scored_dict, away_goals_scored_dict)
-    total_goals_conceded_dict = merge_dict(home_goals_conceded_dict, away_goals_conceded_dict)
-    all_results_dict = merge_dict(away_team_results_dict, home_team_results_dict)
+    total_goals_scored_dict = MergeDict.merge_dicts(home_goals_scored_dict, away_goals_scored_dict)
+    total_goals_conceded_dict = MergeDict.merge_dicts(home_goals_conceded_dict, away_goals_conceded_dict)
+    all_results_dict = MergeDict.merge_dicts(away_team_results_dict, home_team_results_dict)
 
     results = get_suggested_matches(total_goals_scored_dict,
                                     total_goals_conceded_dict,
@@ -133,4 +133,4 @@ def reset_and_get_new_league_values(league):
 
 
 if __name__ == '__main__':
-    app.run(debug=False, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0')

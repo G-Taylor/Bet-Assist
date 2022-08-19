@@ -1,5 +1,4 @@
 import requests
-from dateutil.parser import parse
 from bs4 import BeautifulSoup
 
 # lists and dictionaries used for storing results
@@ -60,22 +59,6 @@ def convert_to_dict(team_list, goal_list, results_dict):
     [results_dict.setdefault(team, []).append(goals) for team, goals in res]
 
 
-def merge_dict(dict1, dict2):
-    """
-    function to merge dictionaries together
-
-    :param dict1:
-    :param dict2:
-    :return:
-    """
-
-    dict3 = {**dict1, **dict2}
-    for key, value in dict3.items():
-        if key in dict1 and key in dict2:
-            dict3[key] = [value, dict1[key]]
-    return dict3
-
-
 def get_fixtures(league):
     """
     function to scrape upcoming fixtures from source website
@@ -103,21 +86,6 @@ def get_fixtures(league):
     [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
 
     return results
-
-
-def get_date_and_time(fixture_scrape_data, team1, team2):
-    try:
-        for match in fixture_scrape_data[:16]:
-            home = match.find(class_='matches__participant--side1')
-            away = match.find(class_='matches__participant--side2')
-
-            if home.text.strip() == team1 and away.text.strip() == team2:
-                date = home.find_previous('h4').text
-                parsed_date = parse(date).date()
-                time = match.find(class_='matches__date').text.strip()
-                return date, time, parsed_date
-    except TypeError as e:
-        print(f'Error getting date/time from scrape - {e}')
 
 
 def get_all_goals_and_wins(home_team_goals):

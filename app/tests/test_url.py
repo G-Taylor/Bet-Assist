@@ -1,6 +1,6 @@
 import unittest
 import requests
-from app.data_retrieval.league_urls import leagues
+from app.league_info.league_urls import leagues
 
 
 class UrlTests(unittest.TestCase):

@@ -1,4 +1,5 @@
 from .game_fixtures_and_results import *
+from .get_match_date_and_time import GetMatchDateAndTime
 from .game_stats_retrieval import get_total_goals, get_dict_length
 from collections import OrderedDict
 
@@ -74,7 +75,8 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
                         suggested_matches[fixture] = {}
 
                         try:
-                            date, time, parsed_date = get_date_and_time(fixture_scrape_data, team, team2)
+                            date, time, parsed_date = GetMatchDateAndTime\
+                                .get_date_and_time(fixture_scrape_data, team, team2)
                             suggested_matches[fixture]['date'] = date
                             suggested_matches[fixture]['time'] = time
                             suggested_matches[fixture]['parsed_date'] = parsed_date
