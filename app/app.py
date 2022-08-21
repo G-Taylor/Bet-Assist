@@ -84,7 +84,7 @@ def all_games(cl):
 
 # API endpoint for all games function
 @app.route('/api/all_games/<cl>', methods=['GET'])
-@cache.cached(timeout=50)
+@cache.cached(timeout=900)
 def all_games_api(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
