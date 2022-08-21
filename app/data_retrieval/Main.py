@@ -1,5 +1,7 @@
 from .game_fixtures_and_results import *
 from .get_match_date_and_time import GetMatchDateAndTime
+from .check_both_teams_to_score import CheckBothTeamsToScore
+from .check_over_two_goals import CheckOverTwoGoals
 from .game_stats_retrieval import get_total_goals, get_dict_length
 from collections import OrderedDict
 
@@ -108,34 +110,7 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
     teams_over_2_goals_scored.clear()
     teams_over_2_goals_conceded.clear()
 
-    check_btts(suggested_matches)
-    check_over2(suggested_matches)
+    CheckBothTeamsToScore.check_btts(suggested_matches)
+    CheckOverTwoGoals.check_over2(suggested_matches)
     suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: str(x[1]['parsed_date'])))
     return suggested_matches
-
-
-def check_btts(matches):
-    """
-    Function to set the BTTS boolean value for each match, based on predefined rules
-
-    :param matches:
-    :return:
-    """
-    for match in matches:
-        if (matches[match]['home_goals_scored'] > '1.5' and matches[match]['home_goals_conceded'] > '0.8') \
-                and (matches[match]['away_goals_scored'] > '1.5' and matches[match]['away_goals_conceded'] > '0.8'):
-            matches[match]['btts'] = True
-    return matches
-
-
-def check_over2(matches):
-    """
-    Function to set the Over 2.5 boolean value for each match, based on predefined rules
-
-    :param matches:
-    :return:
-    """
-    for match in matches:
-        if matches[match]['total_average_goals'] > '3.25':
-            matches[match]['over2.5'] = True
-    return matches
