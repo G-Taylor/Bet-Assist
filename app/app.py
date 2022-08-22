@@ -1,5 +1,6 @@
 from flask import Flask, render_template, jsonify
 from utilities.merge_two_dicts import MergeDict
+from utilities.get_dictionary_length import GetDictionaryLength
 from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
 from league_info.league_metadata import leagues, WEBSITE_URL
@@ -127,7 +128,8 @@ def reset_and_get_new_league_values(league):
     results = get_suggested_matches(total_goals_scored_dict,
                                     total_goals_conceded_dict,
                                     all_results_dict,
-                                    fixture_scrape_data)
+                                    fixture_scrape_data,
+                                    GetDictionaryLength)
 
     return results
 

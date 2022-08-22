@@ -2,7 +2,7 @@ from .game_fixtures_and_results import *
 from .get_match_date_and_time import GetMatchDateAndTime
 from .check_both_teams_to_score import CheckBothTeamsToScore
 from .check_over_two_goals import CheckOverTwoGoals
-from .game_stats_retrieval import get_total_goals, get_dict_length
+from .get_total_goals import GetTotalGoals as totalGoals
 from collections import OrderedDict
 
 teams_over_2_goals = {}
@@ -10,52 +10,37 @@ teams_over_2_goals_scored = {}
 teams_over_2_goals_conceded = {}
 
 
-def get_teams_over_2_point_5_new(total_goals_scored_dict, total_goals_conceded_dict):
-    """
-    Old function to get the teams that have an average goal count >= 2.5
-    or have an average goals scored total >= 3 from their last matches
-
-    :param total_goals_scored_dict:
-    :param total_goals_conceded_dict:
-    :return:
-    """
-    for team in total_goals_scored_dict:
-        total_goals = get_total_goals(team, total_goals_scored_dict) + get_total_goals(team, total_goals_conceded_dict)
-        games_played = get_dict_length(team, total_goals_scored_dict)
-        avg_goals = total_goals / games_played
-        avg_goals_scored = get_total_goals(team, total_goals_scored_dict) / games_played
-        avg_goals_conceded = get_total_goals(team, total_goals_conceded_dict) / games_played
-
-        if avg_goals >= 2.5 or avg_goals_scored >= 3:
-            teams_over_2_goals[team] = avg_goals
-            teams_over_2_goals_scored[team] = avg_goals_scored
-            teams_over_2_goals_conceded[team] = avg_goals_conceded
-
-
-def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict):
+def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict, dictionary_length):
     """
     Gets all of the goal info for the upcoming fixtures
 
+    :param dictionary_length:
     :param total_goals_scored_dict:
     :param total_goals_conceded_dict:
     :return:
     """
     for team in total_goals_scored_dict:
-        total_goals = get_total_goals(team, total_goals_scored_dict) + get_total_goals(team, total_goals_conceded_dict)
-        games_played = get_dict_length(team, total_goals_scored_dict)
+        total_goals = totalGoals.get_total_goals(team, total_goals_scored_dict) + totalGoals.get_total_goals(team, total_goals_conceded_dict)
+        games_played = dictionary_length.get_dict_length(team, total_goals_scored_dict)
         avg_goals = total_goals / games_played
-        avg_goals_scored = get_total_goals(team, total_goals_scored_dict) / games_played
-        avg_goals_conceded = get_total_goals(team, total_goals_conceded_dict) / games_played
+        avg_goals_scored = totalGoals.get_total_goals(team, total_goals_scored_dict) / games_played
+        avg_goals_conceded = totalGoals.get_total_goals(team, total_goals_conceded_dict) / games_played
 
         teams_over_2_goals[team] = avg_goals
         teams_over_2_goals_scored[team] = avg_goals_scored
         teams_over_2_goals_conceded[team] = avg_goals_conceded
 
 
-def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, all_results_dict, fixture_scrape_data):
+def get_suggested_matches(total_goals_scored_dict,
+                          total_goals_conceded_dict,
+                          all_results_dict,
+                          fixture_scrape_data,
+                          dictionary_length
+                          ):
     """
     Function that gets key details for each team and adds it to a dictionary 'suggested_matches'
 
+    :param dictionary_length:
     :param fixture_scrape_data:
     :param total_goals_scored_dict: a dictionary containing all of the goals a team has scored in each match
     :param total_goals_conceded_dict: a dictionary containing all of the goals a team has conceded in each match
@@ -64,7 +49,7 @@ def get_suggested_matches(total_goals_scored_dict, total_goals_conceded_dict, al
             the important information associated with them
     """
     suggested_matches = {}
-    get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict)
+    get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict, dictionary_length)
 
     for team in teams_over_2_goals:
         try:
