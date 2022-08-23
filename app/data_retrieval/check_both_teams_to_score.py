@@ -15,3 +15,25 @@ class CheckBothTeamsToScore:
                     and (matches[match]['away_goals_scored'] > '1.5' and matches[match]['away_goals_conceded'] > '0.8'):
                 matches[match]['btts'] = True
         return matches
+
+    @staticmethod
+    def get_btts_rating(matches, home_goals_scored, home_goals_conceded, away_goals_scored, away_goals_conceded):
+        # print(f'{matches[match]["home_team"]} Scored: {home_goals_scored[matches[match]["home_team"]]} ')
+        # print(f'{matches[match]["home_team"]} Conceded: {home_goals_conceded[matches[match]["home_team"]]} ')
+
+        for team in home_goals_scored.keys():
+            for i in range(len(home_goals_scored.get(team))):
+                if home_goals_scored[team][i] > 0 and home_goals_conceded[team][i] > 0:
+                    print(f'{team} BTTS: {True}')
+                else:
+                    print(f'{team} BTTS: {False}')
+            print(f'{team}: {home_goals_scored.get(team)}')
+            print(f'{team}: {home_goals_conceded.get(team)}')
+
+            for i in range(len(away_goals_scored.get(team))):
+                if away_goals_scored[team][i] > 0 and away_goals_conceded[team][i] > 0:
+                    print(f'{team} BTTS: {True}')
+                else:
+                    print(f'{team} BTTS: {False}')
+            print(f'{team}: {away_goals_scored.get(team)}')
+            print(f'{team}: {away_goals_conceded.get(team)}')

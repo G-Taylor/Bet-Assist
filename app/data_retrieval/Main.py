@@ -87,7 +87,9 @@ def get_suggested_matches(total_goals_scored_dict,
                         suggested_matches[fixture]['total_average_goals'] = \
                             f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
                         suggested_matches[fixture]['btts'] = False
+                        suggested_matches[fixture]['btts_rating'] = 0.0
                         suggested_matches[fixture]['over2.5'] = False
+                        suggested_matches[fixture]['over2.5_rating'] = 0.0
         except ValueError:
             pass
 
@@ -96,6 +98,13 @@ def get_suggested_matches(total_goals_scored_dict,
     teams_over_2_goals_conceded.clear()
 
     CheckBothTeamsToScore.check_btts(suggested_matches)
+    CheckBothTeamsToScore.get_btts_rating(
+        suggested_matches,
+        home_goals_scored_dict,
+        home_goals_conceded_dict,
+        away_goals_scored_dict,
+        away_goals_conceded_dict
+    )
     CheckOverTwoGoals.check_over2(suggested_matches)
     suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: str(x[1]['parsed_date'])))
     return suggested_matches
