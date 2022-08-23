@@ -22,18 +22,31 @@ class CheckBothTeamsToScore:
         # print(f'{matches[match]["home_team"]} Conceded: {home_goals_conceded[matches[match]["home_team"]]} ')
 
         for team in home_goals_scored.keys():
+            number_of_matches = 0.0
+            btts = 0.0
+
             for i in range(len(home_goals_scored.get(team))):
                 if home_goals_scored[team][i] > 0 and home_goals_conceded[team][i] > 0:
                     print(f'{team} BTTS: {True}')
+                    btts += 1
+                    number_of_matches += 1
                 else:
                     print(f'{team} BTTS: {False}')
+                    number_of_matches += 1
             print(f'{team}: {home_goals_scored.get(team)}')
             print(f'{team}: {home_goals_conceded.get(team)}')
 
             for i in range(len(away_goals_scored.get(team))):
                 if away_goals_scored[team][i] > 0 and away_goals_conceded[team][i] > 0:
                     print(f'{team} BTTS: {True}')
+                    btts += 1
+                    number_of_matches += 1
                 else:
                     print(f'{team} BTTS: {False}')
+                    number_of_matches += 1
             print(f'{team}: {away_goals_scored.get(team)}')
             print(f'{team}: {away_goals_conceded.get(team)}')
+            print(f'BTTS: {btts}')
+            print(f'Matches: {number_of_matches}')
+            print(f'{btts/number_of_matches}')
+
