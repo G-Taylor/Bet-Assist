@@ -78,18 +78,21 @@ def get_suggested_matches(total_goals_scored_dict,
                         suggested_matches[fixture]['home_average_goals'] = f'{teams_over_2_goals[team]:.2f}'
                         suggested_matches[fixture]['home_goals_scored'] = f'{teams_over_2_goals_scored[team]:.2f}'
                         suggested_matches[fixture]['home_goals_conceded'] = f'{teams_over_2_goals_conceded[team]:.2f}'
+                        suggested_matches[fixture]['home_team_btts_rating'] = 0
 
                         suggested_matches[fixture]['away_team'] = team2
                         suggested_matches[fixture]['away_results'] = all_results_dict[team2]
                         suggested_matches[fixture]['away_average_goals'] = f'{teams_over_2_goals[team2]:.2f}'
                         suggested_matches[fixture]['away_goals_scored'] = f'{teams_over_2_goals_scored[team2]:.2f}'
                         suggested_matches[fixture]['away_goals_conceded'] = f'{teams_over_2_goals_conceded[team2]:.2f}'
+                        suggested_matches[fixture]['away_team_btts_rating'] = 0
+
                         suggested_matches[fixture]['total_average_goals'] = \
                             f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
-                        suggested_matches[fixture]['btts'] = False
-                        suggested_matches[fixture]['btts_rating'] = 0.0
+                        suggested_matches[fixture]['over2.5_rating'] = 0
+                        suggested_matches[fixture]['match_btts_rating'] = 0
                         suggested_matches[fixture]['over2.5'] = False
-                        suggested_matches[fixture]['over2.5_rating'] = 0.0
+                        suggested_matches[fixture]['btts'] = False
         except ValueError:
             pass
 
@@ -97,14 +100,14 @@ def get_suggested_matches(total_goals_scored_dict,
     teams_over_2_goals_scored.clear()
     teams_over_2_goals_conceded.clear()
 
+    btts_ratings = CheckBothTeamsToScore.get_btts_rating(home_goals_scored_dict,
+                                                         home_goals_conceded_dict,
+                                                         away_goals_scored_dict,
+                                                         away_goals_conceded_dict
+                                                         )
+
+    CheckBothTeamsToScore.assign_btts_ratings(suggested_matches, btts_ratings)
     CheckBothTeamsToScore.check_btts(suggested_matches)
-    CheckBothTeamsToScore.get_btts_rating(
-        suggested_matches,
-        home_goals_scored_dict,
-        home_goals_conceded_dict,
-        away_goals_scored_dict,
-        away_goals_conceded_dict
-    )
     CheckOverTwoGoals.check_over2(suggested_matches)
     suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: str(x[1]['parsed_date'])))
     return suggested_matches
