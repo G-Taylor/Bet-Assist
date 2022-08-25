@@ -218,7 +218,15 @@
     {% endif %}
     <br>
         <div class="container-fluid col-md-{% if request.path != '/' %}9 text-center" style="padding-left: 10%{% else %}12 text-center{% endif %}">
-            {% block content %}{% endblock %}
+            {% block content %}
+                {% block scripts %}
+                    <script>
+                        $(function () {
+                            $('[data-toggle="tooltip"]').tooltip()
+                        })
+                    </script>
+                {% endblock scripts %}
+            {% endblock %}
         </div>
     </div>
         <div class="footer">
@@ -246,7 +254,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js"></script>
 
-    {% block scripts %}{% endblock %}
+{#    {% block scripts %}{% endblock %}#}
         <script>
             let dropdown = document.getElementsByClassName("dropdown-btn");
             let i;

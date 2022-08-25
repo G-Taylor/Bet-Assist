@@ -2,6 +2,7 @@
 body {
     margin:0;
     font-family: 'Nunito', sans-serif;
+    cursor: pointer;
 }
 
 /* Remove the navbar's default margin-bottom and rounded borders */

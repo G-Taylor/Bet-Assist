@@ -90,13 +90,13 @@
                 </div>
             </div>
         </div>
-        <div class="outcome-outer">
+        <div class="outcome-outer" style="padding-bottom: 0px">
             <div class="outcome{% if res[result]['btts'] %}-g{% endif %}" style="padding-right: 15%">BTTS</div>
             <div class="outcome{% if res[result]['over2.5'] %}-g{% endif %}" style="padding-left: 15%">OVER 2.5</div>
         </div>
-        <div class="outcome-outer">
-            <div class="outcome{% if res[result]['btts'] %}-g{% endif %}" style="padding-right: 15%">{{ res[result]['match_btts_rating']}}%</div>
-            <div class="outcome{% if res[result]['over2.5'] %}-g{% endif %}" style="padding-left: 15%">{{ res[result]['over2.5_rating']}}%</div>
+        <div class="outcome-outer" style="padding-top: 0px">
+            <div class="outcome{% if res[result]['btts'] %}-g{% endif %}" style="padding-right: 17%" data-toggle="tooltip" title="% of previous matches that where btts">{{ res[result]['match_btts_rating']}}%</div>
+            <div class="outcome{% if res[result]['over2.5'] %}-g{% endif %}" style="padding-left: 17%" data-toggle="tooltip" title="% of previous matches that where over2.5">{{ res[result]['match_over2_rating']}}%</div>
         </div>
     </div>
     {% endfor %}
