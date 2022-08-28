@@ -67,20 +67,29 @@ def btts(cl):
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
 # @cache.cached(timeout=900)
 def all_games(cl):
-    current_league = cl
-    league, table_id, logo = set_league_info(current_league)
+    try:
+        current_league = cl
+        league, table_id, logo = set_league_info(current_league)
 
-    results = reset_and_get_new_league_values(league)
+        results = reset_and_get_new_league_values(league)
 
-    return render_template(
-        'all_games.html',
-        res=results,
-        league=current_league.title(),
-        standings=current_standings,
-        table_id=table_id,
-        logo=logo,
-        page='all_games'
-    )
+        return render_template(
+            'all_games.html',
+            res=results,
+            league=current_league.title(),
+            standings=current_standings,
+            table_id=table_id,
+            logo=logo,
+            page='all_games'
+        )
+    except KeyError:
+        league = cl
+
+        return render_template(
+            'error.html',
+            league=league,
+            page='all_games'
+        )
 
 
 # API endpoint for all games function
