@@ -29,43 +29,60 @@ def index():
 @app.route('/over2/<cl>', methods=['GET', 'POST'])
 @cache.cached(timeout=50)
 def over2(cl):
-    current_league = cl
-    league, table_id, logo = set_league_info(current_league)
+    try:
+        current_league = cl
+        league, table_id, logo = set_league_info(current_league)
 
-    results = reset_and_get_new_league_values(league)
+        results = reset_and_get_new_league_values(league)
 
-    return render_template('over2.html',
-                           res=results,
-                           league=current_league,
-                           standings=current_standings,
-                           table_id=table_id,
-                           logo=logo,
-                           page='over2'
-                           )
+        return render_template('over2.html',
+                               res=results,
+                               league=current_league,
+                               standings=current_standings,
+                               table_id=table_id,
+                               logo=logo,
+                               page='over2'
+                               )
+    except KeyError:
+        league = cl
 
+        return render_template(
+            'error.html',
+            league=league,
+            page='over2'
+        )
 
 # App Route for the Both Teams To Score games page of the application
 @app.route('/btts/<cl>', methods=['GET', 'POST'])
 @cache.cached(timeout=50)
 def btts(cl):
-    current_league = cl
-    league, table_id, logo = set_league_info(current_league)
+    try:
+        current_league = cl
+        league, table_id, logo = set_league_info(current_league)
 
-    results = reset_and_get_new_league_values(league)
+        results = reset_and_get_new_league_values(league)
 
-    return render_template('btts.html',
-                           res=results,
-                           league=current_league,
-                           standings=current_standings,
-                           table_id=table_id,
-                           logo=logo,
-                           page='btts'
-                           )
+        return render_template('btts.html',
+                               res=results,
+                               league=current_league,
+                               standings=current_standings,
+                               table_id=table_id,
+                               logo=logo,
+                               page='btts'
+                               )
+    except KeyError:
+        league = cl
+
+        return render_template(
+            'error.html',
+            league=league,
+            page='btts'
+        )
 
 
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
-# @cache.cached(timeout=900)
+@cache.cached(timeout=900)
 def all_games(cl):
     try:
         current_league = cl
