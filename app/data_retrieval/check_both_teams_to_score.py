@@ -10,17 +10,11 @@ class CheckBothTeamsToScore:
         :param matches:
         :return:
         """
-        # for match in matches:
-        #     if (matches[match]['home_goals_scored'] > '1.5' and matches[match]['home_goals_conceded'] > '0.8') \
-        #             and (matches[match]['away_goals_scored'] > '1.5' and matches[match]['away_goals_conceded'] > '0.8'):
-        #         matches[match]['btts'] = True
-        # return matches
-
         for match in matches:
-            if (matches[match]['home_goals_scored'] >= '1.5' and matches[match]['home_goals_conceded'] > '0.8') \
-                                and (matches[match]['away_goals_scored'] >= '1.5' and matches[match]['away_goals_conceded'] > '0.8'):
-                if matches[match]['match_btts_rating'] >= 70:
-                    matches[match]['btts'] = True
+            if matches[match]['home_goals_scored'] >= '1.5' and matches[match]['home_goals_conceded'] > '0.8':
+                if matches[match]['away_goals_scored'] >= '1.5' and matches[match]['away_goals_conceded'] > '0.8':
+                    if matches[match]['match_btts_rating'] >= 70:
+                        matches[match]['btts'] = True
         return matches
 
     @staticmethod
@@ -52,7 +46,6 @@ class CheckBothTeamsToScore:
 
             percentage_rating = int((btts/number_of_matches) * 100)
             btts_rating[team] = percentage_rating
-
         return btts_rating
 
     @staticmethod
@@ -65,5 +58,4 @@ class CheckBothTeamsToScore:
             matches[match]['home_team_btts_rating'] = home_team_rating
             matches[match]['away_team_btts_rating'] = away_team_rating
             matches[match]['match_btts_rating'] = match_btts_rating
-
         return matches
