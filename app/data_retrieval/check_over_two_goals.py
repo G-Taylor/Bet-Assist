@@ -32,7 +32,7 @@ class CheckOverTwoGoals:
                         over2 += 1
                     number_of_matches += 1
             except TypeError as e:
-                print(e)
+                print(f'Error in over 2.5 home_goals_scored: {e}')
 
             try:
                 if len(away_goals_scored.get(team)) is not None:
@@ -41,7 +41,7 @@ class CheckOverTwoGoals:
                             over2 += 1
                         number_of_matches += 1
             except TypeError as e:
-                print(e)
+                print(f'Error in over 2.5 away_goals_scored: {e}')
 
             percentage_rating = int((over2 / number_of_matches) * 100)
             over2_rating[team] = percentage_rating
