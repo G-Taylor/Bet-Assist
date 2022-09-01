@@ -12,7 +12,7 @@ class CheckBothTeamsToScore:
         """
         for match in matches:
             if matches[match]['home_goals_scored'] >= '1.5' and matches[match]['home_goals_conceded'] > '0.8':
-                if matches[match]['away_goals_scored'] >= '1.5' and matches[match]['away_goals_conceded'] > '0.8':
+                if matches[match]['away_goals_scored'] >= '1.5' and matches[match]['away_goals_conceded'] > '0.5':
                     if matches[match]['match_btts_rating'] >= 70:
                         matches[match]['btts'] = True
         return matches
