@@ -76,6 +76,7 @@ def get_suggested_matches(total_goals_scored_dict,
                         suggested_matches[fixture]['home_team'] = team
                         suggested_matches[fixture]['home_results'] = all_results_dict[team]
                         suggested_matches[fixture]['home_average_goals'] = f'{teams_over_2_goals[team]:.2f}'
+                        # suggested_matches[fixture]['home_average_goals'] = round(teams_over_2_goals[team], 2)
                         suggested_matches[fixture]['home_goals_scored'] = f'{teams_over_2_goals_scored[team]:.2f}'
                         suggested_matches[fixture]['home_goals_conceded'] = f'{teams_over_2_goals_conceded[team]:.2f}'
                         suggested_matches[fixture]['home_team_btts_rating'] = 0
