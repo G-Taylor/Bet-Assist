@@ -12,7 +12,7 @@ class CheckOverTwoGoals:
         """
         for match in matches:
             if matches[match]['match_over2_rating'] >= 70:
-                if matches[match]['total_average_goals'] >= '3.25':
+                if matches[match]['total_average_goals'] >= 3.25:
                     matches[match]['over2.5'] = True
         return matches
 

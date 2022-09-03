@@ -75,23 +75,22 @@ def get_suggested_matches(total_goals_scored_dict,
 
                         suggested_matches[fixture]['home_team'] = team
                         suggested_matches[fixture]['home_results'] = all_results_dict[team]
-                        suggested_matches[fixture]['home_average_goals'] = f'{teams_over_2_goals[team]:.2f}'
-                        # suggested_matches[fixture]['home_average_goals'] = round(teams_over_2_goals[team], 2)
-                        suggested_matches[fixture]['home_goals_scored'] = f'{teams_over_2_goals_scored[team]:.2f}'
-                        suggested_matches[fixture]['home_goals_conceded'] = f'{teams_over_2_goals_conceded[team]:.2f}'
+                        suggested_matches[fixture]['home_average_goals'] = round(teams_over_2_goals[team], 2)
+                        suggested_matches[fixture]['home_goals_scored'] = round(teams_over_2_goals_scored[team], 2)
+                        suggested_matches[fixture]['home_goals_conceded'] = round(teams_over_2_goals_conceded[team], 2)
                         suggested_matches[fixture]['home_team_btts_rating'] = 0
                         suggested_matches[fixture]['home_team_over2_rating'] = 0
 
                         suggested_matches[fixture]['away_team'] = team2
                         suggested_matches[fixture]['away_results'] = all_results_dict[team2]
-                        suggested_matches[fixture]['away_average_goals'] = f'{teams_over_2_goals[team2]:.2f}'
-                        suggested_matches[fixture]['away_goals_scored'] = f'{teams_over_2_goals_scored[team2]:.2f}'
-                        suggested_matches[fixture]['away_goals_conceded'] = f'{teams_over_2_goals_conceded[team2]:.2f}'
+                        suggested_matches[fixture]['away_average_goals'] = round(teams_over_2_goals[team2], 2)
+                        suggested_matches[fixture]['away_goals_scored'] = round(teams_over_2_goals_scored[team2], 2)
+                        suggested_matches[fixture]['away_goals_conceded'] = round(teams_over_2_goals_conceded[team2], 2)
                         suggested_matches[fixture]['away_team_btts_rating'] = 0
                         suggested_matches[fixture]['away_team_over2_rating'] = 0
 
                         suggested_matches[fixture]['total_average_goals'] = \
-                            f'{(teams_over_2_goals[team] + teams_over_2_goals[team2]) /2:.2f}'
+                            round((teams_over_2_goals[team] + teams_over_2_goals[team2]) / 2, 2)
                         suggested_matches[fixture]['match_btts_rating'] = 0
                         suggested_matches[fixture]['match_over2_rating'] = 0
                         suggested_matches[fixture]['over2.5'] = False
