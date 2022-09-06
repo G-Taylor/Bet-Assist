@@ -5,14 +5,14 @@ class CheckOverTwoGoals:
     @staticmethod
     def check_over2(matches):
         """
-        Function to set the Over 2.5 boolean value for each match, based on predefined rules
+        Function to set the Over 2.5 boolean value for each match, based on the predefined rules
 
         :param matches:
         :return:
         """
         for match in matches:
-            if matches[match]['match_over2_rating'] >= 70:
-                if matches[match]['total_average_goals'] >= 3.25:
+            if matches[match]['match_over2_rating'] >= 75:
+                if matches[match]['total_average_goals'] >= 2.75:
                     matches[match]['over2.5'] = True
         return matches
 

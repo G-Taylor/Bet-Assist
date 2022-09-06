@@ -1,21 +1,14 @@
 from flask import Flask, render_template, jsonify
 from utilities.merge_two_dicts import MergeDict
+from utilities.cache_config import initialise_cache
 from utilities.get_dictionary_length import GetDictionaryLength
 from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
 from league_info.league_metadata import leagues, WEBSITE_URL
-from flask_caching import Cache
 
-config = {
-    "DEBUG": True,          # some Flask specific configs
-    "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
-    "CACHE_DEFAULT_TIMEOUT": 300
-}
 
 app = Flask(__name__)
-# tell Flask to use the above defined config
-app.config.from_mapping(config)
-cache = Cache(app)
+cache = initialise_cache(app)
 
 
 # App Route for the index page of the application
