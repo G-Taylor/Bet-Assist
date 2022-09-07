@@ -1,4 +1,5 @@
 import requests
+# from app.config import *
 from bs4 import BeautifulSoup
 
 # lists and dictionaries used for storing results
@@ -42,6 +43,7 @@ def strip_and_add_team(team, team_list):
 
     if team is not None:
         team_name = team.find(class_='swap-text__target')
+        # team_name = team.find(class_=SS_STRIPPED_TEAM_NAME)
         team_list.append(team_name.text)
 
 

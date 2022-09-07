@@ -1,6 +1,6 @@
 from flask import Flask, render_template, jsonify
 from utilities.merge_two_dicts import MergeDict
-from utilities.cache_config import initialise_cache
+from config import initialise_cache
 from utilities.get_dictionary_length import GetDictionaryLength
 from data_retrieval.Main import get_suggested_matches
 from data_retrieval.game_fixtures_and_results import *
