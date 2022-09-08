@@ -42,7 +42,6 @@ def strip_and_add_team(team, team_list):
     """
 
     if team is not None:
-        # team_name = team.find(class_='swap-text__target')
         team_name = team.find(class_=os.environ.get('SS_STRIPPED_TEAM_NAME'))
         team_list.append(team_name.text)
 
@@ -73,17 +72,12 @@ def get_fixtures(league):
 
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    # results = soup.find_all('div', class_='fixres__item')
     results = soup.find_all('div', class_=os.environ.get('SS_SCRAPE_RESULTS'))
 
     for match in results[:16]:
-        # if match.find(class_='matches__item-col matches__info').text.strip() != '':
         if match.find(class_=os.environ.get('SS_MATCH_INFO')).text.strip() != '':
             continue
-
-        # home = match.find(class_='matches__participant--side1')
         home = match.find(class_=os.environ.get('SS_HOME_TEAM'))
-        # away = match.find(class_='matches__participant--side2')
         away = match.find(class_=os.environ.get('SS_AWAY_TEAM'))
         all_home_matches.append(home)
         all_away_matches.append(away)
@@ -137,7 +131,6 @@ def get_games_played(league):
     """
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    # results = soup.find_all('div', class_='fixres__item')
     results = soup.find_all('div', class_=os.environ.get('SS_SCRAPE_RESULTS'))
 
     [get_game_data(match) for match in results[:45]]
@@ -150,11 +143,8 @@ def get_game_data(match):
     :param match:
     :return:
     """
-    # home_team = match.find(class_='matches__participant--side1')
-    # away_team = match.find(class_='matches__participant--side2')
     home_team = match.find(class_=os.environ.get('SS_HOME_TEAM'))
     away_team = match.find(class_=os.environ.get('SS_AWAY_TEAM'))
-    # scores = match.find_all(class_='matches__teamscores-side')
     scores = match.find_all(class_=os.environ.get('SS_MATCH_SCORES'))
     home_score = scores[0].text.strip()
     away_score = scores[1].text.strip()
@@ -175,13 +165,10 @@ def get_current_standings(league):
 
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    # results = soup.find_all(class_='standing-table__row')
     results = soup.find_all(class_=os.environ.get('SS_LEAGUE_TABLE'))
 
     for team in results[:16]:
-        # position = team.find('td', class_='standing-table__cell')
         position = team.find('td', class_=os.environ.get('SS_TABLE_TEAM_POSITION'))
-        # team_name = team.find('td', class_='standing-table__cell--name')
         team_name = team.find('td', class_=os.environ.get('SS_TABLE_TEAM_NAME'))
 
         try:
