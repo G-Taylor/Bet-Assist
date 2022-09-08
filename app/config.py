@@ -1,3 +1,4 @@
+import os
 from flask_caching import Cache
 
 CACHE_CONFIG = {
@@ -7,7 +8,7 @@ CACHE_CONFIG = {
 }
 
 # SKY_SPORTS_CONFIG
-SS_STRIPPED_TEAM_NAME = 'swap-text__target'
+# SS_STRIPPED_TEAM_NAME = 'swap-text__target'
 # "SS_HOME_TEAM": "matches__participant--side1"
 # "SS_AWAY_TEAM": "matches__participant--side2",
 # "SS_SCRAPE_RESULTS": "fixres__item",
@@ -19,6 +20,7 @@ SS_STRIPPED_TEAM_NAME = 'swap-text__target'
 
 
 def initialise_cache(app):
+    print(os.environ.get('CACHE_CONFIG'))
     app.config.from_mapping(CACHE_CONFIG)
     cache = Cache(app)
     return cache

@@ -1,5 +1,5 @@
+import os
 import requests
-# from app.config import *
 from bs4 import BeautifulSoup
 
 # lists and dictionaries used for storing results
@@ -42,8 +42,8 @@ def strip_and_add_team(team, team_list):
     """
 
     if team is not None:
-        team_name = team.find(class_='swap-text__target')
-        # team_name = team.find(class_=SS_STRIPPED_TEAM_NAME)
+        # team_name = team.find(class_='swap-text__target')
+        team_name = team.find(class_=os.environ.get('SS_STRIPPED_TEAM_NAME'))
         team_list.append(team_name.text)
 
 
@@ -73,7 +73,8 @@ def get_fixtures(league):
 
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
-    results = soup.find_all('div', class_='fixres__item')
+    # results = soup.find_all('div', class_='fixres__item')
+    results = soup.find_all('div', class_=os.environ.get('SS_SCRAPE_RESULTS'))
 
     for match in results[:16]:
         if match.find(class_='matches__item-col matches__info').text.strip() != '':
