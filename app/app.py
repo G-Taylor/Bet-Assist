@@ -45,6 +45,7 @@ def over2(cl):
             page='over2'
         )
 
+
 # App Route for the Both Teams To Score games page of the application
 @app.route('/btts/<cl>', methods=['GET', 'POST'])
 @cache.cached(timeout=50)

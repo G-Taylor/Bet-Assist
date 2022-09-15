@@ -1,7 +1,7 @@
 from .game_fixtures_and_results import *
 from .get_match_date_and_time import GetMatchDateAndTime
-from .check_both_teams_to_score import CheckBothTeamsToScore
-from .check_over_two_goals import CheckOverTwoGoals
+from .check_both_teams_to_score import CheckBothTeamsToScore as BTTS
+from .check_over_two_goals import CheckOverTwoGoals as Over2
 from .get_total_goals import GetTotalGoals as totalGoals
 from collections import OrderedDict
 
@@ -20,7 +20,8 @@ def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict, diction
     :return:
     """
     for team in total_goals_scored_dict:
-        total_goals = totalGoals.get_total_goals(team, total_goals_scored_dict) + totalGoals.get_total_goals(team, total_goals_conceded_dict)
+        total_goals = totalGoals.get_total_goals(team, total_goals_scored_dict) \
+                      + totalGoals.get_total_goals(team, total_goals_conceded_dict)
         games_played = dictionary_length.get_dict_length(team, total_goals_scored_dict)
         avg_goals = total_goals / games_played
         avg_goals_scored = totalGoals.get_total_goals(team, total_goals_scored_dict) / games_played
@@ -62,7 +63,7 @@ def get_suggested_matches(total_goals_scored_dict,
                         suggested_matches[fixture] = {}
 
                         try:
-                            date, time, parsed_date = GetMatchDateAndTime\
+                            date, time, parsed_date = GetMatchDateAndTime \
                                 .get_date_and_time(fixture_scrape_data, team, team2)
                             suggested_matches[fixture]['date'] = date
                             suggested_matches[fixture]['time'] = time
@@ -102,21 +103,21 @@ def get_suggested_matches(total_goals_scored_dict,
     teams_over_2_goals_scored.clear()
     teams_over_2_goals_conceded.clear()
 
-    btts_ratings = CheckBothTeamsToScore.get_btts_rating(home_goals_scored_dict,
-                                                         home_goals_conceded_dict,
-                                                         away_goals_scored_dict,
-                                                         away_goals_conceded_dict
-                                                         )
+    btts_ratings = BTTS.get_btts_rating(home_goals_scored_dict,
+                                        home_goals_conceded_dict,
+                                        away_goals_scored_dict,
+                                        away_goals_conceded_dict
+                                        )
 
-    over2_ratings = CheckOverTwoGoals.get_over2_rating(home_goals_scored_dict,
-                                                       home_goals_conceded_dict,
-                                                       away_goals_scored_dict,
-                                                       away_goals_conceded_dict
-                                                       )
+    over2_ratings = Over2.get_over2_rating(home_goals_scored_dict,
+                                           home_goals_conceded_dict,
+                                           away_goals_scored_dict,
+                                           away_goals_conceded_dict
+                                           )
 
-    CheckBothTeamsToScore.assign_btts_ratings(suggested_matches, btts_ratings)
-    CheckBothTeamsToScore.check_btts(suggested_matches)
-    CheckOverTwoGoals.assign_over2_ratings(suggested_matches, over2_ratings)
-    CheckOverTwoGoals.check_over2(suggested_matches)
+    BTTS.assign_btts_ratings(suggested_matches, btts_ratings)
+    BTTS.check_btts(suggested_matches)
+    Over2.assign_over2_ratings(suggested_matches, over2_ratings)
+    Over2.check_over2(suggested_matches)
     suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: str(x[1]['parsed_date'])))
     return suggested_matches

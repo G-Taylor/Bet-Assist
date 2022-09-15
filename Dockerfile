@@ -8,7 +8,6 @@ RUN pip install --upgrade pip
 RUN pip install --upgrade wheel
 RUN pip install --upgrade setuptools
 RUN pip install -r requirements.txt
-RUN pip install python-dotenv
 
 EXPOSE 80
 
