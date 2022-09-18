@@ -18,6 +18,10 @@ body {
     color:black;
 }
 
+.navbar-toggler {
+  display: contents
+}
+
 /* On small screens, set height to 'auto' for sidenav and grid */
 @media screen and (max-width: 767px) {
     .sidenav {
@@ -347,16 +351,21 @@ body {
 }
 
 .fixture-teams {
-  font-weight: bold;
-  font-size: larger;
-  display: inline-block;
-  padding-left: 20px;
-  padding-right: 20px;
+  display: inline-flex;
+  width: 40%;
+  place-content: center;
+}
+
+.fixture-teams-spacer {
+  display: inline-flex;
+  width: 5%;
+  place-content: center;
 }
 
 .game-results {
-  display: inline-block;
+  display: inline-table;
   font-weight: bold;
+  width: 45%;
 }
 
 .game-results > p.W{
@@ -370,6 +379,7 @@ body {
   width: 20px;
   height: 20px;
   padding: 20px;
+  margin-right: 1px;
 }
 
 .game-results > p.D{
@@ -383,6 +393,7 @@ body {
   width: 20px;
   height: 20px;
   padding: 20px;
+  margin-right: 1px;
 }
 
 .game-results > p.L{
@@ -396,11 +407,28 @@ body {
   width: 20px;
   height: 20px;
   padding: 20px;
+  margin-right: 1px;
 }
 
 .goals {
   margin: 0px;
   font-weight: bold;
+}
+
+.game_info {
+  width: auto;
+}
+
+.game-info-text {
+  display: inline-flex;
+  width: 30%;
+  place-content: center;
+}
+
+.game-info-numbers {
+  display: inline-flex;
+  width: 30%;
+  place-content: center;
 }
 
 .goals-g {
@@ -662,15 +690,30 @@ body {
 .outcome {
   margin: 0px;
   color: red;
-  display: inline;
+  width: 30%;
+  display: inline-flex;
+  place-content: center;
 }
 
 .outcome-g {
   margin: 0px;
   color: green;
-  display: inline;
+  width: 30%;
+  display: inline-flex;
+  place-content: center;
 }
 
+.green {
+  color: green;
+}
+
+.red {
+  color: red;
+}
+
+.amber {
+  color: orange;
+}
 /* The switch - the box around the slider */
 .switch {
   position: relative;
@@ -737,4 +780,9 @@ input:checked + .slider:before {
 .form-check-label{
   padding-left: 5px;
   padding-bottom: 5px;
+}
+
+.form-check-inline {
+  width: 45%;
+  place-content: center;
 }
