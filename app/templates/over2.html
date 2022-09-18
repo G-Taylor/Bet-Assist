@@ -36,7 +36,8 @@
                 <div>
                     <div class="game-results">
                         <p class="goals{% if res[result]['home_average_goals'] > 3 %}-g{% endif %}">
-                            Average Goals: {{ res[result]['home_average_goals'] }}
+                            {{ res[result]['home_average_goals'] }}
+                            <span class="game-info">Average Goals Scored</span>
                         </p>
                         {% for item in res[result]['home_results']  %}
                             {% for game in item %}
@@ -49,6 +50,9 @@
                         <p class="goals{% if res[result]['home_goals_conceded'] > 1.5 %}-g{% endif %}">
                             Conceded: {{res[result]['home_goals_conceded'] }}
                         </p>
+                        <p class="goals{% if res[result]['home_team_over2_rating'] > 60 %}-g{% endif %}">
+                            Previous Games Over 2.5: {{res[result]['home_team_over2_rating'] }}
+                        </p>
                     </div>
                     <div class="fixture-teams">
                         <p> vs </p>
@@ -57,7 +61,7 @@
                     <!-- Goals scored, conceded and results for the away team-->
                     <div class="game-results">
                         <p class="goals{% if res[result]['away_average_goals'] > 3 %}-g{% endif %}">
-                            Average Goals: {{ res[result]['away_average_goals'] }}
+                            {{ res[result]['away_average_goals'] }}
                         </p>
                         {% for item in res[result]['away_results']  %}
                             {% for game in item %}
@@ -69,6 +73,9 @@
                         </p>
                         <p class="goals{% if res[result]['away_goals_conceded'] > 1.5 %}-g{% endif %}">
                             Conceded: {{res[result]['away_goals_conceded'] }}
+                        </p>
+                        <p class="goals{% if res[result]['away_team_over2_rating'] > 60 %}-g{% endif %}">
+                            Previous Games Over 2.5: {{res[result]['away_team_over2_rating'] }}
                         </p>
                     </div>
                 </div>

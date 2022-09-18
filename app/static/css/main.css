@@ -403,6 +403,10 @@ body {
   font-weight: bold;
 }
 
+.game-info {
+  float: right;
+}
+
 .goals-g {
   margin: 0px;
   color: green;
