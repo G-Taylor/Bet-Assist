@@ -56,9 +56,26 @@
                     {% endfor %}
                 </div>
                 <div id="game-info">
-                    <div class="game-info-numbers {% if res[result]['home_average_goals'] >= 1.5 %}green{% endif %}">{{ res[result]['home_average_goals'] }}</div>
+                    <div class="game-info-numbers">
+                        {% if standings.get(res[result]['home_team']) != None %}
+                            {{ standings.get( res[result]['home_team'] ) }}
+                        {% endif %}
+                    </div>
+                    <div class="game-info-text">League Position</div>
+                    <div class="game-info-numbers">
+                        {% if standings.get(res[result]['away_team']) != None %}
+                            {{ standings.get( res[result]['away_team'] ) }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div id="game-info">
+                    <div class="game-info-numbers {% if res[result]['home_average_goals'] >= 1.5 %}green{% endif %}">
+                        {{ res[result]['home_average_goals'] }}
+                    </div>
                     <div class="game-info-text">Average Match Goals</div>
-                    <div class="game-info-numbers {% if res[result]['away_average_goals'] >= 1.5 %}green{% endif %}">{{ res[result]['away_average_goals'] }}</div>
+                    <div class="game-info-numbers {% if res[result]['away_average_goals'] >= 1.5 %}green{% endif %}">
+                        {{ res[result]['away_average_goals'] }}
+                    </div>
                 </div>
                 <div id="game-info">
                     <div class="game-info-numbers {% if res[result]['home_goals_scored'] >= 1.5 %}green{% endif %}">{{ res[result]['home_goals_scored'] }}</div>
