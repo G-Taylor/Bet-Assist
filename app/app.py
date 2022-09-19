@@ -81,14 +81,13 @@ def all_games(cl):
     try:
         current_league = cl
         league, table_id, logo = set_league_info(current_league)
-
         results = reset_and_get_new_league_values(league)
 
         return render_template(
             'all_games.html',
             res=results,
             league=current_league.title(),
-            standings=current_standings,
+            standings=get_current_standings(f'{league}-table'),
             table_id=table_id,
             logo=logo,
             page='all_games'
@@ -104,55 +103,55 @@ def all_games(cl):
 
 
 # App Route for testing frontend layouts
-# @app.route('/all_games/test', methods=['GET', 'POST'])
-# # @cache.cached(timeout=900)
-# def test_page():
-#     try:
-#         # current_league = cl
-#         # league, table_id, logo = set_league_info(current_league)
-#
-#         results = {0: {
-#             'date': 'Saturday 1st October',
-#             'time': '22:00',
-#             'parsed_date': 'Sat, 01 Oct 2022 00:00:00 GMT',
-#             'home_team': 'Liverpool',
-#             'away_team': 'Tottenham Hotspur',
-#             'total_average_goals': 3.23,
-#             'home_goals_scored': 2.0,
-#             'home_goals_conceded': 1.25,
-#             'home_average_goals': 3.25,
-#             'home_results': [['W', 'W'], ['W', 'L']],
-#             'home_team_btts_rating': 75,
-#             'home_team_over2_rating': 100,
-#             'away_average_goals': 3.2,
-#             'away_goals_conceded': 0.8,
-#             'away_goals_scored': 2.4,
-#             'away_results': [['W', 'W', 'W'], ['D', 'W']],
-#             'away_team_btts_rating': 60,
-#             'away_team_over2_rating': 40,
-#             'match_btts_rating': 67,
-#             'btts': False,
-#             'match_over2_rating': 70,
-#             'over2.5': True,
-#         }}
-#
-#         return render_template(
-#             'test_page.html',
-#             res=results,
-#             # league=current_league.title(),
-#             standings=current_standings,
-#             # table_id=table_id,
-#             # logo=logo,
-#             page='all_games',
-#         )
-#     except KeyError:
-#         league = 'mls'
-#
-#         return render_template(
-#             'error.html',
-#             league=league,
-#             page='all_games'
-#         )
+@app.route('/all_games/test', methods=['GET', 'POST'])
+# @cache.cached(timeout=900)
+def test_page():
+    try:
+        # current_league = cl
+        # league, table_id, logo = set_league_info(current_league)
+
+        results = {0: {
+            'date': 'Saturday 1st October',
+            'time': '22:00',
+            'parsed_date': 'Sat, 01 Oct 2022 00:00:00 GMT',
+            'home_team': 'Liverpool',
+            'away_team': 'Tottenham Hotspur',
+            'total_average_goals': 3.23,
+            'home_goals_scored': 2.0,
+            'home_goals_conceded': 1.25,
+            'home_average_goals': 3.25,
+            'home_results': [['W', 'W'], ['W', 'L']],
+            'home_team_btts_rating': 75,
+            'home_team_over2_rating': 100,
+            'away_average_goals': 3.2,
+            'away_goals_conceded': 0.8,
+            'away_goals_scored': 2.4,
+            'away_results': [['W', 'W', 'W'], ['D', 'W']],
+            'away_team_btts_rating': 60,
+            'away_team_over2_rating': 40,
+            'match_btts_rating': 67,
+            'btts': False,
+            'match_over2_rating': 70,
+            'over2.5': True,
+        }}
+
+        return render_template(
+            'test_page.html',
+            res=results,
+            # league=current_league.title(),
+            standings=current_standings,
+            # table_id=table_id,
+            # logo=logo,
+            page='all_games',
+        )
+    except KeyError:
+        league = 'mls'
+
+        return render_template(
+            'error.html',
+            league=league,
+            page='all_games'
+        )
 
 
 # API endpoint for all games function

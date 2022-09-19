@@ -166,7 +166,7 @@ def get_current_standings(league):
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all(class_="standing-table__row")
 
-    for team in results[:16]:
+    for team in results:
         position = team.find('td', class_="standing-table__cell")
         team_name = team.find('td', class_="standing-table__cell--name")
 
@@ -174,7 +174,8 @@ def get_current_standings(league):
             if team_name.text is not None:
                 current_standings[team_name.text.strip()] = int(position.text.strip())
         except AttributeError as e:
-            print(f'Error: {e}')
+            print(f'Error finding league position: {e}')
+    return current_standings
 
 
 def convert_data():
