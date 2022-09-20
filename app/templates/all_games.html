@@ -129,46 +129,6 @@
                         } (window, document, 'script', 'mw', 'https://cdn.footystats.org/embeds/standings.js'));
                     mw('params', { leagueID: {{ table_id }} });
                 </script>
-                  <script>
-                    const btts = document.querySelector('#checkBTTS');
-                    const over2 = document.querySelector('#checkOver2')
-                    const card = document.getElementsByClassName("card");
-
-                    btts.addEventListener("click", function() {
-                        checkBoth();
-                    });
-
-                    over2.addEventListener("click", function () {
-                        checkBoth();
-                    });
-
-                    //TODO:  work on algorithm to check card[i] and card[i + 1] to give better results
-                    function checkBoth() {
-                        for(let i = 0; i < card.length; i++) {
-                            if (btts.checked && over2.checked) {
-                                if(card[i].id === "0"){
-                                    card[i].style.display = ""
-                                } else {
-                                    card[i].style.display = "none";
-                                }
-                            } else if(btts.checked){
-                                if(card[i].id === "2" || card[i].id === "0"){
-                                    card[i].style.display = ""
-                                } else {
-                                    card[i].style.display = "none";
-                                }
-                            } else if(over2.checked) {
-                                if(card[i].id === "1" || card[i].id === "0"){
-                                    card[i].style.display = ""
-                                } else {
-                                    card[i].style.display = "none";
-                                }
-                            } else {
-                                card[i].style.display = "";
-                            }
-                        }
-                    }
-                </script>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -176,9 +136,53 @@
           </div>
         </div>
     </div>
+    <script>
+        const btts = document.querySelector('#checkBTTS');
+        const over2 = document.querySelector('#checkOver2')
+        const card = document.getElementsByClassName("card");
+
+        btts.addEventListener("click", function() {
+            checkBoth();
+        });
+
+        over2.addEventListener("click", function () {
+            checkBoth();
+        });
+
+        //TODO:  work on algorithm to check card[i] and card[i + 1] to give better results
+        function checkBoth() {
+            for(let i = 0; i < card.length; i++) {
+                if (btts.checked && over2.checked) {
+                    if(card[i].id === "0"){
+                        card[i].style.display = ""
+                    } else {
+                        card[i].style.display = "none";
+                    }
+                } else if(btts.checked){
+                    if(card[i].id === "2" || card[i].id === "0"){
+                        card[i].style.display = ""
+                    } else {
+                        card[i].style.display = "none";
+                    }
+                } else if(over2.checked) {
+                    if(card[i].id === "1" || card[i].id === "0"){
+                        card[i].style.display = ""
+                    } else {
+                        card[i].style.display = "none";
+                    }
+                } else {
+                    card[i].style.display = "";
+                }
+            }
+        }
+    </script>
 
     {% if table_id != 0000 %}
         <button type="button" id="table_button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myOutput">League Table</button>
+    {% endif %}
+
+    {% if table_id != 0000 %}
+        <button type="button" id="sidebar_button" class="btn btn-info btn-sm" onclick="showSidebarMenu()">Show Leagues</button>
     {% endif %}
 
 {% endblock %}

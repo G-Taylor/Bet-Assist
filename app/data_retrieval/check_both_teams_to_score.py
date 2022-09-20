@@ -11,10 +11,12 @@ class CheckBothTeamsToScore:
         :return: updated matches dictionary, with boolean value for btts
         """
         for match in matches:
-            if matches[match]['home_goals_scored'] >= 1.25 and matches[match]['home_goals_conceded'] > 0.8:
-                if matches[match]['away_goals_scored'] >= 1.25 and matches[match]['away_goals_conceded'] > 0.5:
-                    if matches[match]['match_btts_rating'] >= 70:
-                        matches[match]['btts'] = True
+            if matches[match]['home_goals_scored'] >= 1.2 and matches[match]['home_goals_conceded'] >= 1:
+                if matches[match]['away_goals_scored'] >= 1.2 and matches[match]['away_goals_conceded'] >= 1:
+                    matches[match]['btts'] = True
+
+            if matches[match]['match_btts_rating'] >= 70:
+                matches[match]['btts'] = True
         return matches
 
     @staticmethod
