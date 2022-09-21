@@ -611,6 +611,22 @@ body {
   .sidebar {
     top: 5rem;
   }
+
+  #sidebar_button {
+    width: 32%;
+  }
+
+  #table_button {
+    width: 32%;
+  }
+
+  .sidebar-sticky{
+    position: fixed!important;
+    z-index: 1;
+    background-color: white;
+    top: auto!important;
+    width: inherit;
+  }
 }
 
 @media (min-width: 767.99px) {
