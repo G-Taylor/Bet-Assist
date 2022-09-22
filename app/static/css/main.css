@@ -626,6 +626,15 @@ body {
     background-color: white;
     top: auto!important;
     width: inherit;
+    padding-top: 4%!important
+  }
+
+  .navbar {
+    position: absolute!important;
+  }
+
+  .container-fluid {
+    padding-top: 2%;
   }
 }
 
