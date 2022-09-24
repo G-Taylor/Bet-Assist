@@ -76,7 +76,7 @@ def btts(cl):
 
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
-@cache.cached(timeout=900)
+@cache.cached(timeout=600)
 def all_games(cl):
     try:
         current_league = cl
@@ -156,7 +156,7 @@ def test_page():
 
 # API endpoint for all games function
 @app.route('/api/all_games/<cl>', methods=['GET'])
-@cache.cached(timeout=900)
+@cache.cached(timeout=600)
 def all_games_api(cl):
     current_league = cl
     league, table_id, logo = set_league_info(current_league)
