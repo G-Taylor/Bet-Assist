@@ -4,6 +4,7 @@
     <h1>
         <img class="main_logo" src="{{ url_for('static', filename=logo) }}" alt="">
     </h1>
+    <!-- Sliders for BTTS and Over 2.5 filters -->
     <div>
         <div class="form-check form-check-inline">
             <label class="switch">
@@ -27,12 +28,13 @@
                     elif res[result]['btts']%}2{%
                     else %}9{% endif %}>
         <div class="card-body">
-            <!-- Team standings, names and total goal average -->
+            <!-- Fixture Date and Time -->
             <div class="date-time">
                 <p>
                     <span class="date">📅 {{ res[result]['date'] }}</span>
                     <span class="time">⏰ {{ res[result]['time'] }}</span>
                 </p>
+                <!-- Team Names -->
                 <div id="game-info">
                     <div class="fixture-teams">{{ res[result]['home_team'] }}</div>
                     <div class="fixture-teams-spacer">vs</div>
@@ -40,6 +42,7 @@
                 </div>
             </div>
             <div>
+                <!-- Previous match results for home team -->
                 <div class="game-results">
                     {% for item in res[result]['home_results']  %}
                         {% for game in item %}
@@ -47,7 +50,7 @@
                         {% endfor %}
                     {% endfor %}
                 </div>
-                <!-- Goals scored, conceded and results for the away team-->
+                <!-- Previous match results for away team -->
                 <div class="game-results">
                     {% for item in res[result]['away_results']  %}
                         {% for game in item %}
@@ -55,6 +58,7 @@
                         {% endfor %}
                     {% endfor %}
                 </div>
+                <!-- League positions -->
                 <div id="game-info">
                     <div class="game-info-numbers">
                         {% if standings.get(res[result]['home_team']) != None %}
@@ -68,6 +72,7 @@
                         {% endif %}
                     </div>
                 </div>
+                <!-- Average match goals -->
                 <div id="game-info">
                     <div class="game-info-numbers {% if res[result]['home_average_goals'] >= 1.5 %}green{% endif %}">
                         {{ res[result]['home_average_goals'] }}
@@ -77,37 +82,66 @@
                         {{ res[result]['away_average_goals'] }}
                     </div>
                 </div>
+                <!-- Average goals scored -->
                 <div id="game-info">
-                    <div class="game-info-numbers {% if res[result]['home_goals_scored'] >= 1.5 %}green{% endif %}">{{ res[result]['home_goals_scored'] }}</div>
+                    <div class="game-info-numbers {% if res[result]['home_goals_scored'] >= 1.5 %}green{% endif %}">
+                        {{ res[result]['home_goals_scored'] }}
+                    </div>
                     <div class="game-info-text">Average Scored</div>
-                    <div class="game-info-numbers {% if res[result]['away_goals_scored'] >= 1.5 %}green{% endif %}">{{ res[result]['away_goals_scored'] }}</div>
+                    <div class="game-info-numbers {% if res[result]['away_goals_scored'] >= 1.5 %}green{% endif %}">
+                        {{ res[result]['away_goals_scored'] }}
+                    </div>
                 </div>
+                <!-- Average goals conceded -->
                 <div id="game-info">
-                    <div class="game-info-numbers {% if res[result]['home_goals_conceded'] >= 1.5 %}green{% endif %}">{{ res[result]['home_goals_conceded'] }}</div>
+                    <div class="game-info-numbers {% if res[result]['home_goals_conceded'] >= 1.5 %}green{% endif %}">
+                        {{ res[result]['home_goals_conceded'] }}
+                    </div>
                     <div class="game-info-text">Average Conceded</div>
-                    <div class="game-info-numbers {% if res[result]['away_goals_conceded'] >= 1.5 %}green{% endif %}">{{ res[result]['away_goals_conceded'] }}</div>
+                    <div class="game-info-numbers {% if res[result]['away_goals_conceded'] >= 1.5 %}green{% endif %}">
+                        {{ res[result]['away_goals_conceded'] }}
+                    </div>
                 </div>
+                <!-- Previous games BTTS -->
                 <div id="game-info">
-                    <div class="game-info-numbers {% if res[result]['home_team_btts_rating'] >= 65 %}green{% endif %}">&nbsp;{{ res[result]['home_team_btts_rating'] }}%</div>
+                    <div class="game-info-numbers {% if res[result]['home_team_btts_rating'] >= 65 %}green{% endif %}">
+                        &nbsp;{{ res[result]['home_team_btts_rating'] }}%
+                    </div>
                     <div class="game-info-text">Previous BTTS</div>
-                    <div class="game-info-numbers {% if res[result]['away_team_btts_rating'] >= 65 %}green{% endif %}">&nbsp;{{ res[result]['away_team_btts_rating'] }}%</div>
+                    <div class="game-info-numbers {% if res[result]['away_team_btts_rating'] >= 65 %}green{% endif %}">
+                        &nbsp;{{ res[result]['away_team_btts_rating'] }}%
+                    </div>
                 </div>
+                <!-- Previous games Over 2.5 -->
                 <div id="game-info">
-                    <div class="game-info-numbers {% if res[result]['home_team_over2_rating'] >= 65 %}green{% endif %}">&nbsp;{{ res[result]['home_team_over2_rating'] }}%  </div>
+                    <div class="game-info-numbers {% if res[result]['home_team_over2_rating'] >= 65 %}green{% endif %}">
+                        &nbsp;{{ res[result]['home_team_over2_rating'] }}%
+                    </div>
                     <div class="game-info-text">Previous Over 2.5</div>
-                    <div class="game-info-numbers {% if res[result]['away_team_over2_rating'] >= 65 %}green{% endif %}">&nbsp;{{ res[result]['away_team_over2_rating'] }}%</div>
+                    <div class="game-info-numbers {% if res[result]['away_team_over2_rating'] >= 65 %}green{% endif %}">
+                        &nbsp;{{ res[result]['away_team_over2_rating'] }}%
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- Overall averages for both teams -->
         <div class="outcome-outer" style="padding-bottom: 0px">
             <div class="outcome {% if res[result]['btts'] %}green{% endif %}">BTTS Avg</div>
             <div class="outcome {% if res[result]['total_average_goals'] > 3.25 %}green{% endif %}">Combined Goal Avg</div>
             <div class="outcome {% if res[result]['over2.5'] %}green{% endif %}">Over 2.5 Avg</div>
         </div>
         <div class="outcome-outer" style="padding-top: 0px">
-            <div class="outcome {% if res[result]['btts'] %}green{% endif %}" data-toggle="tooltip" title="% of previous matches that where btts">{{ res[result]['match_btts_rating']}}%</div>
-            <div class="outcome {% if res[result]['total_average_goals'] > 3.25 %}green{% endif %}" data-toggle="tooltip" title="combined goal average">{{ res[result]['total_average_goals'] }}</div>
-            <div class="outcome {% if res[result]['over2.5'] %}green{% endif %}" data-toggle="tooltip" title="% of previous matches that where over2.5">{{ res[result]['match_over2_rating']}}%</div>
+            <div class="outcome {% if res[result]['btts'] %}green{% endif %}"
+                 data-toggle="tooltip" title="% of previous matches that where btts">
+                {{ res[result]['match_btts_rating']}}%
+            </div>
+            <div class="outcome {% if res[result]['total_average_goals'] > 3.25 %}green{% endif %}"
+                 data-toggle="tooltip" title="combined goal average">{{ res[result]['total_average_goals'] }}
+            </div>
+            <div class="outcome {% if res[result]['over2.5'] %}green{% endif %}"
+                 data-toggle="tooltip" title="% of previous matches that where over2.5">
+                {{ res[result]['match_over2_rating']}}%
+            </div>
         </div>
     </div>
     {% endfor %}
@@ -176,13 +210,11 @@
             }
         }
     </script>
-
+    <!-- Button for league table -->
     {% if table_id != 0000 %}
         <button type="button" id="table_button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myOutput">League Table</button>
     {% endif %}
-
-    {% if table_id != 0000 %}
-        <button type="button" id="sidebar_button" class="btn btn-info btn-sm" onclick="showSidebarMenu()">Show Leagues</button>
-    {% endif %}
+    <!-- Button to show sidebar on small devices -->
+    <button type="button" id="sidebar_button" class="btn btn-info btn-sm" onclick="showSidebarMenu()">Show Leagues</button>
 
 {% endblock %}
