@@ -10,6 +10,8 @@ class CheckOverTwoGoals:
         :param matches:
         :return:
         """
+        #TODO: Update algorithm to provide better/more comprehensive results
+        
         for match in matches:
             if matches[match]['match_over2_rating'] >= 75:
                 if matches[match]['total_average_goals'] >= 2.75:
