@@ -1,0 +1,8 @@
+--- Over 2.5 Algorithm ---
+
+Factors to consider:
+- Home goals scored and conceded
+- Away goals scored and conceded
+- How much the difference in league position will affect outcome
+- How much does home advantage factor in
+- Percentage of previous games over 2.5 for each team, and combined
