@@ -2,6 +2,7 @@
 
 Factors to consider:
 - Home goals scored and conceded
+    - home goals should be > 1.5
 - Away goals scored and conceded
 - How much the difference in league position will affect outcome
 - How much does home advantage factor in
