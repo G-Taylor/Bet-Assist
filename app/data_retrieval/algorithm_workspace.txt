@@ -1,0 +1,10 @@
+--- Over 2.5 Algorithm ---
+
+Factors to consider:
+- if combined over 2.5 >= 75%
+    - true
+- if combined over 2.5 < 75%:
+    - if combined goal average >= 3
+        - if home team over 2.5 >= 70%
+        - if home scored >= 1.5
+        - if away conceded != 0
