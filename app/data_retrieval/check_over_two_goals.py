@@ -13,9 +13,17 @@ class CheckOverTwoGoals:
         #TODO: Update algorithm to provide better/more comprehensive results
         
         for match in matches:
+            # if matches[match]['match_over2_rating'] >= 75:
+            #     if matches[match]['total_average_goals'] >= 2.75:
+            #         matches[match]['over2.5'] = True
+
             if matches[match]['match_over2_rating'] >= 75:
-                if matches[match]['total_average_goals'] >= 2.75:
-                    matches[match]['over2.5'] = True
+                matches[match]['over2.5'] = True
+
+            if matches[match]['match_over2_rating'] < 75 and matches[match]['total_average_goals'] >= 3:
+                if matches[match]['home_team_over2_rating'] >= 75:
+                    if matches[match]['home_goals_scored'] >= 1.5 and matches[match]['away_goals_conceded'] > 0:
+                        matches[match]['over2.5'] = True
         return matches
 
     @staticmethod
