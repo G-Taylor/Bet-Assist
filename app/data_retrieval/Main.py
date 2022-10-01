@@ -21,11 +21,14 @@ def get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict, diction
     """
     for team in total_goals_scored_dict:
         total_goals = totalGoals.get_total_goals(team, total_goals_scored_dict) \
-                      + totalGoals.get_total_goals(team, total_goals_conceded_dict)
-        games_played = dictionary_length.get_dict_length(team, total_goals_scored_dict)
+            + totalGoals.get_total_goals(team, total_goals_conceded_dict)
+        games_played = dictionary_length.get_dict_length(
+            team, total_goals_scored_dict)
         avg_goals = total_goals / games_played
-        avg_goals_scored = totalGoals.get_total_goals(team, total_goals_scored_dict) / games_played
-        avg_goals_conceded = totalGoals.get_total_goals(team, total_goals_conceded_dict) / games_played
+        avg_goals_scored = totalGoals.get_total_goals(
+            team, total_goals_scored_dict) / games_played
+        avg_goals_conceded = totalGoals.get_total_goals(
+            team, total_goals_conceded_dict) / games_played
 
         teams_over_2_goals[team] = avg_goals
         teams_over_2_goals_scored[team] = avg_goals_scored
@@ -50,7 +53,8 @@ def get_suggested_matches(total_goals_scored_dict,
             the important information associated with them
     """
     suggested_matches = {}
-    get_all_fixtures(total_goals_scored_dict, total_goals_conceded_dict, dictionary_length)
+    get_all_fixtures(total_goals_scored_dict,
+                     total_goals_conceded_dict, dictionary_length)
 
     for team in teams_over_2_goals:
         try:
@@ -76,22 +80,29 @@ def get_suggested_matches(total_goals_scored_dict,
 
                         suggested_matches[fixture]['home_team'] = team
                         suggested_matches[fixture]['home_results'] = all_results_dict[team]
-                        suggested_matches[fixture]['home_average_goals'] = round(teams_over_2_goals[team], 2)
-                        suggested_matches[fixture]['home_goals_scored'] = round(teams_over_2_goals_scored[team], 2)
-                        suggested_matches[fixture]['home_goals_conceded'] = round(teams_over_2_goals_conceded[team], 2)
+                        suggested_matches[fixture]['home_average_goals'] = round(
+                            teams_over_2_goals[team], 2)
+                        suggested_matches[fixture]['home_goals_scored'] = round(
+                            teams_over_2_goals_scored[team], 2)
+                        suggested_matches[fixture]['home_goals_conceded'] = round(
+                            teams_over_2_goals_conceded[team], 2)
                         suggested_matches[fixture]['home_team_btts_rating'] = 0
                         suggested_matches[fixture]['home_team_over2_rating'] = 0
 
                         suggested_matches[fixture]['away_team'] = team2
                         suggested_matches[fixture]['away_results'] = all_results_dict[team2]
-                        suggested_matches[fixture]['away_average_goals'] = round(teams_over_2_goals[team2], 2)
-                        suggested_matches[fixture]['away_goals_scored'] = round(teams_over_2_goals_scored[team2], 2)
-                        suggested_matches[fixture]['away_goals_conceded'] = round(teams_over_2_goals_conceded[team2], 2)
+                        suggested_matches[fixture]['away_average_goals'] = round(
+                            teams_over_2_goals[team2], 2)
+                        suggested_matches[fixture]['away_goals_scored'] = round(
+                            teams_over_2_goals_scored[team2], 2)
+                        suggested_matches[fixture]['away_goals_conceded'] = round(
+                            teams_over_2_goals_conceded[team2], 2)
                         suggested_matches[fixture]['away_team_btts_rating'] = 0
                         suggested_matches[fixture]['away_team_over2_rating'] = 0
 
                         suggested_matches[fixture]['total_average_goals'] = \
-                            round((teams_over_2_goals[team] + teams_over_2_goals[team2]) / 2, 2)
+                            round(
+                                (teams_over_2_goals[team] + teams_over_2_goals[team2]) / 2, 2)
                         suggested_matches[fixture]['match_btts_rating'] = 0
                         suggested_matches[fixture]['match_over2_rating'] = 0
                         suggested_matches[fixture]['over2.5'] = False
@@ -119,5 +130,6 @@ def get_suggested_matches(total_goals_scored_dict,
     BTTS.check_btts(suggested_matches)
     Over2.assign_over2_ratings(suggested_matches, over2_ratings)
     Over2.check_over2(suggested_matches)
-    suggested_matches = OrderedDict(sorted(suggested_matches.items(), key=lambda x: str(x[1]['parsed_date'])))
+    suggested_matches = OrderedDict(
+        sorted(suggested_matches.items(), key=lambda x: str(x[1]['parsed_date'])))
     return suggested_matches

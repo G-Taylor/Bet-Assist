@@ -10,8 +10,8 @@ class CheckOverTwoGoals:
         :param matches:
         :return:
         """
-        #TODO: Update algorithm to provide better/more comprehensive results
-        
+        # TODO: Update algorithm to provide better/more comprehensive results
+
         for match in matches:
             # if matches[match]['match_over2_rating'] >= 75:
             #     if matches[match]['total_average_goals'] >= 2.75:
@@ -31,7 +31,8 @@ class CheckOverTwoGoals:
         over2_rating = {}
         league_team_keys = []
         [league_team_keys.append(team) for team in home_goals_scored.keys()]
-        [league_team_keys.append(team) for team in away_goals_scored.keys() if team not in league_team_keys]
+        [league_team_keys.append(team) for team in away_goals_scored.keys(
+        ) if team not in league_team_keys]
 
         for team in league_team_keys:
             number_of_matches = 0
