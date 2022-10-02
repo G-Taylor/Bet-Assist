@@ -13,4 +13,3 @@ def initialise_cache(app):
     app.config.from_mapping(CACHE_CONFIG)
     cache = Cache(app)
     return cache
-

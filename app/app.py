@@ -192,9 +192,12 @@ def reset_and_get_new_league_values(league):
     fixture_scrape_data = get_fixtures(f"{league}-fixtures/")
     convert_data()
 
-    total_goals_scored_dict = MergeDict.merge_dicts(home_goals_scored_dict, away_goals_scored_dict)
-    total_goals_conceded_dict = MergeDict.merge_dicts(home_goals_conceded_dict, away_goals_conceded_dict)
-    all_results_dict = MergeDict.merge_dicts(away_team_results_dict, home_team_results_dict)
+    total_goals_scored_dict = MergeDict.merge_dicts(
+        home_goals_scored_dict, away_goals_scored_dict)
+    total_goals_conceded_dict = MergeDict.merge_dicts(
+        home_goals_conceded_dict, away_goals_conceded_dict)
+    all_results_dict = MergeDict.merge_dicts(
+        away_team_results_dict, home_team_results_dict)
 
     results = get_suggested_matches(total_goals_scored_dict,
                                     total_goals_conceded_dict,
