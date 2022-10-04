@@ -1,10 +1,47 @@
 --- Over 2.5 Algorithm ---
 
-Factors to consider:
-- if combined over 2.5 >= 75%
-    - true
-- if combined over 2.5 < 75%:
-    - if combined goal average >= 3
-        - if home team over 2.5 >= 70%
-        - if home scored >= 1.5
-        - if away conceded != 0
+over 2 result = (total condtions true value/31) * 100 
+
+Home goals scored:
+    between 1 and 2 = 1
+    between 2 and 3 = 2
+    > 3 = 3
+Home goals conceded:
+    between .5 and 1 = 1
+    between 1 and 2 = 2
+    > 2 = 3
+Home average total goals:
+    between 1.5 and 2.5 = 1
+    between 2.5 and 3.5 = 2
+    > 3.5 = 3
+Away goals scored:
+    between 1 and 2 = 1
+    between 2 and 3 = 2
+    > 3 = 3
+away goals conceded >= 1:
+    between .5 and 1 = 1
+    between 1 and 2 = 2
+    > 2 = 3
+away average total goals:
+    between 1.5 and 2.5 = 1
+    between 2.5 and 3.5 = 2
+    > 3.5 = 3
+total average goals:
+    between 1.5 and 2.5 = 1
+    between 2.5 and 3.5 = 2
+    > 3.5 = 3
+League position difference
+    away team must be < 10 different and > 0
+Home team over 2 rating:
+    between 60 and 70 = 1
+    between 70 and 80 = 2
+    > 80 = 3
+Away team over 2 rating:
+    between 60 and 70 = 1
+    between 70 and 80 = 2
+    > 80 = 3
+Match over 2.5 rating:
+    between 70 and 80 = 1
+    between 80 and 90 = 2
+    > 90 = 3
+
