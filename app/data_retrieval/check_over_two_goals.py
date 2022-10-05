@@ -13,17 +13,85 @@ class CheckOverTwoGoals:
         # TODO: Update algorithm to provide better/more comprehensive results
 
         for match in matches:
-            # if matches[match]['match_over2_rating'] >= 75:
-            #     if matches[match]['total_average_goals'] >= 2.75:
-            #         matches[match]['over2.5'] = True
+            
+            over2_result = 0
 
-            if matches[match]['match_over2_rating'] >= 75:
+            if 1 <= matches[match]['home_goals_scored'] < 2:
+                over2_result += 1
+            elif 2 <= matches[match]['home_goals_scored'] < 3:
+                over2_result += 2
+            elif matches[match]['home_goals_scored'] >= 3:
+                over2_result += 3
+
+            if .5 <= matches[match]['home_goals_conceded'] < 1:
+                over2_result += 1
+            elif 1 <= matches[match]['home_goals_conceded'] < 2:
+                over2_result += 2
+            elif matches[match]['home_goals_conceded'] >= 2:
+                over2_result += 3
+
+            if 1.5 <= matches[match]['home_average_goals'] < 2.5:
+                over2_result += 1
+            elif 2.5 <= matches[match]['home_average_goals'] < 3.5:
+                over2_result += 2
+            elif matches[match]['home_average_goals'] >= 3.5:
+                over2_result += 3
+
+            if 1 <= matches[match]['away_goals_scored'] < 2:
+                over2_result += 1
+            elif 2 <= matches[match]['away_goals_scored'] < 3:
+                over2_result += 2
+            elif matches[match]['away_goals_scored'] >= 3:
+                over2_result += 3
+
+            if .5 <= matches[match]['away_goals_conceded'] < 1:
+                over2_result += 1
+            elif 1 <= matches[match]['away_goals_conceded'] < 2:
+                over2_result += 2
+            elif matches[match]['away_goals_conceded'] >= 2:
+                over2_result += 3
+
+            if 1.5 <= matches[match]['away_average_goals'] < 2.5:
+                over2_result += 1
+            elif 2.5 <= matches[match]['away_average_goals'] < 3.5:
+                over2_result += 2
+            elif matches[match]['away_average_goals'] >= 3.5:
+                over2_result += 3
+
+            if 1.5 <= matches[match]['total_average_goals'] < 2.5:
+                over2_result += 1
+            elif 2.5 <= matches[match]['total_average_goals'] < 3.5:
+                over2_result += 2
+            elif matches[match]['total_average_goals'] >= 3.5:
+                over2_result += 3
+
+            if 60 <= matches[match]['home_team_over2_rating'] < 70:
+                over2_result += 1
+            elif 70 <= matches[match]['home_team_over2_rating'] < 80:
+                over2_result += 2
+            elif matches[match]['home_team_over2_rating'] >= 80:
+                over2_result += 3
+
+            if 60 <= matches[match]['away_team_over2_rating'] < 70:
+                over2_result += 1
+            elif 70 <= matches[match]['away_team_over2_rating'] < 80:
+                over2_result += 2
+            elif matches[match]['away_team_over2_rating'] >= 80:
+                over2_result += 3
+            
+            if 60 <= matches[match]['match_over2_rating'] < 70:
+                over2_result += 1
+            elif 70 <= matches[match]['match_over2_rating'] < 80:
+                over2_result += 2
+            elif matches[match]['match_over2_rating'] >= 80:
+                over2_result += 3
+            
+            over2_result = (over2_result/30)*100
+
+            if over2_result >= 70:
                 matches[match]['over2.5'] = True
-
-            if matches[match]['match_over2_rating'] < 75 and matches[match]['total_average_goals'] >= 3:
-                if matches[match]['home_team_over2_rating'] >= 75:
-                    if matches[match]['home_goals_scored'] >= 1.5 and matches[match]['away_goals_conceded'] > 0:
-                        matches[match]['over2.5'] = True
+            
+            matches[match]['over2_calculated_score'] = int(over2_result)
         return matches
 
     @staticmethod

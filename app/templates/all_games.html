@@ -128,7 +128,7 @@
         <div class="outcome-outer" style="padding-bottom: 0px">
             <div class="outcome {% if res[result]['btts'] %}green{% endif %}">BTTS Avg</div>
             <div class="outcome {% if res[result]['total_average_goals'] > 3.25 %}green{% endif %}">Combined Goal Avg</div>
-            <div class="outcome {% if res[result]['over2.5'] %}green{% endif %}">Over 2.5 Avg</div>
+            <div class="outcome {% if res[result]['over2.5'] %}green{% endif %}">Over 2.5 Prediction</div>
         </div>
         <div class="outcome-outer" style="padding-top: 0px">
             <div class="outcome {% if res[result]['btts'] %}green{% endif %}"
@@ -140,7 +140,7 @@
             </div>
             <div class="outcome {% if res[result]['over2.5'] %}green{% endif %}"
                  data-toggle="tooltip" title="% of previous matches that where over2.5">
-                {{ res[result]['match_over2_rating']}}%
+                {{ res[result]['over2_calculated_score']}}%
             </div>
         </div>
     </div>

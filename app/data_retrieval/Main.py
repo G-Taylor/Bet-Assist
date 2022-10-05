@@ -105,6 +105,7 @@ def get_suggested_matches(total_goals_scored_dict,
                                 (teams_over_2_goals[team] + teams_over_2_goals[team2]) / 2, 2)
                         suggested_matches[fixture]['match_btts_rating'] = 0
                         suggested_matches[fixture]['match_over2_rating'] = 0
+                        suggested_matches[fixture]['over2_calculated_score'] = 0
                         suggested_matches[fixture]['over2.5'] = False
                         suggested_matches[fixture]['btts'] = False
         except ValueError:
