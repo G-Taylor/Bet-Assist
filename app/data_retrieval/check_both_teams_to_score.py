@@ -34,7 +34,8 @@ class CheckBothTeamsToScore:
         btts_rating = {}
         league_team_keys = []
         [league_team_keys.append(team) for team in home_goals_scored.keys()]
-        [league_team_keys.append(team) for team in away_goals_scored.keys() if team not in league_team_keys]
+        [league_team_keys.append(team) for team in away_goals_scored.keys(
+        ) if team not in league_team_keys]
 
         for team in league_team_keys:
             number_of_matches = 0

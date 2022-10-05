@@ -82,8 +82,10 @@ def get_fixtures(league):
         all_home_matches.append(home)
         all_away_matches.append(away)
 
-    [strip_and_add_team(match, home_fixture_list) for match in all_home_matches]
-    [strip_and_add_team(match, away_fixture_list) for match in all_away_matches]
+    [strip_and_add_team(match, home_fixture_list)
+     for match in all_home_matches]
+    [strip_and_add_team(match, away_fixture_list)
+     for match in all_away_matches]
 
     return results
 
@@ -172,7 +174,8 @@ def get_current_standings(league):
 
         try:
             if team_name.text is not None:
-                current_standings[team_name.text.strip()] = int(position.text.strip())
+                current_standings[team_name.text.strip()] = int(
+                    position.text.strip())
         except AttributeError as e:
             print(f'Error finding league position: {e}')
     return current_standings
@@ -183,8 +186,10 @@ def convert_data():
     convert_to_dict(away_team_list, away_goals_scored, away_goals_scored_dict)
 
     # converting team goals conceded
-    convert_to_dict(home_team_list, home_goals_conceded, home_goals_conceded_dict)
-    convert_to_dict(away_team_list, away_goals_conceded, away_goals_conceded_dict)
+    convert_to_dict(home_team_list, home_goals_conceded,
+                    home_goals_conceded_dict)
+    convert_to_dict(away_team_list, away_goals_conceded,
+                    away_goals_conceded_dict)
 
     # converting team results
     convert_to_dict(home_team_list, home_team_results, home_team_results_dict)
