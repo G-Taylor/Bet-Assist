@@ -65,14 +65,18 @@ class CheckOverTwoGoals:
             elif matches[match]['total_average_goals'] >= 3.5:
                 over2_result += 3
 
-            if 60 <= matches[match]['home_team_over2_rating'] < 70:
+            if matches[match]['home_team_over2_rating'] == 100:
+                over2_result += 4
+            elif 60 <= matches[match]['home_team_over2_rating'] < 70:
                 over2_result += 1
             elif 70 <= matches[match]['home_team_over2_rating'] < 80:
                 over2_result += 2
             elif matches[match]['home_team_over2_rating'] >= 80:
                 over2_result += 3
 
-            if 60 <= matches[match]['away_team_over2_rating'] < 70:
+            if matches[match]['away_team_over2_rating'] == 100:
+                over2_result += 4
+            elif 60 <= matches[match]['away_team_over2_rating'] < 70:
                 over2_result += 1
             elif 70 <= matches[match]['away_team_over2_rating'] < 80:
                 over2_result += 2
@@ -99,8 +103,7 @@ class CheckOverTwoGoals:
         over2_rating = {}
         league_team_keys = []
         [league_team_keys.append(team) for team in home_goals_scored.keys()]
-        [league_team_keys.append(team) for team in away_goals_scored.keys(
-        ) if team not in league_team_keys]
+        [league_team_keys.append(team) for team in away_goals_scored.keys() if team not in league_team_keys]
 
         for team in league_team_keys:
             number_of_matches = 0
