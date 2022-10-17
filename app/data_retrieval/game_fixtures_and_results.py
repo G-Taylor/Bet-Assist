@@ -131,10 +131,15 @@ def get_games_played(league):
     :param league:
     :return:
     """
+    result_limit = 45
+
+    if 'scottish' in league:
+        result_limit = 25
+
     page = requests.get(league)
     soup = BeautifulSoup(page.content, 'html.parser')
     results = soup.find_all('div', class_='fixres__item')
-    [get_game_data(match) for match in results[:45]]
+    [get_game_data(match) for match in results[:result_limit]]
 
 
 def get_game_data(match):

@@ -17,6 +17,7 @@ class CheckBothTeamsToScore:
 
             if matches[match]['match_btts_rating'] >= 70:
                 matches[match]['btts'] = True
+
         return matches
 
     @staticmethod
