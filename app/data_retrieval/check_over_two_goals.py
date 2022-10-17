@@ -66,7 +66,7 @@ class CheckOverTwoGoals:
                 over2_result += 3
 
             if matches[match]['home_team_over2_rating'] == 100:
-                over2_result += 4
+                over2_result += 5
             elif 60 <= matches[match]['home_team_over2_rating'] < 70:
                 over2_result += 1
             elif 70 <= matches[match]['home_team_over2_rating'] < 80:
@@ -75,14 +75,16 @@ class CheckOverTwoGoals:
                 over2_result += 3
 
             if matches[match]['away_team_over2_rating'] == 100:
-                over2_result += 4
+                over2_result += 5
             elif 60 <= matches[match]['away_team_over2_rating'] < 70:
                 over2_result += 1
             elif 70 <= matches[match]['away_team_over2_rating'] < 80:
                 over2_result += 2
             elif matches[match]['away_team_over2_rating'] >= 80:
                 over2_result += 3
-            
+
+            if matches[match]['match_over2_rating'] == 100:
+                over2_result += 5
             if 60 <= matches[match]['match_over2_rating'] < 70:
                 over2_result += 1
             elif 70 <= matches[match]['match_over2_rating'] < 80:
