@@ -76,7 +76,7 @@ def btts(cl):
 
 # App Route for the all games page of the application
 @app.route('/all_games/<cl>', methods=['GET', 'POST'])
-@cache.cached(timeout=600)
+@cache.cached(timeout=300)
 def all_games(cl):
     try:
         current_league = cl
