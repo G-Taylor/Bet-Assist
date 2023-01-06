@@ -100,4 +100,9 @@ leagues = {
         'logo': 'europaconferenceleague.png',
         'url': 'europa-conference-league',
     },
+    'fa cup': {
+        'id': 0000,
+        'logo': 'facup.png',
+        'url': 'fa-cup'
+    },
 }

@@ -19,4 +19,5 @@ league_logos = {
     'champions league': 'championsleague.png',
     'europa league': 'europaleague.png',
     'europa conference league': 'europaconferenceleague.png',
+    'fa cup': 'facup.png',
 }
