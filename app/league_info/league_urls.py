@@ -21,4 +21,5 @@ leagues = {
     'champions league': 'champions-league',
     'europa league': 'europa-league',
     'europa conference league': 'europa-conference-league',
+    'fa cup': 'fa-cup',
 }

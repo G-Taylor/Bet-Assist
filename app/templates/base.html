@@ -77,6 +77,11 @@
                                 <img class="logo" src="{{ url_for('static', filename='league2.png') }}">  League 2
                             </button>
                         </li>
+                        <li>
+                            <button name="league" value="fa cup" class="nav-link" data-toggle="modal" data-target="#searchingModal" onclick="window.location.href='{{ url_for( page, cl='fa cup') }}';">
+                                <img class="logo" src="{{ url_for('static', filename='facup.png') }}">  FA Cup
+                            </button>
+                        </li>
                     </ul>
                 </li>
                 <li class="nav-item has-submenu">
