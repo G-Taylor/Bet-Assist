@@ -27,16 +27,16 @@
                     {% endif %}>
                     <a class="nav-link" onclick="window.location.href='{{ url_for( 'all_games', cl='premiership') }}';">All Games</a>
                 </li>
-                <li {% if '/over2' in request.path %} class="nav-item active"
-                    {% else %} class="nav-item"
-                    {% endif %}>
-                    <a class="nav-link" onclick="window.location.href='{{ url_for( 'over2', cl='premiership') }}';">Over 2.5 Goals</a>
-                </li>
-                <li {% if '/btts' in request.path %} class="nav-item active"
-                    {% else %} class="nav-item"
-                    {% endif %}>
-                    <a class="nav-link" onclick="window.location.href='{{ url_for( 'btts', cl='premiership') }}';">BTTS</a>
-                </li>
+{#                <li {% if '/over2' in request.path %} class="nav-item active"#}
+{#                    {% else %} class="nav-item"#}
+{#                    {% endif %}>#}
+{#                    <a class="nav-link" onclick="window.location.href='{{ url_for( 'over2', cl='premiership') }}';">Over 2.5 Goals</a>#}
+{#                </li>#}
+{#                <li {% if '/btts' in request.path %} class="nav-item active"#}
+{#                    {% else %} class="nav-item"#}
+{#                    {% endif %}>#}
+{#                    <a class="nav-link" onclick="window.location.href='{{ url_for( 'btts', cl='premiership') }}';">BTTS</a>#}
+{#                </li>#}
             </ul>
         </div>
     </nav>
