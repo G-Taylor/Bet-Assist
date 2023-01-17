@@ -646,7 +646,7 @@ body {
 }
 
 .jumbotron-fluid:hover {
-  opacity: .7;
+  /*opacity: .7;*/
 }
 
 #top\ jumbo {
